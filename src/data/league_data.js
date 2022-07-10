@@ -6,6 +6,7 @@ let leagues = [
   {
     id: 'lg_1',
     title: 'League 1',
+    status: 'started', // receiving app, started, ongoing, finished   
     createdBy: getUser('001'),
     gamePerTeam: 1,
     dateToStart: 'July 1, 2022',
@@ -23,11 +24,12 @@ let leagues = [
   {
     id: 'lg_2',
     title: 'League 2',
+    status: 'receivingApp', // receiving app, started, ongoing, finished   
     createdBy: getUser('002'),
     gamePerTeam: 1,
     dateToStart: 'August 1, 2022',
     numOfteamsParticipating: 4,
-    teamsParticipating: ['team1', 'team2', 'team3', 'team4'],
+    teamsParticipating: ['team1', 'team2', ],
     games: [
       games[7],      
       games[8],

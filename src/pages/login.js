@@ -38,7 +38,9 @@ export default function Login() {
     e.preventDefault()
     // console.log("from", from)
     auth.signin(u, () => {
-      navigate(from, { replace: true });
+      // navigate(from, { replace: true });
+      // navigate to home instead of where the user was
+      navigate('/', { replace: true });
     });
     setU({})
   };

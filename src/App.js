@@ -12,6 +12,7 @@ import {
 import { AuthProvider, AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';
 
+import {Header, SubHeader, Footer} from './header.js'
 import NewLeague from './pages/newLeague.js';
 import League from './pages/league.js';
 import LeaguesMine from './pages/leaguesMine.js';
@@ -27,14 +28,10 @@ import Account from './pages/requireAuth/account.js';
 import Profile from './pages/requireAuth/profile.js';
 import Settings from './pages/requireAuth/settings.js';
 
-import { Button } from '@aws-amplify/ui-react';
-
-
-
 export default function App() {
   let navigate = useNavigate();
   let location = useLocation();
-
+  console.log('[app]-', location)
   return (
     <AuthProvider>
       <Routes>
@@ -52,15 +49,6 @@ export default function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />
           </Route>
-
-          {/* service */}
-          {/* 
-            1. leagues -- list of leagues   
-            2. individual route for each league 
-            3. leagues/home/create 
-
-            team ? 
-            */}
 
           <Route
             path="/league/home/create"
@@ -103,7 +91,8 @@ function Layout() {
   return (
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
-      <Navbar auth={auth} />
+      <Header auth={auth} />
+      <SubHeader auth={auth} />
 
       {auth.user ? (
         <Link to="/league/home/create" style={{ marginLeft: '200px' }}>
@@ -112,42 +101,13 @@ function Layout() {
         </Link>
       ) : null}
 
+      
+      {location && location.pathname == '/' ? <Leagues /> : null}
       <Outlet />
-
-
-      <Button>Hello world</Button>;
-
-
-      {auth.user ? <LeaguesMine /> : <Leagues />}
 
       <Footer />
     </div>
   );
 }
 
-function Navbar({auth}) {
-  return (
-    <nav
-      style={{
-        borderBottom: 'solid 1px',
-        paddingBottom: '1rem',
-      }}
-    >
-      <Link to="/">Home</Link> {' | '}
-      <Link to="/leagues">Leagues</Link> {' | '}
-      <Link to="/teams">Teams</Link> {' | '}
-      <Link to="/newteam">New Team</Link> {' | '}
-      <Link to="/account">
-        {' '}
-        {auth.user ? auth.user.username : 'Login'}
-      </Link>{' '}
-      {' | '}
-    </nav>
-  );
-}
 
-function Footer() {
-  return (
-    <div> -------- footer --------  </div>
-  );
-}
