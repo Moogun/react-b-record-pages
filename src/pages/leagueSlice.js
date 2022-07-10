@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getLeagues } from '../data/league.js';
+import { getLeagues } from '../data/league_data.js';
 let leagues = getLeagues() 
 
 export const leagueSlice = createSlice({

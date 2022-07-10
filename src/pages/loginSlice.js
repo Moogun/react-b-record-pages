@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getUser } from '../data/user.js';
+import { getUser } from '../data/user_data.js';
 let user = getUser('001') 
 console.log('user', user)
 

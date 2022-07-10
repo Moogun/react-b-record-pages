@@ -1,4 +1,4 @@
-import { getTeams } from './team.js';
+import { getTeams } from './team_data.js';
 
 let t = getTeams();
 

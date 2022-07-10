@@ -1,5 +1,5 @@
-import {getUsers, getUser} from './user.js'
-import {getGames} from './game.js'
+import {getUsers, getUser} from './user_data.js'
+import {getGames} from './game_data.js'
 let games = getGames()
 
 let leagues = [

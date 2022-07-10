@@ -4,9 +4,6 @@ import { getTeam } from './teamSlice';
 
 import {
   NavLink,
-  Link,
-  Routes,
-  Route,
   Outlet,
   useSearchParams,
   useNavigate,

@@ -34,10 +34,10 @@ export default function team() {
       </h3>
 
       {/* <button onClick={handleNewGame}>new game</button> */}
-      <div>
+      {/* <div> */}
         
         {/* {admin ? <button> new league </button> : ""} */}
-      </div>
+      {/* </div> */}
       
       {/* <div style={{ border: 'solid 1px' }}>
         Leagues participating

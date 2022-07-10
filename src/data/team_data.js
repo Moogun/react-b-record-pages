@@ -1,4 +1,4 @@
-import {getUsers} from './user.js'
+import {getUsers} from './user_data.js'
 
 let u = getUsers()
 
