@@ -97,22 +97,21 @@ function Layout() {
   console.log('[app]', auth);
   return (
     <div>
-      <AuthStatus AuthContext={AuthContext} />
+      {/* <AuthStatus AuthContext={AuthContext} /> */}
+        <nav
+          style={{
+            borderBottom: 'solid 1px',
+            paddingBottom: '1rem',
+          }}
+        >
+          <Link to="/">Home</Link> {' | '}
+          <Link to="/leagues">Leagues</Link> {' | '}
+          <Link to="/teams">Teams</Link> {' | '}
+          <Link to="/newteam">New Team</Link> {' | '}
+          <Link to="/account"> {auth.user ? auth.user.username : 'Login'}</Link> {' | '}
+        </nav>
 
-      <nav
-        style={{
-          borderBottom: 'solid 1px',
-          paddingBottom: '1rem',
-        }}
-      >
-        <Link to="/">Home</Link> {' | '}
-        <Link to="/leagues">Leagues</Link> {' | '}
-        <Link to="/teams">Teams</Link> {' | '}
-        <Link to="/newteam">New Team</Link> {' | '}
-        <Link to="/account">Account</Link> {' | '}
-      </nav>
-
-      <Outlet />
+        <Outlet />
     </div>
   );
 }

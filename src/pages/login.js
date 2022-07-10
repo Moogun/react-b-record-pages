@@ -9,7 +9,7 @@ export default function Login() {
 
   let navigate = useNavigate();
   let location = useLocation();
-  // console.log('location loca', location)
+  console.log('location loca', location)
   let from = location.state.from.pathname || '/';
 
   const [u, setU] = useState({})

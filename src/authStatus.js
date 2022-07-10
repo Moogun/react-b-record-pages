@@ -8,7 +8,8 @@ import {
 export default function AuthStatus({AuthContext}) {
   let auth = useContext(AuthContext);
   let navigate = useNavigate();
-  // console.log('[authStatus]-', auth)
+  console.log('[authStatus]-', auth)
+  
   if (!auth.user) {
     return <p> </p>;
   }
