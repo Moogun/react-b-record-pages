@@ -57,12 +57,22 @@ export default function App() {
             team ? 
             */}
 
+          <Route
+            path="/league/home/create"
+            element={
+              <RequireAuth AuthContext={AuthContext}>
+                <NewLeague />
+              </RequireAuth>
+            }
+          />
+          {/* <Route path="/league/home/create" element={<NewLeague />} /> */}
+
           <Route path="/leagues" element={<Leagues />} />
           <Route path="leagues/:leagueId" element={<League />} />
 
           <Route path="newteam" element={<NewTeam />} />
           <Route path="teams" element={<Teams />} />
-            
+
           <Route path="teams/:teamId" element={<Team />} />
           <Route path="newgame" element={<NewGame />} />
           <Route path="newleague" element={<NewLeague />} />
@@ -84,7 +94,7 @@ export default function App() {
 
 function Layout() {
   const auth = useContext(AuthContext);
-  console.log('[app]', auth)
+  console.log('[app]', auth);
   return (
     <div>
       <AuthStatus AuthContext={AuthContext} />
