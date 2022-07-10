@@ -27,6 +27,10 @@ import Account from './pages/requireAuth/account.js';
 import Profile from './pages/requireAuth/profile.js';
 import Settings from './pages/requireAuth/settings.js';
 
+import { Button } from '@aws-amplify/ui-react';
+
+
+
 export default function App() {
   let navigate = useNavigate();
   let location = useLocation();
@@ -109,6 +113,10 @@ function Layout() {
       ) : null}
 
       <Outlet />
+
+
+      <Button>Hello world</Button>;
+
 
       {auth.user ? <LeaguesMine /> : <Leagues />}
 
