@@ -47,7 +47,6 @@ export default function App() {
           >
             <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />
-          
           </Route>
 
           {/* service */}
@@ -89,7 +88,6 @@ export default function App() {
             }
           />
         </Route>
-        
       </Routes>
     </AuthProvider>
   );
@@ -101,30 +99,47 @@ function Layout() {
   return (
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
-      <nav
-        style={{
-          borderBottom: 'solid 1px',
-          paddingBottom: '1rem',
-        }}
-      >
-        <Link to="/">Home</Link> {' | '}
-        <Link to="/leagues">Leagues</Link> {' | '}
-        <Link to="/teams">Teams</Link> {' | '}
-        <Link to="/newteam">New Team</Link> {' | '}
-        <Link to="/account">
-          {' '}
-          {auth.user ? auth.user.username : 'Login'}
-        </Link>{' '}
-        {' | '}
-      </nav>
+      <Navbar auth={auth} />
 
-      {auth.user ? <Link to="/league/home/create" style={{marginLeft: "200px"}}> New League</Link> : null}
+      {auth.user ? (
+        <Link to="/league/home/create" style={{ marginLeft: '200px' }}>
+          {' '}
+          New League
+        </Link>
+      ) : null}
 
       <Outlet />
 
       {auth.user ? <LeaguesMine /> : <Leagues />}
-      
+
+      <Footer />
     </div>
   );
 }
 
+function Navbar({auth}) {
+  return (
+    <nav
+      style={{
+        borderBottom: 'solid 1px',
+        paddingBottom: '1rem',
+      }}
+    >
+      <Link to="/">Home</Link> {' | '}
+      <Link to="/leagues">Leagues</Link> {' | '}
+      <Link to="/teams">Teams</Link> {' | '}
+      <Link to="/newteam">New Team</Link> {' | '}
+      <Link to="/account">
+        {' '}
+        {auth.user ? auth.user.username : 'Login'}
+      </Link>{' '}
+      {' | '}
+    </nav>
+  );
+}
+
+function Footer() {
+  return (
+    <div> -------- footer --------  </div>
+  );
+}
