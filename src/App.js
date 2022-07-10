@@ -14,6 +14,7 @@ import AuthStatus from './authStatus.js';
 
 import NewLeague from './pages/newLeague.js';
 import League from './pages/league.js';
+import LeaguesMine from './pages/leaguesMine.js';
 import Leagues from './pages/leagues.js';
 import NewGame from './pages/newGame.js';
 import NewTeam from './pages/newTeam.js';
@@ -46,6 +47,7 @@ export default function App() {
           >
             <Route path="profile" element={<Profile />} />
             <Route path="settings" element={<Settings />} />
+          
           </Route>
 
           {/* service */}
@@ -87,6 +89,7 @@ export default function App() {
             }
           />
         </Route>
+        
       </Routes>
     </AuthProvider>
   );
@@ -98,20 +101,30 @@ function Layout() {
   return (
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
-        <nav
-          style={{
-            borderBottom: 'solid 1px',
-            paddingBottom: '1rem',
-          }}
-        >
-          <Link to="/">Home</Link> {' | '}
-          <Link to="/leagues">Leagues</Link> {' | '}
-          <Link to="/teams">Teams</Link> {' | '}
-          <Link to="/newteam">New Team</Link> {' | '}
-          <Link to="/account"> {auth.user ? auth.user.username : 'Login'}</Link> {' | '}
-        </nav>
+      <nav
+        style={{
+          borderBottom: 'solid 1px',
+          paddingBottom: '1rem',
+        }}
+      >
+        <Link to="/">Home</Link> {' | '}
+        <Link to="/leagues">Leagues</Link> {' | '}
+        <Link to="/teams">Teams</Link> {' | '}
+        <Link to="/newteam">New Team</Link> {' | '}
+        <Link to="/account">
+          {' '}
+          {auth.user ? auth.user.username : 'Login'}
+        </Link>{' '}
+        {' | '}
+      </nav>
 
-        <Outlet />
+      {auth.user ? <Link to="/league/home/create" style={{marginLeft: "200px"}}> New League</Link> : null}
+
+      <Outlet />
+
+      {auth.user ? <LeaguesMine /> : <Leagues />}
+      
     </div>
   );
 }
+

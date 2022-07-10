@@ -33,7 +33,7 @@ export default function Leagues() {
   return (
     <div>
       <h5>leagues</h5>
-      <button onClick={handleSth}> dismiss </button>
+      {/* <button onClick={handleSth}> dismiss </button> */}
       <div>
         {/* <h5>new league </h5>
         <form onSubmit={handleSubmit}>

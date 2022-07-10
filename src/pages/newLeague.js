@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 
 export default function NewLeague() {
   const [league, setLeague] = useState({
@@ -29,9 +29,17 @@ export default function NewLeague() {
   };
 
   let navigate = useNavigate();
+  let location = useLocation();
 
   const handleDismiss = () => {
-    navigate(-1);
+    
+    // 1. navigate here, navigate back to account then set user null, therafter navigate to /login 
+    // <Navigate />doesn't work here either 
+    // 2. navigate(-1);
+    // ------- note : <a href> instead of <Link> will rerender the whole page, said by some
+    
+    // this works for now 
+    navigate("/", { replace: true });
   };
 
   return (
