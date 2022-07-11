@@ -5,6 +5,8 @@ import { getLeague } from './leagueSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 import { bg_lb, bg_dw } from '../style';
 
+import { SelectField, Flex } from '@aws-amplify/ui-react';
+
 export default function team() {
   let auth = useContext(AuthContext);
 
@@ -74,6 +76,17 @@ function Info({ league }) {
 }
 
 function Standing({ league }) {
+  // console.log('league.teams', league.teamsParticipating)
+  // console.log('league.games', league.games)
+  // let st = []
+  
+  // league.games.map(g => {
+  //   g.teams.map(t => {
+  //     console.log('t', t.name)
+  //   })
+  //   console.log(g.win.name)
+  // })
+  
   return (
     <table>
       <tr>

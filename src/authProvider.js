@@ -7,7 +7,7 @@ import { signin_test, signout_test } from './pages/loginSlice';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState({username: 'abc', password: 'bbc'})
 
   // let user = useSelector((state) => {
   //   // console.log('[authProvider]', state)
