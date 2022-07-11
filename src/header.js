@@ -3,6 +3,8 @@ import {
   Link,
 } from 'react-router-dom';
 
+import {bg_lb} from './style'
+
 export function Header({auth}) {
   return (
     <nav
@@ -39,6 +41,6 @@ export function SubHeader({auth}) {
 
 export function Footer() {
   return (
-    <div> -------- footer --------  </div>
+    <div style={bg_lb}> -------- footer --------  </div>
   );
 }

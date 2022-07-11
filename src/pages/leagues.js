@@ -10,6 +10,8 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
+import {bg_lb} from '../style'
+
 export default function Leagues() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -30,8 +32,9 @@ export default function Leagues() {
   const handleSth = () => {
     navigate(-1)
   }
+
   return (
-    <div>
+    <div style={bg_lb}>
       <h5>leagues</h5>
       {/* <button onClick={handleSth}> dismiss </button> */}
       <div>

@@ -85,6 +85,12 @@ export default function App() {
   );
 }
 
+const fStyle = {
+  padding: '50px',
+  margin: '1rem',
+  backgroundColor: 'lightGray'
+};
+
 function Layout() {
   const auth = useContext(AuthContext);
   console.log('[app]', auth);

@@ -3,6 +3,7 @@ import { AuthContext } from '../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLeague } from './leagueSlice';
 import { useParams, useNavigate } from 'react-router-dom';
+import {bg_lb} from '../style'
 
 export default function team() {
   let auth = useContext(AuthContext);
@@ -27,7 +28,7 @@ export default function team() {
   // let admin = league.manager.find((i => i == auth.user.id))
 
   return (
-    <main style={{ padding: '1rem 0' }}>
+    <main style={bg_lb}>
       <h3>
         {' '}
         {league.title} -{league.status}
@@ -38,7 +39,18 @@ export default function team() {
         league.teamsParticipating.map((t) => <span> {t} </span>)}
 
       <h4> Standing </h4>
-      <table>
+      {league.status == 'receivingApp' ? <p> leauge hasn't started</p> : <Standing league={league}/>}
+
+      <h4> game schedule and result </h4>
+      <GameSchedule league={league}/>
+    
+    </main>
+  );
+}
+
+function Standing({league}) {
+  return (
+    <table>
         <tr>
           <th>Team name</th>
           <th>Num of Games</th>
@@ -61,29 +73,35 @@ export default function team() {
           <td>2</td>
         </tr>
       </table>
+  )
+}
 
-      <h4> game schedule and result </h4>
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>경기</th>
-          <th>장소</th>
+function GameSchedule({league}) {
+  return (
+    <table>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>경기</th>
+      <th>장소</th>
+    </tr>
+
+    {league.status &&
+      league.games.map((g) => (
+        <tr key={g.id}>
+          <td>{g.date} </td>
+          <td>{g.time} </td>
+
+          <td> null</td>
+          <td> {g.venue} </td>
         </tr>
+      ))}
+  </table>
+  )
+}
 
-        {league.status &&
-          league.games.map((g) => (
-            <tr key={g.id}>
-              <td>{g.date} </td>
-              <td>{g.time} </td>
 
-              <td>{g.win.name} </td>
-              <td> {g.venue} </td>
-            </tr>
-          ))}
-      </table>
-
-      {/* <button onClick={handleNewGame}>new game</button> */}
+ {/* <button onClick={handleNewGame}>new game</button> */}
       {/* <div> */}
 
       {/* {admin ? <button> new league </button> : ""} */}
@@ -108,6 +126,3 @@ export default function team() {
           ))}
         </div>
       </div> */}
-    </main>
-  );
-}
