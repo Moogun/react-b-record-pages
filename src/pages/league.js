@@ -3,7 +3,7 @@ import { AuthContext } from '../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLeague } from './leagueSlice';
 import { useParams, useNavigate } from 'react-router-dom';
-import {bg_lb} from '../style'
+import { bg_lb, bg_dw } from '../style';
 
 export default function team() {
   let auth = useContext(AuthContext);
@@ -34,80 +34,113 @@ export default function team() {
         {league.title} -{league.status}
       </h3>
 
-      <h4> filled slots</h4>
-      {league.status &&
-        league.teamsParticipating.map((t) => <span> {t} </span>)}
+      <div style={bg_dw}>
+        <h4> League info</h4>
+        <Info league={league} />
+      </div>
 
-      <h4> Standing </h4>
-      {league.status == 'receivingApp' ? <p> leauge hasn't started</p> : <Standing league={league}/>}
+      <div style={bg_dw}>
+        <h4> filled slots</h4>
 
-      <h4> game schedule and result </h4>
-      <GameSchedule league={league}/>
-    
+        {league.status &&
+          league.teamsParticipating.map((t) => <span> {t} </span>)}
+      </div>
+      <div style={bg_dw}>
+        <h4> Standing </h4>
+        {league.status == 'receivingApp' ? (
+          <p> leauge hasn't started</p>
+        ) : (
+          <Standing league={league} />
+        )}
+      </div>
+
+      <div style={bg_dw}>
+        <h4> game schedule and result </h4>
+        <GameSchedule league={league} />
+      </div>
     </main>
   );
 }
 
-function Standing({league}) {
+function Info({ league }) {
   return (
-    <table>
-        <tr>
-          <th>Team name</th>
-          <th>Num of Games</th>
-          <th>Points</th>
-          <th>Won</th>
-          <th>Lost</th>
-        </tr>
-        <tr>
-          <td>Team 1 </td>
-          <td>2</td>
-          <td>6</td>
-          <td>2</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>Team 2 </td>
-          <td>2</td>
-          <td>0</td>
-          <td>0</td>
-          <td>2</td>
-        </tr>
-      </table>
-  )
+    <div>
+      <p> 참가 팀 {league.numOfteamsParticipating} </p>
+      <p> 잔여 자리 {league.numOfteamsParticipating - league.teamsParticipating.length} </p>
+      <p> 참가 조건 1,2,3 </p>
+      <button> Join </button>
+    </div>
+  );
 }
 
-function GameSchedule({league}) {
+function Standing({ league }) {
   return (
     <table>
-    <tr>
-      <th>Date</th>
-      <th>Time</th>
-      <th>경기</th>
-      <th>장소</th>
-    </tr>
-
-    {league.status &&
-      league.games.map((g) => (
-        <tr key={g.id}>
-          <td>{g.date} </td>
-          <td>{g.time} </td>
-
-          <td> null</td>
-          <td> {g.venue} </td>
-        </tr>
-      ))}
-  </table>
-  )
+      <tr>
+        <th>Team name</th>
+        <th>Num of Games</th>
+        <th>Points</th>
+        <th>Won</th>
+        <th>Lost</th>
+      </tr>
+      <tr>
+        <td>Team 1 </td>
+        <td>2</td>
+        <td>6</td>
+        <td>2</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Team 2 </td>
+        <td>2</td>
+        <td>0</td>
+        <td>0</td>
+        <td>2</td>
+      </tr>
+    </table>
+  );
 }
 
+function GameSchedule({ league }) {
+  return (
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>경기</th>
+        <th>장소</th>
+      </tr>
 
- {/* <button onClick={handleNewGame}>new game</button> */}
-      {/* <div> */}
+      {league.status &&
+        league.games.map((g) => (
+          <tr key={g.id}>
+            <td>{g.date} </td>
+            <td>{g.time} </td>
 
-      {/* {admin ? <button> new league </button> : ""} */}
-      {/* </div> */}
+            <td> null</td>
+            <td> {g.venue} </td>
+          </tr>
+        ))}
+    </table>
+  );
+}
 
-      {/* 
+{
+  /* <button onClick={handleNewGame}>new game</button> */
+}
+{
+  /* <div> */
+}
+
+{
+  /* {admin ? <button> new league </button> : ""} */
+}
+{
+  /* </div> */
+}
+
+{
+  /* 
 
       <div style={{ border: 'solid 1px' }}>
         Players
@@ -125,4 +158,5 @@ function GameSchedule({league}) {
             <button key={g}> {g} </button>
           ))}
         </div>
-      </div> */}
+      </div> */
+}
