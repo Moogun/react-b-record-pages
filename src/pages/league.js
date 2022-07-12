@@ -2,12 +2,24 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLeague } from './leagueSlice';
-import { useParams, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+  Navigate,
+} from 'react-router-dom';
 import { bg_lb, bg_dw } from '../style';
 
 import {
-  Flex,
+  Collection,
+  Card,
+  Heading,
+  Text,
+  Badge,
   Button,
+  Grid,
+  View,
+  useTheme,
 } from '@aws-amplify/ui-react';
 
 export default function team() {
@@ -21,39 +33,36 @@ export default function team() {
     return state.leagues.selected;
   });
 
-  // console.log('league', league);
-
   console.log('hash', location.hash);
   console.log('pathname', location.pathname);
   console.log('search', location.search);
-  // const handleNewGame = () => {
-  //   navigate('/newgame');
-  // };
 
   // console.log('params.teamId', params.teamId);
   // console.log('team.manager', team.manager);
-
   // console.log('team.manager', team.manager[0] === auth.user.id);
-
   // let admin = league.manager.find((i => i == auth.user.id))
+
   const handleEdit = () => {
-    console.log (params)
-    navigate(`${location.pathname}/edit`, { replace: true, state: league})
-  }
+    console.log(params);
+    navigate(`${location.pathname}/edit`, { replace: true, state: league });
+  };
 
   return (
-    <main style={bg_lb}>
-      <h3>
-        {' '}
-        {league.title} -{league.status}
-      </h3>
+    <main>
 
-      <Button onClick={handleEdit}> Edit </Button>
+      {/* <Button onClick={handleEdit}> Edit </Button> */}
 
-      <div style={bg_dw}>
-        <h4> League info</h4>
+      <Card key={league.id} style={bg_dw}>
+        
+        <Heading level={4}>
+          {league.title}{' '}
+          <Badge size="small" variation="info">
+            {league.status}
+          </Badge>
+        </Heading>
+
         <Info league={league} />
-      </div>
+      </Card>
 
       <div style={bg_dw}>
         <h4> filled slots</h4>
@@ -81,10 +90,15 @@ export default function team() {
 function Info({ league }) {
   return (
     <div>
-      <p> 참가 팀 {league.numOfteamsParticipating} </p>
-      <p> 잔여 자리 {league.numOfteamsParticipating - league.teamsParticipating.length} </p>
-      <p> 참가 조건 1,2,3 </p>
-      <button> Join </button>
+      <h4> League info</h4>
+      <Text> 참가 팀 {league.numOfteamsParticipating}</Text>
+
+      <Text>
+        잔여 자리
+        {league.numOfteamsParticipating - league.teamsParticipating.length}{' '}
+        </Text>
+        <Text> 참가 조건 1,2,3 </Text>
+      {/* <Button> Join </Button> */}
     </div>
   );
 }
@@ -93,14 +107,14 @@ function Standing({ league }) {
   // console.log('league.teams', league.teamsParticipating)
   // console.log('league.games', league.games)
   // let st = []
-  
+
   // league.games.map(g => {
   //   g.teams.map(t => {
   //     console.log('t', t.name)
   //   })
   //   console.log(g.win.name)
   // })
-  
+
   return (
     <table>
       <tr>

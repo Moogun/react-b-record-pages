@@ -48,36 +48,7 @@ export default function Leagues() {
   return (
     <div>
       <Text as="p"> leagues </Text>
-      {/* <button onClick={handleSth}> dismiss </button> */}
-      <div>
-        {/* <h5>new league </h5>
-        <form onSubmit={handleSubmit}>
-          <label>
-            title: <input name="title" type="text" />
-          </label>{' '}
-          <button type="submit">create a new league</button>
-        </form> */}
-        {/* 
-        {leagues.map((l) => (
-          <Card>
-            <NavLink
-              to={`/leagues/${l.id}`}
-              key={l.id}
-              onClick={() => handleClick(l.id)}
-            >
-              <div>
-                <p> {l.title}</p>
-                <div>
-                  {' '}
-                  'game per team' : {l.gamePerTeam} , {l.dateToStart},{' '}
-                  {l.numOfteamsParticipating}, {l.teamsParticipating}{' '}
-                </div>
-              </div>
-            </NavLink>
-          </Card> */}
-        {/* ))} */}
-      </div>
-
+  
       {leagues.map((l) => (
         <NavLink to={`/leagues/${l.id}`} key={l.id}>
           <View
@@ -87,10 +58,13 @@ export default function Leagues() {
             onClick={() => handleClick(l.id)}
           >
             <Heading level={5}>{l.title}</Heading>
-            <Text as="p">'game per team' : {l.gamePerTeam}</Text>
+            <Text as="p">status : {l.status} / teams: {l.numOfteamsParticipating}</Text>
+            <Text as="span">game per team : {l.gamePerTeam}</Text>
 
             <Text as="p">
-              {l.dateToStart}, {l.numOfteamsParticipating},{' '}
+              {l.dateToStart}, {l.dateToEnd}
+            </Text>
+            <Text as="p">
               {l.teamsParticipating}{' '}
             </Text>
           </View>
