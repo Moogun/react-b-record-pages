@@ -4,15 +4,17 @@ import {
   TextField,
   SelectField,
   TextAreaField,
+  Button,
   Flex,
+  View,
+  Grid,
+  Divider,
 } from '@aws-amplify/ui-react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  newLeague
-} from './leagueSlice'
+import { newLeague } from './leagueSlice';
 
-export default function NewLeague() {
+export default function LeagueNew() {
   const dispatch = useDispatch();
 
   const [league, setLeague] = useState({
@@ -24,7 +26,7 @@ export default function NewLeague() {
     numOfteamsParticipating: '1',
     teamsParticipating: '1',
     games: [],
-    etc: "Amplify UI is awesome!"
+    etc: 'Amplify UI is awesome!',
   });
   // const [location, setLocation] = useState()
 
@@ -37,9 +39,24 @@ export default function NewLeague() {
     e.preventDefault();
   };
 
+  const handleAddGame = (e) => {
+    console.log('league', league);
+    console.log('e.target', e.target);
+    // setLeague((prev) => {
+    //   console.log('prev.games', prev);
+    // });
+    // e.preventDefault();
+    setLeague({
+      ...league,
+      [e.target.name]: league.games.push(1),
+    });
+    e.preventDefault();
+    console.log('league 2', league);
+  };
+
   const handleSubmit = (e) => {
-    dispatch(newLeague(league))
-    setLeague({})
+    dispatch(newLeague(league));
+    setLeague({});
     e.preventDefault();
   };
 
@@ -59,7 +76,7 @@ export default function NewLeague() {
   return (
     <div>
       <h5>new league</h5>
-      <button onClick={handleDismiss}>dismiss </button>
+      <Button onClick={handleDismiss}>dismiss </Button>
       <form onSubmit={handleSubmit}>
         <Flex direction="column">
           <TextField
@@ -76,7 +93,6 @@ export default function NewLeague() {
             onChange={handleInputChange}
             value={league.dateToStart}
           />
-
           <TextField
             label="Date to end"
             placeholder="July 1 2022"
@@ -84,7 +100,6 @@ export default function NewLeague() {
             onChange={handleInputChange}
             value={league.dateToEnd}
           />
-
           <SelectField
             label="Game per team"
             options={['1', '2', '3', '4']}
@@ -99,16 +114,30 @@ export default function NewLeague() {
             onChange={handleInputChange}
             value={league.numOfteamsParticipating}
           />
-
           The Num of Games: {combinations(league.numOfteamsParticipating, 2)}
-
           <TextAreaField
             label="etc"
             name="etc"
             onChange={handleInputChange}
             value={league.etc}
           />
-          <input type="submit" value="Submit" />
+          <Divider orientation="horizontal" />
+          {league.games && league.games.length > 0
+            ? league.games.map((g) => {
+                return <li> {g} </li>;
+              })
+            : null}
+          <Grid templateColumns="1fr 1fr">
+            <Button name="newSchedule" onClick={handleAddGame}>
+              {' '}
+              + Add New Shcedule{' '}
+            </Button>
+          </Grid>
+          <Divider orientation="horizontal" />
+          <Button type="submit" value="Submit">
+            {' '}
+            Save{' '}
+          </Button>
         </Flex>
       </form>
     </div>
@@ -121,12 +150,12 @@ function factorial(r) {
   return s;
 }
 
-function combinations(n,r){
-    let s = 1;
-    let i = r;
-    // n*(n-1)*....*(n-r+1)
-    while(i<n) s*=++i;
-    return s/factorial(n-r)
+function combinations(n, r) {
+  let s = 1;
+  let i = r;
+  // n*(n-1)*....*(n-r+1)
+  while (i < n) s *= ++i;
+  return s / factorial(n - r);
 }
 
 console.log(combinations(3, 2));

@@ -88,7 +88,6 @@ export default function Leagues() {
           >
             <Heading level={5}>{l.title}</Heading>
             <Text as="p">'game per team' : {l.gamePerTeam}</Text>
-            <Text as="p">'game per team' : {l.gamePerTeam}</Text>
 
             <Text as="p">
               {l.dateToStart}, {l.numOfteamsParticipating},{' '}

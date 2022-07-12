@@ -13,7 +13,7 @@ import { AuthProvider, AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';
 
 import { Header, SubHeader, Footer } from './header.js';
-import NewLeague from './pages/newLeague.js';
+import LeagueNew from './pages/leagueNew.js';
 import LeagueEdit from './pages/leagueEdit.js';
 import League from './pages/league.js';
 import LeaguesMine from './pages/leaguesMine.js';
@@ -57,7 +57,7 @@ export default function App() {
             path="/league/home/create"
             element={
               <RequireAuth AuthContext={AuthContext}>
-                <NewLeague />
+                <LeagueNew />
               </RequireAuth>
             }
           />
@@ -72,7 +72,7 @@ export default function App() {
 
           <Route path="teams/:teamId" element={<Team />} />
           <Route path="newgame" element={<NewGame />} />
-          <Route path="newleague" element={<NewLeague />} />
+          <Route path="leaguenew" element={<LeagueNew />} />
 
           {/* 404 page */}
           <Route
