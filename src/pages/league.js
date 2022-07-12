@@ -38,7 +38,7 @@ export default function team() {
   // let admin = league.manager.find((i => i == auth.user.id))
   const handleEdit = () => {
     console.log (params)
-    navigate(`${location.pathname}/edit`, { replace: true })
+    navigate(`${location.pathname}/edit`, { replace: true, state: league})
   }
 
   return (

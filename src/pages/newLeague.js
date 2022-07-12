@@ -104,11 +104,14 @@ export default function NewLeague() {
           />
           <SelectField
             label="Num of Participants"
-            options={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
+            options={['2', '3', '4', '5', '6', '7', '8', '9', '10']}
             name="numOfteamsParticipating"
             onChange={handleInputChange}
             value={league.numOfteamsParticipating}
           />
+
+          {/* {factorial(league.numOfteamsParticipating) / (factorial(league.numOfteamsParticipating) * (factorial(league.numOfteamsParticipating - league.gamePerTeam))) } */}
+
           <TextAreaField
             label="etc"
             defaultValue="Amplify UI is awesome!"
@@ -122,3 +125,19 @@ export default function NewLeague() {
     </div>
   );
 }
+
+function factorial(r) {
+  let s = 1;
+  while (r > 1) s *= r--;
+  return s;
+}
+
+function combinations(n,r){
+    let s = 1;
+    let i = r;
+    // n*(n-1)*....*(n-r+1)
+    while(i<n) s*=++i;
+    return s/factorial(n-r)
+}
+
+console.log(combinations(league.numOfteamsParticipating, 2));
