@@ -24,30 +24,20 @@ export default function NewLeague() {
     numOfteamsParticipating: '1',
     teamsParticipating: '1',
     games: [],
-    etc: ''
+    etc: "Amplify UI is awesome!"
   });
   // const [location, setLocation] = useState()
 
   const handleInputChange = (e) => {
-    // const target = e.target;
-    // const name = target.name;
-    //   name == 'teamName' ? setTeamName(target.value) : setLocation(target.value);
-
     let value = e.target.value;
     setLeague({
       ...league,
       [e.target.name]: value,
     });
-    // console.log('[login handleChange] ', u.username, u.password)
     e.preventDefault();
   };
 
   const handleSubmit = (e) => {
-    //   // do sth and clear input
-    //   console.log(teamName, location)
-    
-    //   setTeamName('');
-    //   setLocation('');
     dispatch(newLeague(league))
     setLeague({})
     e.preventDefault();
@@ -110,11 +100,10 @@ export default function NewLeague() {
             value={league.numOfteamsParticipating}
           />
 
-          {/* {factorial(league.numOfteamsParticipating) / (factorial(league.numOfteamsParticipating) * (factorial(league.numOfteamsParticipating - league.gamePerTeam))) } */}
+          The Num of Games: {combinations(league.numOfteamsParticipating, 2)}
 
           <TextAreaField
             label="etc"
-            defaultValue="Amplify UI is awesome!"
             name="etc"
             onChange={handleInputChange}
             value={league.etc}
@@ -140,4 +129,4 @@ function combinations(n,r){
     return s/factorial(n-r)
 }
 
-console.log(combinations(league.numOfteamsParticipating, 2));
+console.log(combinations(3, 2));

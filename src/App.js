@@ -12,7 +12,7 @@ import {
 import { AuthProvider, AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';
 
-import {Header, SubHeader, Footer} from './header.js'
+import { Header, SubHeader, Footer } from './header.js';
 import NewLeague from './pages/newLeague.js';
 import LeagueEdit from './pages/leagueEdit.js';
 import League from './pages/league.js';
@@ -29,10 +29,12 @@ import Account from './pages/requireAuth/account.js';
 import Profile from './pages/requireAuth/profile.js';
 import Settings from './pages/requireAuth/settings.js';
 
+import { Grid, View, useTheme } from '@aws-amplify/ui-react';
+
 export default function App() {
   let navigate = useNavigate();
   let location = useLocation();
-  console.log('[app]-', location)
+  console.log('[app]-', location);
   return (
     <AuthProvider>
       <Routes>
@@ -90,32 +92,67 @@ export default function App() {
 const fStyle = {
   padding: '50px',
   margin: '1rem',
-  backgroundColor: 'lightGray'
+  backgroundColor: 'lightGray',
 };
 
 function Layout() {
   const auth = useContext(AuthContext);
   console.log('[app]', auth);
+  const { tokens } = useTheme();
+
   return (
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
-      <Header auth={auth} />
-      <SubHeader auth={auth} />
 
-      {auth.user ? (
-        <Link to="/league/home/create" style={{ marginLeft: '200px' }}>
-          {' '}
-          New League
-        </Link>
-      ) : null}
+      <Grid
+        templateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
+        templateRows="2rem 2rem"
+        gap={tokens.space.small}
+      >
+        <View
+          backgroundColor={tokens.colors.blue[10]}
+          columnStart="1"
+          columnEnd="-1"
+        >
+          <Header auth={auth} />
+        </View>
 
-      
-      {location && location.pathname == '/' ? <Leagues /> : null}
-      <Outlet />
+        <View
+          backgroundColor={tokens.colors.blue[10]}
+          columnStart="1"
+          columnEnd="-1"
+        >
+          <SubHeader auth={auth} />
+        </View>
 
-      <Footer />
+        <View
+          columnStart="1"
+          columnEnd="6"
+        >
+          {location && location.pathname == '/' ? <Leagues /> : null}
+          <Outlet />
+        </View>
+
+        <View
+          columnStart="6"
+          columnEnd="8"
+        >
+          {auth.user ? (
+            <Link to="/league/home/create">
+              {' '}
+              New League
+            </Link>
+          ) : null}
+        </View>
+
+        <View
+          backgroundColor={tokens.colors.blue[20]}
+          columnStart="1"
+          columnEnd="-1"
+        >
+          <Footer />
+        </View>
+      </Grid>
     </div>
   );
 }
-
-
