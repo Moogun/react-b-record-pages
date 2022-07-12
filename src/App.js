@@ -14,6 +14,7 @@ import AuthStatus from './authStatus.js';
 
 import {Header, SubHeader, Footer} from './header.js'
 import NewLeague from './pages/newLeague.js';
+import LeagueEdit from './pages/leagueEdit.js';
 import League from './pages/league.js';
 import LeaguesMine from './pages/leaguesMine.js';
 import Leagues from './pages/leagues.js';
@@ -62,6 +63,7 @@ export default function App() {
 
           <Route path="/leagues" element={<Leagues />} />
           <Route path="leagues/:leagueId" element={<League />} />
+          <Route path="leagues/:leagueId/edit" element={<LeagueEdit />} />
 
           <Route path="newteam" element={<NewTeam />} />
           <Route path="teams" element={<Teams />} />

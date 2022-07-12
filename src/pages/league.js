@@ -2,22 +2,30 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLeague } from './leagueSlice';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { bg_lb, bg_dw } from '../style';
 
-import { SelectField, Flex } from '@aws-amplify/ui-react';
+import {
+  Flex,
+  Button,
+} from '@aws-amplify/ui-react';
 
 export default function team() {
   let auth = useContext(AuthContext);
 
   let navigate = useNavigate();
+  const location = useLocation();
   let params = useParams();
 
   let league = useSelector((state) => {
     return state.leagues.selected;
   });
 
-  console.log('league', league);
+  // console.log('league', league);
+
+  console.log('hash', location.hash);
+  console.log('pathname', location.pathname);
+  console.log('search', location.search);
   // const handleNewGame = () => {
   //   navigate('/newgame');
   // };
@@ -28,6 +36,10 @@ export default function team() {
   // console.log('team.manager', team.manager[0] === auth.user.id);
 
   // let admin = league.manager.find((i => i == auth.user.id))
+  const handleEdit = () => {
+    console.log (params)
+    navigate(`${location.pathname}/edit`, { replace: true })
+  }
 
   return (
     <main style={bg_lb}>
@@ -35,6 +47,8 @@ export default function team() {
         {' '}
         {league.title} -{league.status}
       </h3>
+
+      <Button onClick={handleEdit}> Edit </Button>
 
       <div style={bg_dw}>
         <h4> League info</h4>

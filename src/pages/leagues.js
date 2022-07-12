@@ -10,7 +10,17 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
-import {bg_lb} from '../style'
+import { bg_lb } from '../style';
+import {
+  Card,
+  View,
+  Heading,
+  Flex,
+  Badge,
+  Text,
+  Button,
+  useTheme,
+} from '@aws-amplify/ui-react';
 
 export default function Leagues() {
   const dispatch = useDispatch();
@@ -30,12 +40,14 @@ export default function Leagues() {
   const handleSubmit = () => {};
 
   const handleSth = () => {
-    navigate(-1)
-  }
+    navigate(-1);
+  };
+
+  const { tokens } = useTheme();
 
   return (
-    <div style={bg_lb}>
-      <h5>leagues</h5>
+    <div>
+      <Text as="p"> leagues </Text>
       {/* <button onClick={handleSth}> dismiss </button> */}
       <div>
         {/* <h5>new league </h5>
@@ -45,20 +57,46 @@ export default function Leagues() {
           </label>{' '}
           <button type="submit">create a new league</button>
         </form> */}
-
+        {/* 
         {leagues.map((l) => (
-          <NavLink 
-          to={`/leagues/${l.id}`}
-          key={l.id}
-          onClick={() => handleClick(l.id)}
->
-          <div>
-            <p> {l.title}</p>
-            <div> 'game per team' : {l.gamePerTeam} , {l.dataToStart}, {l.numOfteamsParticipating}, {l.teamsParticipating} </div>
-            </div>
-          </NavLink>
-        ))}
+          <Card>
+            <NavLink
+              to={`/leagues/${l.id}`}
+              key={l.id}
+              onClick={() => handleClick(l.id)}
+            >
+              <div>
+                <p> {l.title}</p>
+                <div>
+                  {' '}
+                  'game per team' : {l.gamePerTeam} , {l.dateToStart},{' '}
+                  {l.numOfteamsParticipating}, {l.teamsParticipating}{' '}
+                </div>
+              </div>
+            </NavLink>
+          </Card> */}
+        {/* ))} */}
       </div>
+
+      {leagues.map((l) => (
+        <NavLink to={`/leagues/${l.id}`} key={l.id}>
+          <View
+            backgroundColor={tokens.colors.background.secondary}
+            padding={tokens.space.medium}
+            margin={tokens.space.small}
+            onClick={() => handleClick(l.id)}
+          >
+            <Heading level={5}>{l.title}</Heading>
+            <Text as="p">'game per team' : {l.gamePerTeam}</Text>
+            <Text as="p">'game per team' : {l.gamePerTeam}</Text>
+
+            <Text as="p">
+              {l.dateToStart}, {l.numOfteamsParticipating},{' '}
+              {l.teamsParticipating}{' '}
+            </Text>
+          </View>
+        </NavLink>
+      ))}
     </div>
   );
 }
