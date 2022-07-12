@@ -110,7 +110,7 @@ function Layout() {
         gap={tokens.space.small}
       >
         <View
-          backgroundColor={tokens.colors.blue[10]}
+          
           columnStart="1"
           columnEnd="-1"
         >
@@ -118,7 +118,6 @@ function Layout() {
         </View>
 
         <View
-          backgroundColor={tokens.colors.blue[10]}
           columnStart="1"
           columnEnd="-1"
         >
