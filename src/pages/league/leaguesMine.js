@@ -16,7 +16,7 @@ import {
   Button,
   useTheme,
 } from '@aws-amplify/ui-react';
-import img1 from './resources/img1.jpg'
+import logo from './logo.svg';
 
 export default function LeaguesMine() {
   const auth = useContext(AuthContext);
@@ -27,6 +27,7 @@ export default function LeaguesMine() {
   let leagues = useSelector((state) => {
     return state.leagues.list;
   });
+  let myTeam = auth.user.myTeam;
 
   let [searchParams, setSearchParams] = useSearchParams();
 
@@ -40,37 +41,30 @@ export default function LeaguesMine() {
   const handleSth = () => {
     navigate(-1);
   };
+
+
   const { tokens } = useTheme();
   return (
     <div>
       <h5>My leagues</h5>
-      {auth.user.myTeam &&
-        auth.user.myTeam.map((t) => (
+      {myTeam &&
+        myTeam.map((t) => (
           <View
             backgroundColor={tokens.colors.background.secondary}
             padding={tokens.space.medium}
           >
             <Card>
               <Flex direction="row" alignItems="flex-start">
-                <Image
-                  alt="Road to milford sound"
-                  src="/road-to-milford-new-zealand-800w.jpg"
-                  width="33%"
-                />
+                <Image alt="Road to milford sound"
+                src={logo} width="20%" />
                 <Flex
                   direction="column"
                   alignItems="flex-start"
                   gap={tokens.space.xs}
                 >
-     
+                  <Heading level={5}>{t.name}</Heading>
 
-                  <Heading level={5}>
-                    New Zealand White Water Outdoor Adventure
-                  </Heading>
-
-                  <Text as="span">
-                   owy peaks on New Zealand.
-                  </Text>
+                  <Text as="span">owy peaks on New Zealand.</Text>
                 </Flex>
               </Flex>
             </Card>

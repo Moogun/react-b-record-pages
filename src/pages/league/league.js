@@ -40,7 +40,8 @@ export default function team() {
   console.log('hash', location.hash);
   console.log('pathname', location.pathname);
   console.log('search', location.search);
-
+  console.log('[league] league', league);
+  
   // console.log('params.teamId', params.teamId);
   // console.log('team.manager', team.manager);
   // console.log('team.manager', team.manager[0] === auth.user.id);
