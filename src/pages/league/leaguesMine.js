@@ -18,6 +18,8 @@ import {
 } from '@aws-amplify/ui-react';
 import logo from './logo.svg';
 
+import{ PageHeader} from '../../pageHeader.js'
+
 export default function LeaguesMine() {
   const auth = useContext(AuthContext);
   console.log('[lg mine]', auth.user);
@@ -42,11 +44,10 @@ export default function LeaguesMine() {
     navigate(-1);
   };
 
-
   const { tokens } = useTheme();
   return (
     <div>
-      <h5>My leagues</h5>
+      <PageHeader title={"나의 리그"}/>
       {myTeam &&
         myTeam.map((t) => (
           <View
@@ -55,8 +56,7 @@ export default function LeaguesMine() {
           >
             <Card>
               <Flex direction="row" alignItems="flex-start">
-                <Image alt="Road to milford sound"
-                src={logo} width="20%" />
+                <Image alt="Road to milford sound" src={logo} width="20%" />
                 <Flex
                   direction="column"
                   alignItems="flex-start"

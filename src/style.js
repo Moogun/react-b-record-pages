@@ -15,3 +15,10 @@ export const bg_dw = {
   margin: '1rem',
   backgroundColor: '#F8F9F9'
 };
+
+export const nav = {
+  borderBottom: 'solid 1px',
+  borderColor: 'lightGray',
+  backgroundColor: '',
+  textColor: 'white',
+}

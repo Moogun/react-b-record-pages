@@ -20,3 +20,34 @@ Link {
   background-color:cyan;
 }
 
+.link-local-styles {
+  color: var(--amplify-colors-blue-40);
+  text-decoration: none;
+}
+
+.link-local-styles:hover {
+  font-weight: var(--amplify-font-weights-bold);
+  color: var(--amplify-colors-blue-100);
+}
+
+.link-local-styles:active {
+  color: var(--amplify-colors-blue-100);
+  font-weight: var(--amplify-font-weights-bold);
+}
+
+.link-local-styles-subheader {
+  color: var(--amplify-colors-blue-60);
+  font-weight: var(--amplify-font-weights-bold);
+  text-decoration: none;
+  padding-right: 1rem;
+}
+
+.link-local-styles-subheader:hover {
+  font-weight: var(--amplify-font-weights-bold);
+  color: var(--amplify-colors-blue-100);
+}
+
+.link-local-styles-subheader:active {
+  color: var(--amplify-colors-blue-100);
+  font-weight: var(--amplify-font-weights-bold);
+}

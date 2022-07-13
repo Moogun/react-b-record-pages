@@ -2,23 +2,20 @@ import React from 'react'
 import {
   Link,
 } from 'react-router-dom';
+import { useTheme } from '@aws-amplify/ui-react';
+import { AiOutlineUser } from "react-icons/ai";
 
-import {bg_lb} from './style'
+import './style.css'
 
 export function Header({auth}) {
+  const { tokens } = useTheme();
   return (
-    <nav
-      style={{
-        borderBottom: 'solid 1px',
-        // paddingBottom: '1rem',
-      }}
-    >
-      <Link to="/">Home</Link> {' | '}
-      <Link to="/account">
-        {' '}
-        {auth.user ? auth.user.username : 'Login'}
-      </Link>{' '}
-      {' | '}
+    <nav>
+      <Link to="/" className="link-local-styles">Home</Link> 
+      <Link to="/account"  style={{float:'right'}} className="link-local-styles">
+        <AiOutlineUser /> {auth.user ? auth.user.username : 'Login'}
+      </Link>
+      
     </nav>
   );
 }
@@ -28,19 +25,20 @@ export function SubHeader({auth}) {
     <nav
       style={{
         borderBottom: 'solid 1px',
-        paddingBottom: '1rem',
+        borderColor: 'lightGray',
+        // paddingRight: '2rem',
       }}
     >
-      {auth.user ? <Link to="/leaguesmine">My Leagues</Link> : null } {' | '}
-      <Link to="/leagues">Leagues</Link> {' | '}
-      <Link to="/teams">Teams</Link> {' | '}
-      <Link to="/newteam">New Team</Link> {' | '}
+      {auth.user ? <Link to="/leaguesmine" className="link-local-styles-subheader">My Leagues</Link> : null } 
+      <Link  to="/leagues" className="link-local-styles-subheader">Leagues</Link> 
+      <Link  to="/teams" className="link-local-styles-subheader">Teams</Link> 
+      <Link  to="/newteam" className="link-local-styles-subheader">New Team</Link> 
     </nav>
   );
 }
 
 export function Footer() {
   return (
-    <div style={bg_lb}> -------- footer --------  </div>
+    <div> -------- footer --------  </div>
   );
 }

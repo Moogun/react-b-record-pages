@@ -19,31 +19,32 @@ export default function Layout() {
       {/* <AuthStatus AuthContext={AuthContext} /> */}
 
       <Grid
-        templateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
-        templateRows="2rem 2rem"
+        templateColumns="repeat(12, 1fr)"
+        // templateColumns="base: '1fr', large: repeat(12, 1fr)"
+        templateRows="1rem 1rem"
         gap={tokens.space.small}
       >
-        <View columnStart="1" columnEnd="-1">
+        <View columnStart="2" columnEnd="12">
           <Header auth={auth} />
         </View>
 
-        <View columnStart="1" columnEnd="-1">
+        <View columnStart="2" columnEnd="12">
           <SubHeader auth={auth} />
         </View>
 
-        <View columnStart="1" columnEnd="6">
+        <View columnStart="2" columnEnd="12">
           {location && location.pathname == '/' ? <Leagues /> : null}
           <Outlet />
         </View>
 
-        <View columnStart="6" columnEnd="8">
+        {/* <View columnStart="6" columnEnd="8">
           {auth.user ? <Link to="/league/home/create"> New League</Link> : null}
-        </View>
+        </View> */}
 
         <View
           backgroundColor={tokens.colors.blue[20]}
-          columnStart="1"
-          columnEnd="-1"
+          columnStart="2"
+          columnEnd="12"
         >
           <Footer />
         </View>

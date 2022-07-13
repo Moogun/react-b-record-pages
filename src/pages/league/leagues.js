@@ -10,6 +10,8 @@ import {
   useNavigate,
 } from 'react-router-dom';
 
+
+
 import { bg_lb } from '../style';
 import {
   Card,
@@ -21,6 +23,8 @@ import {
   Button,
   useTheme,
 } from '@aws-amplify/ui-react';
+
+import{ PageHeader} from '../../pageHeader.js'
 
 export default function Leagues() {
   const dispatch = useDispatch();
@@ -47,12 +51,9 @@ export default function Leagues() {
 
   return (
     <div>
-      <View 
-        padding={tokens.space.medium}
-        margin={tokens.space.small}>
-        <Text as="p"> leagues </Text>
-      </View>
-      
+      <PageHeader title={"리그"}/>
+
+ 
       {leagues.map((l) => (
         <NavLink
           style={{ textDecoration: 'none' }}
@@ -62,7 +63,7 @@ export default function Leagues() {
           <View
             backgroundColor={tokens.colors.background.secondary}
             padding={tokens.space.medium}
-            margin={tokens.space.small}
+            marginTop={tokens.space.small}
             onClick={() => handleClick(l.id)}
           >
             <Heading level={5}>{l.title}</Heading>
