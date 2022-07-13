@@ -11,6 +11,9 @@ let leagues = [
     gamePerTeam: 1,
     dateToStart: 'Sep 1, 2022',
     dateToEnd: 'Sep 2, 2022',
+    appToStart: 'Sep 1, 2022',
+    appToEnd: 'Sep 2, 2022',
+    location: ' gym court a',
     numOfteamsParticipating: 4,
     teamsParticipating: ['team1', 'team2', ],
     games: [
@@ -30,6 +33,9 @@ let leagues = [
     gamePerTeam: 1,
     dateToStart: 'August 1, 2022',
     dateToEnd: 'Augst 7, 2022',
+    appToStart: 'Sep 1, 2022',
+    appToEnd: 'Sep 2, 2022',
+    location: ' gym court b',
     numOfteamsParticipating: 4,
     teamsParticipating: ['team1', 'team2', 'team3', 'team4'],
     games: [
@@ -49,6 +55,9 @@ let leagues = [
     gamePerTeam: 1,
     dateToStart: 'Jul 1, 2022',
     dateToEnd: 'July 1, 2022',
+    appToStart: 'Sep 1, 2022',
+    appToEnd: 'Sep 2, 2022',
+    location: ' gym court b',
     numOfteamsParticipating: 2,
     teamsParticipating: ['team1', 'team2'],
     games: [

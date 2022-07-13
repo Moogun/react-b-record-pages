@@ -6,9 +6,8 @@ import {
   useParams,
   useNavigate,
   useLocation,
-  Navigate,
 } from 'react-router-dom';
-import { bg_lb, bg_dw } from '../style';
+import { bg_lb, bg_dw } from '../../style';
 
 import {
   Collection,
@@ -56,8 +55,8 @@ export default function team() {
     <main>
       <Card key={league.id}>
         <Heading level={2} fontWeight={tokens.fontWeights.thin}>
-          {/* {league.title}{' '} */}
-          KB국민은행 Liiv M 3x3 KOREA TOUR 2022 3차 인제대회{' '}
+          {league.title}{' '}
+          {/* KB국민은행 Liiv M 3x3 KOREA TOUR 2022 3차 인제대회{' '} */}
           <Badge size="small" variation="info">
             {league.status}
           </Badge>
@@ -107,11 +106,13 @@ function Info({ league }) {
     <Card>
       <h4> 리그 정보 </h4>
       <Text> 참가 팀 {league.numOfteamsParticipating}</Text>
+      <Text> 대회기간 : </Text>
+      <Text> 신청기간 : </Text>
+      <Text> 경기장소 : </Text>
       <Text>
         잔여 자리
         {league.numOfteamsParticipating - league.teamsParticipating.length}{' '}
       </Text>
-      <Text> 참가 조건 1,2,3 </Text>
       {/* <Button> Join </Button> */}
     </Card>
   );

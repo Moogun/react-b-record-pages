@@ -13,11 +13,11 @@ import { AuthProvider, AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';
 
 import { Header, SubHeader, Footer } from './header.js';
-import LeagueNew from './pages/leagueNew.js';
-import LeagueEdit from './pages/leagueEdit.js';
-import League from './pages/league.js';
-import LeaguesMine from './pages/leaguesMine.js';
-import Leagues from './pages/leagues.js';
+import LeagueNew from './pages/league/leagueNew.js';
+import LeagueEdit from './pages/league/leagueEdit.js';
+import League from './pages/league/league.js';
+import LeaguesMine from './pages/league/leaguesMine.js';
+import Leagues from './pages/league/leagues.js';
 import NewGame from './pages/newGame.js';
 import NewTeam from './pages/newTeam.js';
 import Teams from './pages/teams.js';
