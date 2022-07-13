@@ -1,24 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../authProvider.js';
+
+import { useDispatch } from 'react-redux';
+
 import { useNavigate } from 'react-router-dom';
+import { newTeam } from './teamSlice';
+import {
+  TextField,
+  SelectField,
+  TextAreaField,
+  Button,
+  Flex,
+  View,
+  Grid,
+  Divider,
+} from '@aws-amplify/ui-react';
+
+// import { newTeam } from './teamSlice';
 
 export default function NewTeam() {
-  
-  const [teamName, setTeamName] = useState()
-  const [location, setLocation] = useState()
+  let auth = useContext(AuthContext);
+  console.log('[teamNew]', auth);
+
+  const dispatch = useDispatch();
+
+  const [team, setTeam] = useState({
+    id:'',
+    name:'',
+    location: '',
+    createdBy: '',
+  })
 
   const handleInputChange = (e) => {
-    const target = e.target;
-    const name = target.name;
-    name == 'teamName' ? setTeamName(target.value) : setLocation(target.value);
+    let value = e.target.value;
+    setTeam({
+      ...team,
+      [e.target.name]: value,
+    });
     e.preventDefault();
   };
 
   const handleSubmit = (e) => {
-    // do sth and clear input
-    console.log(teamName, location)
+    dispatch(newTeam(team));
+    setTeam({});
     e.preventDefault();
-    setTeamName('');
-    setLocation('');
   };
 
   let navigate = useNavigate();
@@ -32,33 +57,30 @@ export default function NewTeam() {
   return (
     <div>
       <h5>new team</h5>
-
-      <main style={{ padding: '1rem 0' }}>
-        <button onClick={handleDismiss}>dismiss </button>
-        <div>new team </div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Team Name:
-            <input
-              type="text"
-              name="teamName"
-              onChange={handleInputChange}
-              value={teamName}
-            />
-          </label>
-          <br />
-          <label>
-            Location:
-            <input
-              type="text"
-              name="location"
-              onChange={(e) => handleInputChange(e)}
-              value={location}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-      </main>
+      <Button onClick={handleDismiss}>dismiss </Button>
+      <form onSubmit={handleSubmit}>
+        <Flex direction="column">
+          <TextField
+            label="name"
+            placeholder="000_team"
+            name="name"
+            onChange={handleInputChange}
+            value={team.name}
+          />
+          <TextField
+            label="Location"
+            placeholder="location"
+            name="location"
+            onChange={handleInputChange}
+            value={team.location}
+          />
+        
+          <Button type="submit" value="Submit">
+            {' '}
+            Save{' '}
+          </Button>
+        </Flex>
+      </form>
     </div>
   );
 }

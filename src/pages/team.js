@@ -5,25 +5,20 @@ import { getTeam } from './teamSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 
 export default function team() {
-  // let auth = useContext(AuthContext);
-  // console.log('[team]', auth);
+  let auth = useContext(AuthContext);
+  console.log('[team]', auth);
 
   let navigate = useNavigate();
   let params = useParams();
 
-  // let team = useSelector((state) => {
-  //   return state.teams.selected;
-  // });
+  let team = useSelector((state) => {
+    return state.teams.selected;
+  });
 
   // let teamId = 't01'
   // const handleNewGame = () => {
   //   navigate('/teams/' + teamId + '/newgame');
   // };
-
-  // navigating back to nested routes cause indifinite re-rendering
-  const handleNewLeague = () => {
-    navigate('/newleague');
-  };
 
   console.log('0 --- [params]', params.teamId)
   // console.log('team manager length', team.manager.length)
@@ -39,11 +34,7 @@ export default function team() {
         {' '}
         {team.id} {team.name}
       </h3>
-
-      
-        {/* {admin ? <button onClick={handleNewLeague}> new league </button> : ""} */}
-        <button onClick={handleNewLeague}> new league </button> 
-      
+           
       <div style={{ border: 'solid 1px' }}>
         Leagues participating
         <div>none yet</div>

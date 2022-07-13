@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../authProvider.js';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import {
   TextField,
@@ -11,7 +16,6 @@ import {
   Divider,
 } from '@aws-amplify/ui-react';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { newLeague } from './leagueSlice';
 
 export default function LeagueNew() {
@@ -20,6 +24,7 @@ export default function LeagueNew() {
   const [league, setLeague] = useState({
     id: '9',
     title: 'test',
+    createdBy: '',
     gamePerTeam: 'test',
     dateToStart: 'test',
     dateToEnd: 'test',
