@@ -6,7 +6,8 @@ let leagues = [
   {
     id: 'lg_1',
     title: 'League 1',
-    status: 'receivingApp', // receiving app, started, ongoing, finished   
+    status: 'app', // app, beforeStart, started,  finished 
+    published: 'true', // false   
     createdBy: getUser('001'),
     gamePerTeam: 1,
     dateToStart: 'Sep 1, 2022',
@@ -28,7 +29,8 @@ let leagues = [
   {
     id: 'lg_2',
     title: 'League 2',
-    status: 'started', // receiving app, started, ongoing, finished   
+    status: 'started', // app, beforeStart, started,  finished
+    published: 'true', // false
     createdBy: getUser('002'),
     gamePerTeam: 1,
     dateToStart: 'August 1, 2022',
@@ -50,7 +52,8 @@ let leagues = [
   {
     id: 'lg_3',
     title: 'League 3',
-    status: 'completed', // receiving app, started, ongoing, finished   
+    status: 'completed', // app, beforeStart, started,  finished   
+    published: 'true', // false
     createdBy: getUser('003'),
     gamePerTeam: 1,
     dateToStart: 'Jul 1, 2022',

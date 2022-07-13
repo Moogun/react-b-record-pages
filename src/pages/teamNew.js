@@ -24,7 +24,8 @@ export default function NewTeam() {
   let navigate = useNavigate();
 
   const handleDismiss = () => {
-    navigate(-1);
+    // navigate(-1);
+    navigate('/', { replace: true });
   };
 
   

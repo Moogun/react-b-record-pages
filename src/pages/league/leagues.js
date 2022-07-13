@@ -47,10 +47,18 @@ export default function Leagues() {
 
   return (
     <div>
-      <Text as="p"> leagues </Text>
-  
+      <View 
+        padding={tokens.space.medium}
+        margin={tokens.space.small}>
+        <Text as="p"> leagues </Text>
+      </View>
+      
       {leagues.map((l) => (
-        <NavLink to={`/leagues/${l.id}`} key={l.id}>
+        <NavLink
+          style={{ textDecoration: 'none' }}
+          to={`/leagues/${l.id}`}
+          key={l.id}
+        >
           <View
             backgroundColor={tokens.colors.background.secondary}
             padding={tokens.space.medium}
@@ -58,14 +66,17 @@ export default function Leagues() {
             onClick={() => handleClick(l.id)}
           >
             <Heading level={5}>{l.title}</Heading>
-            <Text as="p">status : {l.status} / teams: {l.numOfteamsParticipating}</Text>
+            <Text as="p">
+              {l.status} / teams: {l.numOfteamsParticipating}
+            </Text>
             <Text as="span">game per team : {l.gamePerTeam}</Text>
 
             <Text as="p">
-              {l.dateToStart}, {l.dateToEnd}
+              app {l.appToStart}, {l.appToStart}
             </Text>
+
             <Text as="p">
-              {l.teamsParticipating}{' '}
+              league {l.dateToStart}, {l.dateToEnd}
             </Text>
           </View>
         </NavLink>

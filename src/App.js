@@ -3,23 +3,20 @@ import './style.css';
 import {
   Routes,
   Route,
-  Link,
-  Outlet,
   useNavigate,
   useLocation,
 } from 'react-router-dom';
 
 import { AuthProvider, AuthContext } from './authProvider.js';
-import AuthStatus from './authStatus.js';
+import AppLayout from './appLayout.js';
 
-import { Header, SubHeader, Footer } from './header.js';
 import LeagueNew from './pages/league/leagueNew.js';
 import LeagueEdit from './pages/league/leagueEdit.js';
 import League from './pages/league/league.js';
 import LeaguesMine from './pages/league/leaguesMine.js';
 import Leagues from './pages/league/leagues.js';
 import NewGame from './pages/newGame.js';
-import NewTeam from './pages/newTeam.js';
+import TeamNew from './pages/teamNew.js';
 import Teams from './pages/teams.js';
 import Team from './pages/team.js';
 import Login from './pages/login.js';
@@ -29,8 +26,6 @@ import Account from './pages/requireAuth/account.js';
 import Profile from './pages/requireAuth/profile.js';
 import Settings from './pages/requireAuth/settings.js';
 
-import { Grid, View, useTheme } from '@aws-amplify/ui-react';
-
 export default function App() {
   let navigate = useNavigate();
   let location = useLocation();
@@ -38,7 +33,7 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<AppLayout />}>
           {/* Auth */}
           <Route path="login" element={<Login />} />
           <Route
@@ -63,11 +58,20 @@ export default function App() {
           />
           {/* <Route path="/league/home/create" element={<NewLeague />} /> */}
 
+          <Route path="/leaguesmine" element={<LeaguesMine />} />
           <Route path="/leagues" element={<Leagues />} />
           <Route path="leagues/:leagueId" element={<League />} />
           <Route path="leagues/:leagueId/edit" element={<LeagueEdit />} />
 
-          <Route path="newteam" element={<NewTeam />} />
+          <Route
+            path="/team/home/create"
+            element={
+              <RequireAuth AuthContext={AuthContext}>
+                <TeamNew />
+              </RequireAuth>
+            }
+          />
+
           <Route path="teams" element={<Teams />} />
 
           <Route path="teams/:teamId" element={<Team />} />
@@ -86,72 +90,5 @@ export default function App() {
         </Route>
       </Routes>
     </AuthProvider>
-  );
-}
-
-const fStyle = {
-  padding: '50px',
-  margin: '1rem',
-  backgroundColor: 'lightGray',
-};
-
-function Layout() {
-  const auth = useContext(AuthContext);
-  console.log('[app]', auth);
-  const { tokens } = useTheme();
-
-  return (
-    <div>
-      {/* <AuthStatus AuthContext={AuthContext} /> */}
-
-      <Grid
-        templateColumns="1fr 1fr 1fr 1fr 1fr 1fr"
-        templateRows="2rem 2rem"
-        gap={tokens.space.small}
-      >
-        <View
-          
-          columnStart="1"
-          columnEnd="-1"
-        >
-          <Header auth={auth} />
-        </View>
-
-        <View
-          columnStart="1"
-          columnEnd="-1"
-        >
-          <SubHeader auth={auth} />
-        </View>
-
-        <View
-          columnStart="1"
-          columnEnd="6"
-        >
-          {location && location.pathname == '/' ? <Leagues /> : null}
-          <Outlet />
-        </View>
-
-        <View
-          columnStart="6"
-          columnEnd="8"
-        >
-          {auth.user ? (
-            <Link to="/league/home/create">
-              {' '}
-              New League
-            </Link>
-          ) : null}
-        </View>
-
-        <View
-          backgroundColor={tokens.colors.blue[20]}
-          columnStart="1"
-          columnEnd="-1"
-        >
-          <Footer />
-        </View>
-      </Grid>
-    </div>
   );
 }
