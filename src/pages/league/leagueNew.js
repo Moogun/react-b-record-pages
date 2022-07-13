@@ -24,7 +24,7 @@ export default function LeagueNew() {
   const [league, setLeague] = useState({
     id: '9',
     title: 'test',
-    createdBy: '',
+    createdBy: {id: '001', username: 'moo'},
     gamePerTeam: 'test',
     dateToStart: 'test',
     dateToEnd: 'test',

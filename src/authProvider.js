@@ -1,13 +1,17 @@
 import React, { useState, createContext } from 'react';
 import { fakeAuthProvider } from './auth.js';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { signin_test, signout_test } from './pages/loginSlice';
+
+import {getUser} from './data/user_data.js'
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState({username: 'abc', password: 'bbc'})
+  let user = getUser('001')
+  console.log('[authProvider]', user)
+  
+  // const [user, setUser] = useState({username: u.username, password: 'bbc'})
 
   // let user = useSelector((state) => {
   //   // console.log('[authProvider]', state)

@@ -15,11 +15,6 @@ export default function team() {
     return state.teams.selected;
   });
 
-  // let teamId = 't01'
-  // const handleNewGame = () => {
-  //   navigate('/teams/' + teamId + '/newgame');
-  // };
-
   console.log('0 --- [params]', params.teamId)
   // console.log('team manager length', team.manager.length)
   // let admin = team.manager.find((i => {

@@ -5,24 +5,24 @@ import { AuthContext } from '../authProvider.js';
 
 export default function Login() {
     let auth = useContext(AuthContext);
-  // console.log('[login] auth', auth)
+  console.log('[login] auth', auth)
 
   let navigate = useNavigate();
   let location = useLocation();
   console.log('location loca', location)
   let from = location.state.from.pathname || '/';
 
-  const [u, setU] = useState({})
+  // const [u, setU] = useState({})
+  // setU(auth.user)
 
-  const handleOnChange = (e) => {
-    let value = e.target.value
-    setU({
-      ...u, 
-      [e.target.name]: value,
-    })
-    // console.log('[login handleChange] ', u.username, u.password)
-    e.preventDefault()
-  };
+  // const handleOnChange = (e) => {
+  //   let value = e.target.value
+  //   setU({
+  //     ...u, 
+  //     [e.target.name]: value,
+  //   })
+  //   e.preventDefault()
+  // };
 
   // const handleOnClick = () => {
   //   // auth.signin('username', () => {
@@ -30,14 +30,18 @@ export default function Login() {
   //   // });
   // };
 
-  // if (auth.user) {
-  //   handleOnClick();
-  // }
+  if (auth.user) {
+    console.log('auth user ??')
+    navigate('/', {replace: true})
+    // handleOnClick();
+  } else {
+    console.log('auth user else ??')
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     // console.log("from", from)
-    auth.signin(u, () => {
+    auth.signin(auth.user, () => {
       // navigate(from, { replace: true });
       // navigate to home instead of where the user was
       navigate('/', { replace: true });
@@ -48,7 +52,7 @@ export default function Login() {
   return (
     <div>
 
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <label>
           Username: <input name="username" type="text" value={u.username} onChange={handleOnChange}/>
         </label>{' '}
@@ -57,7 +61,7 @@ export default function Login() {
         </label>{' '}
         
         <button type="submit">Login</button>
-      </form>
+      </form> */}
     </div>
   );
 }
