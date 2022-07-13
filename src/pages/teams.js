@@ -10,6 +10,8 @@ import {
 } from 'react-router-dom';
 import Team from './team.js';
 
+import{ PageHeader} from '../pageHeader.js'
+
 export default function teams() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -20,6 +22,8 @@ export default function teams() {
   });
 
   let [searchParams, setSearchParams] = useSearchParams();
+
+
 
   const handleClick = (teamId) => {
     dispatch(getTeam(teamId));
@@ -36,12 +40,12 @@ export default function teams() {
   // }
 
   return (
-    <main style={{ padding: '1rem 0' }}>
+    <main>
       {/* <Routes> */}
         {/* <Route path=":teamId" element={<Team />} /> */}
         {/* <Route path=":teamId/newgame" element={<NewGame />} /> */}
       {/* </Routes> */}
-      <h2>Teams</h2>
+      <PageHeader title={"팀"}/>
       <nav
         style={{
           borderRight: 'solid 1px',

@@ -10,36 +10,51 @@ import {
   Badge,
   Text,
   Button,
+  ButtonGroup,
   useTheme,
+  Grid,
 } from '@aws-amplify/ui-react';
+
+import { PageHeader } from '../../pageHeader.js';
 
 export default function Account() {
   let auth = useContext(AuthContext);
   console.log('[Account]', auth);
 
-  let navigate = useNavigate()
-  
-  const handleNew= (what) => {
-    navigate(`../${what}/home/create`, {replace: true})
-  }
+  let navigate = useNavigate();
+
+  const handleNew = (what) => {
+    navigate(`../${what}/home/create`, { replace: true });
+  };
   const handleNewLeague = () => {
-    navigate('../league/home/create', {replace: true})
-  }
+    navigate('../league/home/create', { replace: true });
+  };
   const handleNewTeam = () => {
-    navigate('../team/home/create', {replace: true})
-  }
+    navigate('../team/home/create', { replace: true });
+  };
 
   return (
     <div>
-      Account
+      <PageHeader title={'내 계정'} />
+      <Grid
+        columnGap="0.5rem"
+        rowGap="0.5rem"
+        templateColumns="repeat(8, 1fr)"
+        templateRows="1fr 1fr 1fr"
+      >
+        <Card columnStart="1" columnEnd="2">
       <nav>
-      <Button onClick={handleNewLeague} isFullWidth > newLeague</Button>
-      <Button onClick={handleNewTeam} isFullWidth > newTeam</Button>
-
-        <Link to="profile">Profile</Link> { "|"}
+        <Link to="profile">Profile</Link>
+        <br />
         <Link to="settings">Settings</Link>
       </nav>
-      <Outlet />
+        </Card>
+        <Card columnStart="2" columnEnd="-1">
+          <Outlet />
+        </Card>
+      </Grid>
+      
+     
     </div>
   );
 }

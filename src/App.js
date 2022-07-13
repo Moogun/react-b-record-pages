@@ -1,11 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 import './style.css';
-import {
-  Routes,
-  Route,
-  useNavigate,
-  useLocation,
-} from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import { AuthProvider, AuthContext } from './authProvider.js';
 import AppLayout from './appLayout.js';
@@ -20,6 +15,8 @@ import TeamNew from './pages/teamNew.js';
 import Teams from './pages/teams.js';
 import Team from './pages/team.js';
 import Login from './pages/login.js';
+
+import CreateNew from './pages/createNew.js';
 
 import RequireAuth from './pages/requireAuth/requireAuth.js';
 import Account from './pages/requireAuth/account.js';
@@ -56,6 +53,15 @@ export default function App() {
               </RequireAuth>
             }
           />
+          <Route
+            path="/create/home/"
+            element={
+              <RequireAuth AuthContext={AuthContext}>
+                <CreateNew />
+              </RequireAuth>
+            }
+          />
+
           {/* <Route path="/league/home/create" element={<NewLeague />} /> */}
 
           <Route path="/leaguesmine" element={<LeaguesMine />} />

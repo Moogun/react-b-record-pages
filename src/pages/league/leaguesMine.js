@@ -51,7 +51,7 @@ export default function LeaguesMine() {
       {myTeam &&
         myTeam.map((t) => (
           <View
-            backgroundColor={tokens.colors.background.secondary}
+            // backgroundColor={tokens.colors.background.secondary}
             padding={tokens.space.medium}
           >
             <Card>
