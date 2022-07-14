@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../authProvider.js';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import {
   TextField,
   SelectField,
@@ -21,35 +21,23 @@ export default function CreateNew() {
   console.log('[CreateNew]', auth);
 
   const dispatch = useDispatch();
-
-
-  const handleInputChange = (e) => {
-    let value = e.target.value;
-    // setTeam({
-    //   ...team,
-    //   [e.target.name]: value,
-    // });
-    e.preventDefault();
-  };
-
-  const handleSubmit = (e) => {
-    dispatch(newTeam(team));
-    // setTeam({});
-    e.preventDefault();
-  };
-
   let navigate = useNavigate();
 
   const handleDismiss = () => {
-    // navigate(-1);
-    navigate('/', { replace: true });
+    navigate(-1);
+    // navigate('/', { replace: true });
   };
 
-  
+  const handleNew = (what) => {
+    navigate(`/create/home/${what}`, { replace: true });
+  };
+
   return (
     <div>
-         <PageHeader title={"Create New"}/>
+      <PageHeader title={'Create New'} />
 
+      <Button onClick={() => handleNew('league')}> New League </Button>
+      <Button onClick={() => handleNew('team')}> New Team </Button>
       {/* <form onSubmit={handleSubmit}>
         <Flex direction="column">
           <TextField
@@ -73,6 +61,7 @@ export default function CreateNew() {
           </Button>
         </Flex>
       </form> */}
+      <Outlet />
     </div>
   );
 }

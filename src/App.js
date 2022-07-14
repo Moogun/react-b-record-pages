@@ -46,21 +46,16 @@ export default function App() {
           </Route>
 
           <Route
-            path="/league/home/create"
-            element={
-              <RequireAuth AuthContext={AuthContext}>
-                <LeagueNew />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/create/home/"
+            path="create/home"
             element={
               <RequireAuth AuthContext={AuthContext}>
                 <CreateNew />
               </RequireAuth>
             }
-          />
+          >
+            <Route path="league" element={<LeagueNew />} />
+            <Route path="team" element={<TeamNew />} />
+          </Route>
 
           {/* <Route path="/league/home/create" element={<NewLeague />} /> */}
 
@@ -68,15 +63,6 @@ export default function App() {
           <Route path="/leagues" element={<Leagues />} />
           <Route path="leagues/:leagueId" element={<League />} />
           <Route path="leagues/:leagueId/edit" element={<LeagueEdit />} />
-
-          <Route
-            path="/team/home/create"
-            element={
-              <RequireAuth AuthContext={AuthContext}>
-                <TeamNew />
-              </RequireAuth>
-            }
-          />
 
           <Route path="teams" element={<Teams />} />
 

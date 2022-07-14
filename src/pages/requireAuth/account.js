@@ -23,16 +23,6 @@ export default function Account() {
 
   let navigate = useNavigate();
 
-  const handleNew = (what) => {
-    navigate(`../${what}/home/create`, { replace: true });
-  };
-  const handleNewLeague = () => {
-    navigate('../league/home/create', { replace: true });
-  };
-  const handleNewTeam = () => {
-    navigate('../team/home/create', { replace: true });
-  };
-
   return (
     <div>
       <PageHeader title={'내 계정'} />
