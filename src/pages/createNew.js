@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../authProvider.js';
 import { useDispatch } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
   TextField,
   SelectField,
@@ -10,6 +10,7 @@ import {
   Flex,
   View,
   Grid,
+  Card,
   Divider,
 } from '@aws-amplify/ui-react';
 
@@ -36,32 +37,23 @@ export default function CreateNew() {
     <div>
       <PageHeader title={'Create New'} />
 
-      <Button onClick={() => handleNew('league')}> New League </Button>
-      <Button onClick={() => handleNew('team')}> New Team </Button>
-      {/* <form onSubmit={handleSubmit}>
-        <Flex direction="column">
-          <TextField
-            label="name"
-            placeholder="000_team"
-            name="name"
-            onChange={handleInputChange}
-            value={team.name}
-          />
-          <TextField
-            label="Location"
-            placeholder="location"
-            name="location"
-            onChange={handleInputChange}
-            value={team.location}
-          />
-        
-          <Button type="submit" value="Submit">
-            {' '}
-            Save{' '}
-          </Button>
-        </Flex>
-      </form> */}
-      <Outlet />
+      <Grid
+        columnGap="0.5rem"
+        rowGap="0.5rem"
+        templateColumns="repeat(8, 1fr)"
+        templateRows="1fr 1fr 1fr"
+      >
+        <Card columnStart="1" columnEnd="3">
+          <nav>
+            <Link to="league">리그 만들기</Link>
+            <br />
+            <Link to="team">팀 만들기</Link>
+          </nav>
+        </Card>
+        <Card columnStart="3" columnEnd="-1">
+          <Outlet />
+        </Card>
+      </Grid>
     </div>
   );
 }

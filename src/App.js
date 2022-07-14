@@ -7,10 +7,14 @@ import AppLayout from './appLayout.js';
 
 import LeagueNew from './pages/league/leagueNew.js';
 import LeagueEdit from './pages/league/leagueEdit.js';
+import LeagueApp from './pages/league/leagueApp.js';
+
 import League from './pages/league/league.js';
 import LeaguesMine from './pages/league/leaguesMine.js';
 import Leagues from './pages/league/leagues.js';
+
 import NewGame from './pages/newGame.js';
+
 import TeamNew from './pages/teamNew.js';
 import Teams from './pages/teams.js';
 import Team from './pages/team.js';
@@ -63,6 +67,7 @@ export default function App() {
           <Route path="/leagues" element={<Leagues />} />
           <Route path="leagues/:leagueId" element={<League />} />
           <Route path="leagues/:leagueId/edit" element={<LeagueEdit />} />
+          <Route path="leagues/:leagueId/app" element={<LeagueApp />} />
 
           <Route path="teams" element={<Teams />} />
 

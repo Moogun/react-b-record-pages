@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Heading, useTheme } from '@aws-amplify/ui-react';
 
-export function PageHeader({ title }) {
+export default function LeagueApp({  }) {
   const { tokens } = useTheme();
-
   return (
     <View
       //  padding={tokens.space.medium}
@@ -14,7 +13,7 @@ export function PageHeader({ title }) {
         level={3}
         style={{ borderBottom: 'solid 1px', borderColor: 'lightGray' }}
       >
-        {title}{' '}
+        신청
       </Heading>
     </View>
   );

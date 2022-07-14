@@ -18,7 +18,7 @@ import {
 } from '@aws-amplify/ui-react';
 import logo from './logo.svg';
 
-import{ PageHeader} from '../../pageHeader.js'
+import { PageHeader } from '../../pageHeader.js';
 
 export default function LeaguesMine() {
   const auth = useContext(AuthContext);
@@ -47,28 +47,35 @@ export default function LeaguesMine() {
   const { tokens } = useTheme();
   return (
     <div>
-      <PageHeader title={"나의 리그"}/>
+      <PageHeader title={'나의 리그'} />
       {myTeam &&
-        myTeam.map((t) => (
-          <View
-            // backgroundColor={tokens.colors.background.secondary}
-            padding={tokens.space.medium}
+        myTeam.map((l) => (
+          <NavLink
+            style={{ textDecoration: 'none' }}
+            to={`/leagues/${l.id}`}
+            key={l.id}
           >
-            <Card>
-              <Flex direction="row" alignItems="flex-start">
-                <Image alt="Road to milford sound" src={logo} width="20%" />
-                <Flex
-                  direction="column"
-                  alignItems="flex-start"
-                  gap={tokens.space.xs}
-                >
-                  <Heading level={5}>{t.name}</Heading>
+            <View
+              // backgroundColor={tokens.colors.background.secondary}
+              paddingTop={tokens.space.medium}
+            >
+              <Card variation="outlined">
+                <Flex direction="row" alignItems="flex-start">
+                  <Image alt="Road to milford sound" src={logo} width="20%"
+                  style={{border: "solid 1px "}} />
+                  <Flex
+                    direction="column"
+                    alignItems="flex-start"
+                    gap={tokens.space.xs}
+                  >
+                    <Heading level={5}>{l.name}</Heading>
 
-                  <Text as="span">owy peaks on New Zealand.</Text>
+                    <Text as="span">owy peaks on New Zealand.</Text>
+                  </Flex>
                 </Flex>
-              </Flex>
-            </Card>
-          </View>
+              </Card>
+            </View>
+          </NavLink>
         ))}
     </div>
   );

@@ -14,6 +14,8 @@ import {
   View,
   Grid,
   Divider,
+  Heading,
+  Text,
 } from '@aws-amplify/ui-react';
 
 // import { newTeam } from './teamSlice';
@@ -25,11 +27,20 @@ export default function NewTeam() {
   const dispatch = useDispatch();
 
   const [team, setTeam] = useState({
-    id:'',
-    name:'',
-    location: '',
+    id: '',
+    name: '',
+    locations: [],
     createdBy: '',
-  })
+  });
+
+  const handleAddLocation = (e) => {
+    setTeam({
+      ...team,
+      [e.target.name]: team.locations.push(1),
+    });
+    e.preventDefault();
+    console.log('team.frequentLocation', team);
+  };
 
   const handleInputChange = (e) => {
     let value = e.target.value;
@@ -53,29 +64,56 @@ export default function NewTeam() {
     navigate('/', { replace: true });
   };
 
-  
   return (
     <div>
-      <h5>new team</h5>
-      <Button onClick={handleDismiss}>dismiss </Button>
+      <Heading level={5}> 팀 만들기 </Heading>
+      {/* <Text as="P"> username : {auth.user.username} </Text> */}
+
+      {/* <Button onClick={handleDismiss}>dismiss </Button> */}
+      <br />
       <form onSubmit={handleSubmit}>
         <Flex direction="column">
           <TextField
+            size="small"
             label="name"
-            placeholder="000_team"
+            placeholder="팀 이름"
             name="name"
             onChange={handleInputChange}
             value={team.name}
           />
           <TextField
-            label="Location"
+            size="small"
+            label="팀 설명"
+            placeholder="팀 설명"
+            name="description"
+            onChange={handleInputChange}
+            value={team.name}
+          />
+          <SelectField
+            size="small"
+            label="종목"
+            placeholder="sports"
+            name="sports"
+            options={['축구', '야구', '농구']}
+            onChange={handleInputChange}
+            value={team.location}
+          />
+
+          <TextField
+            size="small"
+            label="주 경기장"
             placeholder="location"
             name="location"
             onChange={handleInputChange}
             value={team.location}
           />
-        
-          <Button type="submit" value="Submit">
+          <Grid templateColumns="1fr 1fr">
+            <Button size="small" name="newLocation" onClick={handleAddLocation}>
+              {' '}
+              + 경기장 추가{' '}
+            </Button>
+          </Grid>
+          <Button size="small" type="submit" value="Submit">
             {' '}
             Save{' '}
           </Button>

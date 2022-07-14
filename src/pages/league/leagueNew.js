@@ -4,16 +4,20 @@ import { AuthContext } from '../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import {
   TextField,
   SelectField,
   TextAreaField,
   Button,
+  ButtonGroup,
   Flex,
   View,
   Grid,
   Divider,
+  Heading,
+  Text,
+  SwitchField,
 } from '@aws-amplify/ui-react';
 
 import { newLeague } from './leagueSlice';
@@ -24,7 +28,7 @@ export default function LeagueNew() {
   const [league, setLeague] = useState({
     id: '9',
     title: 'test',
-    createdBy: {id: '001', username: 'moo'},
+    createdBy: { id: '001', username: 'moo' },
     gamePerTeam: 'test',
     dateToStart: 'test',
     dateToEnd: 'test',
@@ -80,47 +84,84 @@ export default function LeagueNew() {
 
   return (
     <div>
-      <h5>new league</h5>
-      <Button onClick={handleDismiss}>dismiss </Button>
+      <Heading level={5}> 리그 만들기 </Heading>
+      <br />
+      {/* <nav>
+        {' '}
+        <Link to="l_info1">정보</Link> {'|'}
+        <Link to="l_info2"> 정보 2</Link> {'|'}
+      </nav> */}
+
+      {/* <Button onClick={handleDismiss}>dismiss </Button> */}
       <form onSubmit={handleSubmit}>
         <Flex direction="column">
           <TextField
-            label="Title"
+            size="small"
+            label="리그 명"
             placeholder="000_league"
             name="title"
             onChange={handleInputChange}
             value={league.title}
           />
           <TextField
-            label="Date to start"
+            size="small"
+            label="시작일"
             placeholder="July 1 2022"
-            name="dateToStart"
+            name="leagueToStart"
             onChange={handleInputChange}
             value={league.dateToStart}
           />
           <TextField
-            label="Date to end"
+            size="small"
+            label="종료일"
             placeholder="July 1 2022"
-            name="dateToEnd"
+            name="leagueToEnd"
+            onChange={handleInputChange}
+            value={league.dateToEnd}
+          />
+          <TextField
+            size="small"
+            label="신청시작일"
+            placeholder="July 1 2022"
+            name="appToStart"
+            onChange={handleInputChange}
+            value={league.dateToStart}
+          />
+          <TextField
+            size="small"
+            label="신청종료일"
+            placeholder="July 1 2022"
+            name="appToEnd"
             onChange={handleInputChange}
             value={league.dateToEnd}
           />
           <SelectField
-            label="Game per team"
+            size="small"
+            label="참여팀 수"
+            options={['2', '3', '4', '5', '6', '7', '8', '9', '10']}
+            name="numOfteamsParticipating"
+            onChange={handleInputChange}
+            value={league.numOfteamsParticipating}
+          />
+          <SelectField
+            size="small"
+            label="팀당 리그 경기수"
             options={['1', '2', '3', '4']}
             name="gamePerTeam"
             onChange={handleInputChange}
             value={league.gamePerTeam}
           />
           <SelectField
-            label="Num of Participants"
-            options={['2', '3', '4', '5', '6', '7', '8', '9', '10']}
-            name="numOfteamsParticipating"
+            size="small"
+            label="우승 결정 방식"
+            options={['리그 후 토너먼트 결승', '리그 최다 승']}
+            name="tournament"
             onChange={handleInputChange}
-            value={league.numOfteamsParticipating}
+            value={league.gamePerTeam}
           />
           The Num of Games: {combinations(league.numOfteamsParticipating, 2)}
           <TextAreaField
+            size="small"
             label="etc"
             name="etc"
             onChange={handleInputChange}
@@ -133,13 +174,13 @@ export default function LeagueNew() {
               })
             : null}
           <Grid templateColumns="1fr 1fr">
-            <Button name="newSchedule" onClick={handleAddGame}>
+            <Button size="small" name="newSchedule" onClick={handleAddGame}>
               {' '}
               + Add New Shcedule{' '}
             </Button>
           </Grid>
           <Divider orientation="horizontal" />
-          <Button type="submit" value="Submit">
+          <Button size="small" type="submit" value="Submit">
             {' '}
             Save{' '}
           </Button>

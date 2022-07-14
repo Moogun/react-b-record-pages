@@ -53,9 +53,7 @@ export function SubHeader({ auth }) {
       <Link to="/teams" className="link-local-styles-subheader">
         Teams
       </Link>
-      <Link to="/newteam" className="link-local-styles-subheader">
-        New Team
-      </Link>
+      
     </nav>
   );
 }

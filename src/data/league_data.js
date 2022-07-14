@@ -10,8 +10,8 @@ let leagues = [
     published: 'true', // false   
     createdBy: getUser('001'),
     gamePerTeam: 1,
-    dateToStart: 'Sep 1, 2022',
-    dateToEnd: 'Sep 2, 2022',
+    leagueToStart: 'Sep 1, 2022',
+    leagueToEnd: 'Sep 2, 2022',
     appToStart: 'Sep 1, 2022',
     appToEnd: 'Sep 2, 2022',
     location: ' gym court a',

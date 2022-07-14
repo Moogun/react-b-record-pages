@@ -26,6 +26,8 @@ import {
   TableRow,
 } from '@aws-amplify/ui-react';
 
+import { PageHeader } from '../../pageHeader.js';
+
 export default function team() {
   let auth = useContext(AuthContext);
 
@@ -51,17 +53,26 @@ export default function team() {
     console.log(params);
     navigate(`${location.pathname}/edit`, { replace: true, state: league });
   };
+
+  const handleJoin = () => {
+    console.log(params);
+    navigate(`${location.pathname}/app`, { replace: false, state: league });
+  };
+
+  
+
   const { tokens } = useTheme();
   return (
     <main>
-      <Card key={league.id}>
-        <Heading level={2} fontWeight={tokens.fontWeights.thin}>
-          {league.title}{' '}
+      {/* <Card key={league.id}> */}
+      <PageHeader title={league.title} />
+        {/* <Heading level={2} fontWeight={tokens.fontWeights.thin}>
+          {league.title}{' '} */}
           {/* KB국민은행 Liiv M 3x3 KOREA TOUR 2022 3차 인제대회{' '} */}
-          <Badge size="small" variation="info">
+          {/* <Badge size="small" variation="info">
             {league.status}
           </Badge>
-        </Heading>
+        </Heading> */}
         {/* <Button onClick={handleEdit}> Edit </Button> */}
 
         <Info league={league} />
@@ -73,7 +84,8 @@ export default function team() {
           <Text> 참가 조건 2 </Text>
           <Text> 참가 조건 3 </Text>
 
-          <Button isFullWidth variation="primary" onClick={handleEdit}>
+          <br />
+          <Button isFullWidth variation="primary" onClick={handleJoin}>
             {' '}
             Join{' '}
           </Button>
@@ -85,7 +97,7 @@ export default function team() {
 
         <Card>
           <h4> 리그 순위</h4>
-          {league.status == 'receivingApp' ? (
+          {league.status == 'app' ? (
             <Text> 리그 시작 전 </Text>
           ) : (
             <Standing league={league} />
@@ -96,7 +108,7 @@ export default function team() {
           <h4> 경기 일정 </h4>
           <GameSchedule league={league} />
         </Card>
-      </Card>
+      {/* </Card> */}
     </main>
   );
 }
