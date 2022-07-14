@@ -46,8 +46,8 @@ export default function League() {
   const location = useLocation();
   
   // let params = useParams();
-  // console.log('hash', location.hash);
-  // console.log('pathname', location.pathname);
+  // console.log(params);
+
   // console.log('search', location.search);
   // console.log('[league] league', league);
   
@@ -61,8 +61,8 @@ export default function League() {
     navigate(`${location.pathname}/edit`, { replace: true, state: league });
   };
 
-  const handleJoin = () => {
-    console.log(params);
+  const handleApp = () => {
+    
     navigate(`${location.pathname}/app`, { replace: false, state: league });
   };
 
@@ -82,7 +82,7 @@ export default function League() {
         </Heading> */}
         {/* <Button onClick={handleEdit}> Edit </Button> */}
 
-        {/* <Info league={league} />
+        <Info league={league} />
 
         <Card>
           <h4> 참가 신청</h4>
@@ -92,17 +92,17 @@ export default function League() {
           <Text> 참가 조건 3 </Text>
 
           <br />
-          <Button isFullWidth variation="primary" onClick={handleJoin}>
+          <Button isFullWidth variation="primary" onClick={handleApp}>
             {' '}
             Join{' '}
-          </Button> */}
+          </Button>
 
-          {/* <Button isFullWidth onClick={handleEdit}> Edit </Button> */}
-          {/* {league.status &&
-          league.teamsParticipating.map((t) => <span> {t} </span>)} */}
-        {/* </Card> */}
+          <Button isFullWidth onClick={handleEdit}> Edit </Button>
+          {league.status &&
+          league.teamsParticipating.map((t) => <span> {t} </span>)}
+        </Card>
 
-        {/* <Card>
+        <Card>
           <h4> 리그 순위</h4>
           {league.status == 'app' ? (
             <Text> 리그 시작 전 </Text>
@@ -114,7 +114,7 @@ export default function League() {
         <Card>
           <h4> 경기 일정 </h4>
           <GameSchedule league={league} />
-        </Card> */}
+        </Card>
       </Card>
     </main>
   );
