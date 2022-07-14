@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './style.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';

@@ -4,25 +4,18 @@ let users = [
   {
     id: '001',
     username: 'moo',
-    myTeam: [
+    myTeams: [
       {
         id: '001',
         name: 'Santa Monica',
-        teamManager: ['111', '112'],
-      },
-    ],
-    teams: [
-      {
-        id: '001',
-        name: 'Santa Monica',
-        createdBy: {},
-        teamManager: ['111', '112'],
+        createdBy: '001',
+        managers: ['001', '112'],
       },
       {
         id: '002',
         name: 'Stankonia',
-        createdBy: {},
-        teamManager: ['114', '115'],
+        createdBy: '114',
+        managers: ['114', '115'],
       },
     ],
   },

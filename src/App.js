@@ -1,6 +1,6 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { } from 'react';
 import './style.css';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 import { AuthProvider, AuthContext } from './authProvider.js';
 import AppLayout from './appLayout.js';
@@ -28,7 +28,6 @@ import Profile from './pages/requireAuth/profile.js';
 import Settings from './pages/requireAuth/settings.js';
 
 export default function App() {
-  let navigate = useNavigate();
   let location = useLocation();
   console.log('[app]-', location);
   return (

@@ -16,12 +16,6 @@ export default function team() {
   });
 
   console.log('0 --- [params]', params.teamId)
-  // console.log('team manager length', team.manager.length)
-  // let admin = team.manager.find((i => {
-  //   return i.id == auth.user.id 
-  // })) 
-  // console.log('--- admin', 'admin')
-  // console.log('---', 1)
 
   return (
     <main style={{ padding: '1rem 0' }}>
