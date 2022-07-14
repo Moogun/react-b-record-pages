@@ -27,7 +27,7 @@ export default function LeagueNew() {
 
   const [league, setLeague] = useState({
     id: '9',
-    title: 'test',
+    title: '',
     createdBy: { id: '001', username: 'moo' },
     gamePerTeam: 'test',
     dateToStart: 'test',
@@ -96,9 +96,10 @@ export default function LeagueNew() {
       <form onSubmit={handleSubmit}>
         <Flex direction="column">
           <TextField
+          variation="quiet"
             size="small"
-            label="리그 명"
-            placeholder="000_league"
+            // label="리그 명"
+            placeholder="리그 명"
             name="title"
             onChange={handleInputChange}
             value={league.title}

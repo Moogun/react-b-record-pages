@@ -97,6 +97,6 @@ export function getUsers() {
 }
 
 export function getUser(id) {
-  console.log('[data user] getUser()', id);
+  // console.log('[data user] getUser()', id);
   return users.find((u) => u.id == id);
 }

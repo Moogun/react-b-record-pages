@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
-import { getLeague } from './leagueSlice';
+import { selectLeague } from './leagueSlice';
+
 import {
   useParams,
   useNavigate,
   useLocation,
 } from 'react-router-dom';
+
 import { bg_lb, bg_dw } from '../../style';
 
 import {
@@ -28,21 +30,26 @@ import {
 
 import { PageHeader } from '../../pageHeader.js';
 
-export default function team() {
+export default function League() {
   let auth = useContext(AuthContext);
 
-  let navigate = useNavigate();
-  const location = useLocation();
-  let params = useParams();
+  let { leagueId } = useParams();
+
+  let dispatch = useDispatch()
+  dispatch(selectLeague(leagueId));
 
   let league = useSelector((state) => {
     return state.leagues.selected;
   });
 
-  console.log('hash', location.hash);
-  console.log('pathname', location.pathname);
-  console.log('search', location.search);
-  console.log('[league] league', league);
+  let navigate = useNavigate();
+  const location = useLocation();
+  
+  // let params = useParams();
+  // console.log('hash', location.hash);
+  // console.log('pathname', location.pathname);
+  // console.log('search', location.search);
+  // console.log('[league] league', league);
   
   // console.log('params.teamId', params.teamId);
   // console.log('team.manager', team.manager);
@@ -64,7 +71,7 @@ export default function team() {
   const { tokens } = useTheme();
   return (
     <main>
-      {/* <Card key={league.id}> */}
+      <Card key={leagueId}>
       <PageHeader title={league.title} />
         {/* <Heading level={2} fontWeight={tokens.fontWeights.thin}>
           {league.title}{' '} */}
@@ -75,7 +82,7 @@ export default function team() {
         </Heading> */}
         {/* <Button onClick={handleEdit}> Edit </Button> */}
 
-        <Info league={league} />
+        {/* <Info league={league} />
 
         <Card>
           <h4> 참가 신청</h4>
@@ -88,14 +95,14 @@ export default function team() {
           <Button isFullWidth variation="primary" onClick={handleJoin}>
             {' '}
             Join{' '}
-          </Button>
+          </Button> */}
 
           {/* <Button isFullWidth onClick={handleEdit}> Edit </Button> */}
           {/* {league.status &&
           league.teamsParticipating.map((t) => <span> {t} </span>)} */}
-        </Card>
+        {/* </Card> */}
 
-        <Card>
+        {/* <Card>
           <h4> 리그 순위</h4>
           {league.status == 'app' ? (
             <Text> 리그 시작 전 </Text>
@@ -107,8 +114,8 @@ export default function team() {
         <Card>
           <h4> 경기 일정 </h4>
           <GameSchedule league={league} />
-        </Card>
-      {/* </Card> */}
+        </Card> */}
+      </Card>
     </main>
   );
 }

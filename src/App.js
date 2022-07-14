@@ -27,10 +27,17 @@ import Account from './pages/requireAuth/account.js';
 import Profile from './pages/requireAuth/profile.js';
 import Settings from './pages/requireAuth/settings.js';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 export default function App() {
   let navigate = useNavigate();
   let location = useLocation();
   console.log('[app]-', location);
+
+  useSelector(state => {
+    console.log('[app] - state', state)
+  })
+
   return (
     <AuthProvider>
       <Routes>

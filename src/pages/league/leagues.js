@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { AuthContext } from '../../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
-import { getLeague } from './leagueSlice';
+import { selectLeague } from './leagueSlice';
 
 import {
   NavLink,
@@ -25,6 +26,9 @@ import {
 import { PageHeader } from '../../pageHeader.js';
 
 export default function Leagues() {
+  let auth = useContext(AuthContext);
+  console.log('[Leagues]', auth);
+
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
@@ -32,14 +36,18 @@ export default function Leagues() {
     return state.leagues.list;
   });
 
+  // console.log('[Leagues] leagues', leagues);
+
   let [searchParams, setSearchParams] = useSearchParams();
 
   const handleClick = (leagueId) => {
-    dispatch(getLeague(leagueId));
-    navigate('/leagues/' + leagueId);
+    console.log('[leagues]', leagueId)
+  //   // dispatch(selectLeague(leagueId));
+  //   // console.log('[leagueId]', leagueId)
+  //   // navigate('/leagues/' + leagueId);
   };
 
-  const handleSubmit = () => {};
+  // const handleSubmit = () => {};
 
   const handleSth = () => {
     navigate(-1);

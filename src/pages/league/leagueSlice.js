@@ -16,7 +16,8 @@ export const leagueSlice = createSlice({
     remove: (state) => {
       state.value -= 1;
     },
-    getLeague: (state, action) => {
+    selectLeague: (state, action) => {
+      console.log('[league slice]', action.payload)
       state.selected = state.list.find(t => t.id == action.payload);
     },
     newLeague: (state, action) => {
@@ -26,6 +27,6 @@ export const leagueSlice = createSlice({
   },
 });
 
-export const { add, remove, getLeague, newLeague } = leagueSlice.actions;
+export const { add, remove, selectLeague, newLeague } = leagueSlice.actions;
 
 export default leagueSlice.reducer;
