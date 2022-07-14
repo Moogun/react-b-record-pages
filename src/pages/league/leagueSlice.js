@@ -22,10 +22,13 @@ export const leagueSlice = createSlice({
     newLeague: (state, action) => {
       console.log('[league slice] state list', state.list, 'payload', action.payload)
       state.list = [...state.list, action.payload]
+    },
+    appLeague: (state, action) => {
+      console.log('[league slice] state list', state.list, 'payload', action.payload)
     }
   },
 });
 
-export const { add, remove, getLeague, newLeague } = leagueSlice.actions;
+export const { add, remove, getLeague, newLeague, appLeague } = leagueSlice.actions;
 
 export default leagueSlice.reducer;

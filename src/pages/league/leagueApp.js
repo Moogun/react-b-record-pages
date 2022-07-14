@@ -1,56 +1,79 @@
-import React, {useContext} from 'react';
-import { AuthContext } from '../../authProvider.js'
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../authProvider.js';
+import { useDispatch } from 'react-redux';
+import { appLeague } from './leagueSlice';
 
 import { PageHeader } from '../../pageHeader.js';
-import { View, Heading, useTheme, Card, CheckboxField, Button } from '@aws-amplify/ui-react';
+import {
+  View,
+  Heading,
+  useTheme,
+  Card,
+  Radio,
+  RadioGroupField,
+  Button,
+} from '@aws-amplify/ui-react';
 
-export default function LeagueApp({  }) {
+export default function LeagueApp({}) {
   let auth = useContext(AuthContext);
+
+  let myTeams = auth.user.myTeams;
+  let tt = getManagingTeam(auth, myTeams);
+
+  const [selected, setTeam] = useState('');
   
-  let myTeams = auth.user.myTeams
-  let tt =  managingTeam(auth, myTeams)
-  
-  const handleChoose = (id) => {
-      console.log(id)
-  }
-  
+  let dispatch = useDispatch()
+
+  const handleChoose = () => {
+    console.log('handleChoose', selected);
+    let t = getTeam(myTeams, selected)
+    dispatch(appLeague(t))
+  };
+
   const { tokens } = useTheme();
   return (
-    <div> 
-      <PageHeader title={"신청"} />
-      <CheckboxField label="Subscribe" name="subscribe" value="yes" /> 
-      {/* const [checked, setChecked] = React.useState(false);
-  return (
-    <CheckboxField
-      name="subscribe-controlled"
-      value="yes"
-      checked={checked}
-      onChange={(e) => setChecked(e.target.checked)}
-      label="Subscribe"
-    />
-  ); */}
+    <div>
+      <PageHeader title={'신청'} />
+      
+      <br />
+      <RadioGroupField
+        label="다음 팀 중 선택하세요"
+        name="selected"
+        value={selected}
+        onChange={(e) => setTeam(e.target.value)}
+      >
+        {tt.map((t) => {
+          return <Radio value={t.name}> {t.name}</Radio>;
+        })}
+      </RadioGroupField>
 
+      <br />
 
-      {tt.map(t => {
-        return <Card key={t.id} onClick={() =>handleChoose(t.id)}> {t.name} </Card>
-      })}
-      <Button > 신청 완료 </Button>
+      <Button isDisabled={ selected.length > 2 ? false : true} onClick={handleChoose}> 신청 완료 </Button>
     </div>
   );
 }
 
-function managingTeam(auth, myTeams) {
-  
-  let appliableTeam = []
+function getTeam(myTeams, tName) {
+  let team = null 
 
-  let myId = auth.user.id
+  myTeams.map((t) => {
+      t.name == tName ? team = t : t = null
+      console.log('team',team);
+    });
+  return team
+}
 
-  myTeams.map(t => {
-    console.log('t', t)
-    t.managers.map(mgr => {
-      console.log('mgr == myId', mgr==myId)
-      mgr==myId ? appliableTeam.push(t) : null
-    })
-  })
-  return appliableTeam
+function getManagingTeam(auth, myTeams) {
+  let appliableTeam = [];
+  let myId = auth.user.id;
+
+  myTeams.map((t) => {
+    console.log('t', t);
+    t.managers.map((mgr) => {
+      console.log('mgr == myId', mgr == myId);
+      mgr == myId ? appliableTeam.push(t) : null;
+    });
+  });
+  return appliableTeam;
 }

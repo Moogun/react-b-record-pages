@@ -17,6 +17,12 @@ let users = [
         createdBy: '114',
         managers: ['114', '115'],
       },
+      {
+        id: '003',
+        name: 'Moogun',
+        createdBy: '001',
+        managers: ['001', '115'],
+      },
     ],
   },
   {
