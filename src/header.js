@@ -13,7 +13,6 @@ export function Header({ auth }) {
         Home
       </Link>
 
-
       <Link
         to="/account"
         style={{ float: 'right' }}
@@ -37,7 +36,6 @@ export function SubHeader({ auth }) {
   return (
     <nav
       style={{
-        borderBottom: 'solid 1px',
         borderColor: 'lightGray',
         // paddingRight: '2rem',
       }}
@@ -53,7 +51,6 @@ export function SubHeader({ auth }) {
       <Link to="/teams" className="link-local-styles-subheader">
         Teams
       </Link>
-      
     </nav>
   );
 }

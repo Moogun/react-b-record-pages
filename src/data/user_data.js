@@ -27,8 +27,8 @@ let users = [
     myLeagues: [
       {
         id: 'lg_1',
-        title: 'League 1',
-        description: 'League 1',
+        title: '제23회 대한체육회장배 전국생활체육농구대회',
+        description: '생활체육',
         status: 'app', // app, beforeStart, started,  finished 
         published: 'true', // false   
         createdBy: {

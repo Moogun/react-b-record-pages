@@ -59,14 +59,14 @@ export default function LeaguesMine() {
               paddingTop={tokens.space.medium}
               onClick={() => handleClick(l.id)}
             >
-              <Card variation="outlined">
-                <Flex direction="row" alignItems="flex-start">
-                  <Image alt="Road to milford sound" src={logo} width="20%"
-                  style={{border: "solid 1px "}} />
+              <Card borderRadius="6px" variation="elevated">
+                <Flex direction="row" alignItems="center">
+                  <Image alt="Road to milford sound" src={logo} width="20%" />
                   <Flex
                     direction="column"
                     alignItems="flex-start"
-                    gap={tokens.space.xs}
+                    // gap={tokens.space.xs}
+                    gap="0rem"
                   >
                     <Heading level={5}>{l.title}</Heading>
 

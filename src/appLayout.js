@@ -7,7 +7,7 @@ import AuthStatus from './authStatus.js';
 
 import { Header, SubHeader, Footer } from './header.js';
 import Leagues from './pages/league/leagues.js';
-import { Grid, View, useTheme } from '@aws-amplify/ui-react';
+import { Grid, View, useTheme, Flex, Divider } from '@aws-amplify/ui-react';
 
 export default function Layout() {
   const auth = useContext(AuthContext);
@@ -21,24 +21,39 @@ export default function Layout() {
       <Grid
         templateColumns="repeat(12, 1fr)"
         // templateColumns="base: '1fr', large: repeat(12, 1fr)"
-        // templateRows="1rem 1rem auto 1rem"
         gap={tokens.space.small}
       >
-        <View 
-          columnStart="2" columnEnd="12" 
+        <View
+          columnStart="2"
+          columnEnd="12"
           // rowStart="1" rowEnd="1"
         >
           <Header auth={auth} />
         </View>
-
-        <View columnStart="2" columnEnd="12"
-        // rowStart="2" rowEnd="2"
+        <View
+          columnStart="2"
+          columnEnd="12"
+          // rowStart="2" rowEnd="2"
+          paddingBottom={tokens.space.small}
         >
           <SubHeader auth={auth} />
         </View>
-
-        <View columnStart="2" columnEnd="12"
-        // rowStart="3" rowEnd="3"
+      </Grid>
+      <Flex direction="column">
+        <Divider size="small" />
+      </Flex>
+      <Grid
+        templateColumns="repeat(12, 1fr)"
+        // templateColumns="base: '1fr', large: repeat(12, 1fr)"
+        // templateRows="1rem 1rem auto 1rem"
+        templateRows="90vh 1fr"
+        gap={tokens.space.small}
+        backgroundColor={tokens.colors.background.secondary}
+      >
+        <View
+          columnStart="2"
+          columnEnd="12"
+          // rowStart="3" rowEnd="3"
         >
           {location && location.pathname == '/' ? <Leagues /> : null}
           <Outlet />
@@ -49,7 +64,7 @@ export default function Layout() {
         </View> */}
 
         <View
-          backgroundColor={tokens.colors.background.secondary}
+          backgroundColor={tokens.colors.background.tertiary}
           columnStart="1"
           columnEnd="13"
           // rowStart="4" rowEnd="-1"

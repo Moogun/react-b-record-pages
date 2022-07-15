@@ -14,6 +14,7 @@ import { bg_lb } from '../style';
 import {
   Card,
   View,
+  Image,
   Heading,
   Flex,
   Badge,
@@ -21,6 +22,7 @@ import {
   Button,
   useTheme,
 } from '@aws-amplify/ui-react';
+import logo from './logo.svg';
 
 import { PageHeader } from '../../pageHeader.js';
 
@@ -59,11 +61,33 @@ export default function Leagues() {
         >
           <View
             backgroundColor={tokens.colors.background.secondary}
-            padding={tokens.space.medium}
             marginTop={tokens.space.small}
             onClick={() => handleClick(l.id)}
           >
-            <Heading level={5}>{l.title}</Heading>
+            <Card>
+              <Flex direction="row" alignItems="flex-start">
+                <Image alt="Road to milford sound" src={logo} width="20%" />
+                <Flex
+                  direction="column"
+                  alignItems="flex-start"
+                  // gap={tokens.space.xs}
+                  gap="0.2rem"
+                >
+                  <Heading level={5}>{l.title}</Heading>
+
+                  <Text as="span">{l.description} </Text>
+
+                  <Text as="span">
+                    기간: {l.leagueToStart} - {l.leagueToEnd}{' '}
+                  </Text>
+                  <Text as="span">
+                    신청: {l.appToStart} - {l.appToEnd}{' '}
+                  </Text>
+                </Flex>
+              </Flex>
+            </Card>
+
+            {/* <Heading level={5}>{l.title}</Heading>
             <Text as="p">
               {l.status} / teams: {l.numOfteamsParticipating}
             </Text>
@@ -75,7 +99,7 @@ export default function Leagues() {
 
             <Text as="p">
               league {l.dateToStart}, {l.dateToEnd}
-            </Text>
+            </Text> */}
           </View>
         </NavLink>
       ))}

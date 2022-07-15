@@ -5,16 +5,16 @@ let games = getGames()
 let leagues = [
   {
     id: 'lg_1',
-    title: 'League 1',
-    description: 'League 1',
+    title: '제23회 대한체육회장배 전국생활체육농구대회',
+    description: '생활체육',
     status: 'app', // app, beforeStart, started,  finished 
     published: 'true', // false   
     createdBy: getUser('001'),
     gamePerTeam: 1,
-    leagueToStart: 'Sep 1, 2022',
-    leagueToEnd: 'Sep 2, 2022',
-    appToStart: 'Sep 1, 2022',
-    appToEnd: 'Sep 2, 2022',
+    leagueToStart: '22년 9월 1일',
+    leagueToEnd: '22년 9월 2일',
+    appToStart: '22년 8월 25일',
+    appToEnd: '22년 8월 28일',
     location: ' gym court a',
     numOfteamsParticipating: 4,
     teamsParticipating: ['team1', 'team2', ],
@@ -29,14 +29,14 @@ let leagues = [
   },
   {
     id: 'lg_2',
-    title: 'League 2',
-    description: 'League 2 desc',
+    title: '제103회 전국체육대회',
+    description: '엘리트대회',
     status: 'started', // app, beforeStart, started,  finished
     published: 'true', // false
     createdBy: getUser('002'),
     gamePerTeam: 1,
-    dateToStart: 'August 1, 2022',
-    dateToEnd: 'Augst 7, 2022',
+    leagueToStart: '22년 9월 1일',
+    leagueToEnd: 'August 1, 2022',
     appToStart: 'Sep 1, 2022',
     appToEnd: 'Sep 2, 2022',
     location: ' gym court b',
@@ -53,14 +53,14 @@ let leagues = [
   },
   {
     id: 'lg_3',
-    title: 'League 3',
-    description: 'League 3 desc',
+    title: '제22회 문화체육관광부장관배 전국생활체육농구대회',
+    description: '생활체육',
     status: 'completed', // app, beforeStart, started,  finished   
     published: 'true', // false
     createdBy: getUser('003'),
     gamePerTeam: 1,
-    dateToStart: 'Jul 1, 2022',
-    dateToEnd: 'July 1, 2022',
+    leagueToStart: 'Jul 1, 2022',
+    leagueToEnd: 'July 1, 2022',
     appToStart: 'Sep 1, 2022',
     appToEnd: 'Sep 2, 2022',
     location: ' gym court b',
