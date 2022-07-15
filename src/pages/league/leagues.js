@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getLeague } from './leagueSlice';
+import { selectLeague } from './leagueSlice';
 
 import {
   NavLink,
@@ -35,7 +35,7 @@ export default function Leagues() {
   let [searchParams, setSearchParams] = useSearchParams();
 
   const handleClick = (leagueId) => {
-    dispatch(getLeague(leagueId));
+    dispatch(selectLeague(leagueId));
     navigate('/leagues/' + leagueId);
   };
 

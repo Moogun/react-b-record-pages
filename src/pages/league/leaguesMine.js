@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../authProvider.js';
 import { useSelector, useDispatch } from 'react-redux';
-import { getLeague } from './leagueSlice';
+import { selectLeague } from './leagueSlice';
 
 import { NavLink, useSearchParams, useNavigate } from 'react-router-dom';
 
@@ -11,9 +11,7 @@ import {
   View,
   Heading,
   Flex,
-  Badge,
   Text,
-  Button,
   useTheme,
 } from '@aws-amplify/ui-react';
 import logo from './logo.svg';
@@ -35,7 +33,7 @@ export default function LeaguesMine() {
   let [searchParams, setSearchParams] = useSearchParams();
 
   const handleClick = (leagueId) => {
-    dispatch(getLeague(leagueId));
+    dispatch(selectLeague(leagueId));
     navigate('/leagues/' + leagueId);
   };
 
@@ -59,6 +57,7 @@ export default function LeaguesMine() {
             <View
               // backgroundColor={tokens.colors.background.secondary}
               paddingTop={tokens.space.medium}
+              onClick={() => handleClick(l.id)}
             >
               <Card variation="outlined">
                 <Flex direction="row" alignItems="flex-start">
