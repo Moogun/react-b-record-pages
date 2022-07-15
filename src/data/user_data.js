@@ -24,6 +24,47 @@ let users = [
         managers: ['001', '115'],
       },
     ],
+    myLeagues: [
+      {
+        id: 'lg_1',
+        title: 'League 1',
+        description: 'League 1',
+        status: 'app', // app, beforeStart, started,  finished 
+        published: 'true', // false   
+        createdBy: {
+          id: '002',
+          username: 'James',
+        },
+        gamePerTeam: 1,
+        leagueToStart: 'Sep 1, 2022',
+        leagueToEnd: 'Sep 2, 2022',
+        appToStart: 'Sep 1, 2022',
+        appToEnd: 'Sep 2, 2022',
+        location: ' gym court a',
+        numOfteamsParticipating: 4,
+        teamsParticipating: ['team1', 'team2', ],
+        games: [],
+      }, {
+        id: 'lg_',
+        title: 'League ',
+        description: 'League ',
+        status: 'app', // app, beforeStart, started,  finished 
+        published: 'true', // false   
+        createdBy: {
+          id: '002',
+          username: 'James',
+        },
+        gamePerTeam: 1,
+        leagueToStart: 'Sep 1, 2022',
+        leagueToEnd: 'Sep 2, 2022',
+        appToStart: 'Sep 1, 2022',
+        appToEnd: 'Sep 2, 2022',
+        location: ' gym court a',
+        numOfteamsParticipating: 4,
+        teamsParticipating: ['team1', 'team2', ],
+        games: [],
+      },
+    ]
   },
   {
     id: '002',

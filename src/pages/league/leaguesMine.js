@@ -23,13 +23,14 @@ import { PageHeader } from '../../pageHeader.js';
 export default function LeaguesMine() {
   const auth = useContext(AuthContext);
   console.log('[lg mine]', auth.user);
+
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
-  let leagues = useSelector((state) => {
-    return state.leagues.list;
-  });
-  let myTeam = auth.user.myTeam;
+  // let leagues = useSelector((state) => {
+  //   return state.leagues.list;
+  // });
+  let myLeagues = auth.user.myLeagues;
 
   let [searchParams, setSearchParams] = useSearchParams();
 
@@ -48,8 +49,8 @@ export default function LeaguesMine() {
   return (
     <div>
       <PageHeader title={'나의 리그'} />
-      {myTeam &&
-        myTeam.map((l) => (
+      {myLeagues &&
+        myLeagues.map((l) => (
           <NavLink
             style={{ textDecoration: 'none' }}
             to={`/leagues/${l.id}`}
@@ -68,9 +69,9 @@ export default function LeaguesMine() {
                     alignItems="flex-start"
                     gap={tokens.space.xs}
                   >
-                    <Heading level={5}>{l.name}</Heading>
+                    <Heading level={5}>{l.title}</Heading>
 
-                    <Text as="span">owy peaks on New Zealand.</Text>
+                    <Text as="span">{l.description}</Text>
                   </Flex>
                 </Flex>
               </Card>

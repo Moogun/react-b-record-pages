@@ -6,6 +6,7 @@ let leagues = [
   {
     id: 'lg_1',
     title: 'League 1',
+    description: 'League 1',
     status: 'app', // app, beforeStart, started,  finished 
     published: 'true', // false   
     createdBy: getUser('001'),
@@ -29,6 +30,7 @@ let leagues = [
   {
     id: 'lg_2',
     title: 'League 2',
+    description: 'League 2 desc',
     status: 'started', // app, beforeStart, started,  finished
     published: 'true', // false
     createdBy: getUser('002'),
@@ -52,6 +54,7 @@ let leagues = [
   {
     id: 'lg_3',
     title: 'League 3',
+    description: 'League 3 desc',
     status: 'completed', // app, beforeStart, started,  finished   
     published: 'true', // false
     createdBy: getUser('003'),
