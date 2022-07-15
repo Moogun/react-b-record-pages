@@ -21,7 +21,7 @@ export default function team() {
     return state.teams.selected;
   });
 
-  let isMyTeam = checkMyTeam(myTeams, team);
+  let isMyTeam = team ? checkMyTeam(myTeams, team) : null;
 
   const handleJoin = () => {
     console.log(params);
@@ -30,29 +30,29 @@ export default function team() {
 
   return (
     <main style={{ padding: '1rem 0' }}>
-      <PageHeader title={team.name} />
+      <PageHeader title={team && team.name} />
 
       <Card>
         <h4> 참여중인 리그</h4>
 
-        {/* {team.players.map((p) => (
+        {team ? team.players.map((p) => (
           <Text key={p.id}> {p.username} </Text>
-        ))} */}
+        )) : null}
       </Card>
 
       <Card>
         <h4> Games </h4>
-        {/* {team.games.map((g) => (
+        {team && team.games.map((g) => (
           <button key={g}> {g} </button>
-        ))} */}
+        ))}
       </Card>
 
       <Card>
         <h4> 선수 명단</h4>
 
-        {/* {team.players.map((p) => (
+        {team && team.players.map((p) => (
           <Text key={p.id}> {p.username} </Text>
-        ))} */}
+        ))}
 
         <br />
         <Button isFullWidth onClick={handleJoin}>
