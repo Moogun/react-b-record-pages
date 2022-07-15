@@ -45,7 +45,7 @@ let users = [
         teamsParticipating: ['team1', 'team2', ],
         games: [],
       }, {
-        id: 'lg_',
+        id: 'lg_2',
         title: 'League ',
         description: 'League ',
         status: 'app', // app, beforeStart, started,  finished 
