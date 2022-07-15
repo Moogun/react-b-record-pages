@@ -6,13 +6,13 @@ let users = [
     username: 'moo',
     myTeams: [
       {
-        id: '001',
+        id: 't01',
         name: 'Santa Monica',
         createdBy: '001',
         managers: ['001', '112'],
       },
       {
-        id: '002',
+        id: 't02',
         name: 'Stankonia',
         createdBy: '114',
         managers: ['114', '115'],

@@ -18,6 +18,7 @@ import NewGame from './pages/newGame.js';
 import TeamNew from './pages/teamNew.js';
 import Teams from './pages/teams.js';
 import Team from './pages/team.js';
+import TeamJoin from './pages/teamJoin.js';
 import Login from './pages/login.js';
 
 import CreateNew from './pages/createNew.js';
@@ -71,6 +72,7 @@ export default function App() {
           <Route path="teams" element={<Teams />} />
 
           <Route path="teams/:teamId" element={<Team />} />
+          <Route path="teams/:teamId/join" element={<TeamJoin />} />
           <Route path="newgame" element={<NewGame />} />
           <Route path="leaguenew" element={<LeagueNew />} />
 

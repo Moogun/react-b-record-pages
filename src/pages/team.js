@@ -4,9 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTeam } from './teamSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { Button, Card, Text } from '@aws-amplify/ui-react';
+
+import { PageHeader } from '../pageHeader.js';
+
 export default function team() {
   let auth = useContext(AuthContext);
-  console.log('[team]', auth);
+  console.log('[team auth]', auth);
+
+  let myTeams = auth.user.myTeams;
 
   let navigate = useNavigate();
   let params = useParams();
@@ -15,37 +21,56 @@ export default function team() {
     return state.teams.selected;
   });
 
-  console.log('0 --- [params]', params.teamId)
+  let isMyTeam = checkMyTeam(myTeams, team);
+
+  const handleJoin = () => {
+    console.log(params);
+    navigate(`${location.pathname}/join`, { replace: false, state: team });
+  };
 
   return (
     <main style={{ padding: '1rem 0' }}>
-      <h3>
-        {' '}
-        {team.id} {team.name}
-      </h3>
-           
-      <div style={{ border: 'solid 1px' }}>
-        Leagues participating
-        <div>none yet</div>
-      </div>
-{/* 
-      <div style={{ border: 'solid 1px' }}>
-        Players
-        <div>
-          {team.players.map((p) => (
-            <button key={p.id}> {p.name} </button>
-          ))}
-        </div>
-      </div>
+      <PageHeader title={team.name} />
 
-      <div style={{ border: 'solid 1px' }}>
-        Games
-        <div>
-          {team.games.map((g) => (
-            <button key={g}> {g} </button>
-          ))}
-        </div>
-      </div> */}
+      <Card>
+        <h4> 참여중인 리그</h4>
+
+        {/* {team.players.map((p) => (
+          <Text key={p.id}> {p.username} </Text>
+        ))} */}
+      </Card>
+
+      <Card>
+        <h4> Games </h4>
+        {/* {team.games.map((g) => (
+          <button key={g}> {g} </button>
+        ))} */}
+      </Card>
+
+      <Card>
+        <h4> 선수 명단</h4>
+
+        {/* {team.players.map((p) => (
+          <Text key={p.id}> {p.username} </Text>
+        ))} */}
+
+        <br />
+        <Button isFullWidth onClick={handleJoin}>
+          {' '}
+          Join{' '}
+        </Button>
+      </Card>
     </main>
   );
+}
+
+function checkMyTeam(myTeams, selectedTeam) {
+  let teamIds = [];
+  let status = false;
+
+  myTeams.map((t) => {
+    teamIds.push(t.id);
+  });
+  status = teamIds.includes(selectedTeam.id);
+  return status;
 }

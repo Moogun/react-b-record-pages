@@ -7,7 +7,6 @@ import {
   useNavigate,
   useLocation,
 } from 'react-router-dom';
-import { bg_lb, bg_dw } from '../../style';
 
 import {
   Collection,
@@ -34,7 +33,7 @@ export default function team() {
   let navigate = useNavigate();
   const location = useLocation();
   let params = useParams();
-
+  
   let league = useSelector((state) => {
     return state.leagues.selected;
   });
@@ -54,7 +53,7 @@ export default function team() {
     navigate(`${location.pathname}/edit`, { replace: true, state: league });
   };
 
-  const handleJoin = () => {
+  const handleApp = () => {
     console.log(params);
     navigate(`${location.pathname}/app`, { replace: false, state: league });
   };
@@ -85,9 +84,9 @@ export default function team() {
           <Text> 참가 조건 3 </Text>
 
           <br />
-          <Button isFullWidth variation="primary" onClick={handleJoin}>
+          <Button isFullWidth variation="primary" onClick={handleApp}>
             {' '}
-            Join{' '}
+            신청{' '}
           </Button>
 
           {/* <Button isFullWidth onClick={handleEdit}> Edit </Button> */}
