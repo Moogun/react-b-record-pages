@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '@aws-amplify/ui-react';
 import { AiOutlineUser } from 'react-icons/ai';
-
+import { useTheme, Text, View } from '@aws-amplify/ui-react';
 import './style.css';
 
 export function Header({ auth }) {
@@ -10,7 +9,7 @@ export function Header({ auth }) {
   return (
     <nav>
       <Link to="/" className="link-local-styles">
-        Home
+        Fineplay
       </Link>
 
       <Link
@@ -53,8 +52,4 @@ export function SubHeader({ auth }) {
       </Link>
     </nav>
   );
-}
-
-export function Footer() {
-  return <div> -------- footer --------</div>;
 }
