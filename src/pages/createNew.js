@@ -2,17 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../authProvider.js';
 import { useDispatch } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import {
-  TextField,
-  SelectField,
-  TextAreaField,
-  Button,
-  Flex,
-  View,
-  Grid,
-  Card,
-  Divider,
-} from '@aws-amplify/ui-react';
+import { useTheme, Grid, Card, Button } from '@aws-amplify/ui-react';
 
 // import { newTeam } from './teamSlice';
 import { PageHeader } from '../pageHeader.js';
@@ -30,27 +20,32 @@ export default function CreateNew() {
   };
 
   const handleNew = (what) => {
-    navigate(`/create/home/${what}`, { replace: true });
+    // below is not working
+    // navigate(`/create/home/${what}`, { replace: true });
   };
 
+  const { tokens } = useTheme();
   return (
     <div>
-      <PageHeader title={'Create New'} />
+      <PageHeader title={'리그/팀 만들기'} />
+
+      {/*  handle new is not working, don't know why 
+      <Button onClick={() => handleNew('league')}>리그</Button > 
+      <Button onClick={() => handleNew('team')}>팀 </Button > */}
 
       <Grid
         columnGap="0.5rem"
-        rowGap="0.5rem"
         templateColumns="repeat(8, 1fr)"
-        templateRows="1fr 1fr 1fr"
+        backgroundColor={tokens.colors.red[10]}
       >
-        <Card columnStart="1" columnEnd="3">
+        <Card column="1/3" backgroundColor={tokens.colors.blue[10]}>
           <nav>
-            <Link to="league">리그 만들기</Link>
+            <Link to="league">리그</Link>
             <br />
-            <Link to="team">팀 만들기</Link>
+            <Link to="team">팀</Link>
           </nav>
         </Card>
-        <Card columnStart="3" columnEnd="-1">
+        <Card column="3/-1" backgroundColor={tokens.colors.green[10]}>
           <Outlet />
         </Card>
       </Grid>

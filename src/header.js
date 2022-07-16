@@ -25,7 +25,7 @@ export function Header({ auth }) {
         style={{ float: 'right', marginRight: '1rem', color: 'red' }}
         className="link-local-styles"
       >
-        Create New
+        리그/팀 만들기
       </Link>
     </nav>
   );

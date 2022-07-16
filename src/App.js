@@ -73,8 +73,8 @@ export default function App() {
 
           <Route path="teams/:teamId" element={<Team />} />
           <Route path="teams/:teamId/join" element={<TeamJoin />} />
-          <Route path="newgame" element={<NewGame />} />
-          <Route path="leaguenew" element={<LeagueNew />} />
+          {/* <Route path="newgame" element={<NewGame />} />
+          <Route path="leaguenew" element={<LeagueNew />} /> */}
 
           {/* 404 page */}
           <Route

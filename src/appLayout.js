@@ -49,10 +49,6 @@ export default function Layout() {
           <SubHeader auth={auth} />
         </View>
 
-        {/* <Flex direction="column">
-          <Divider size="small" />
-        </Flex> */}
-
         <View columnStart="2" columnEnd="12" style={{ minHeight: '86vh' }}>
           {location && location.pathname == '/' ? <Leagues /> : null}
           <Outlet />

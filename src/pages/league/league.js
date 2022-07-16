@@ -65,13 +65,6 @@ export default function team() {
     <main>
       {/* <Card key={league.id}> */}
       <PageHeader title={league.title} />
-        {/* <Heading level={2} fontWeight={tokens.fontWeights.thin}>
-          {league.title}{' '} */}
-          {/* KB국민은행 Liiv M 3x3 KOREA TOUR 2022 3차 인제대회{' '} */}
-          {/* <Badge size="small" variation="info">
-            {league.status}
-          </Badge>
-        </Heading> */}
         {/* <Button onClick={handleEdit}> Edit </Button> */}
 
         <Info league={league} />

@@ -84,7 +84,7 @@ export default function LeagueNew() {
 
   return (
     <div>
-      <Heading level={5}> 리그 만들기 </Heading>
+      <Heading level={5}> 리그 </Heading>
       <br />
       {/* <nav>
         {' '}
