@@ -32,8 +32,8 @@ let users = [
         status: 'app', // app, beforeStart, started,  finished 
         published: 'true', // false   
         createdBy: {
-          id: '002',
-          username: 'James',
+          id: '001',
+          username: 'moo',
         },
         gamePerTeam: 1,
         leagueToStart: 'Sep 1, 2022',
@@ -46,7 +46,7 @@ let users = [
         games: [],
       }, {
         id: 'lg_2',
-        title: 'League ',
+        title: 'League 2',
         description: 'League ',
         status: 'app', // app, beforeStart, started,  finished 
         published: 'true', // false   

@@ -30,6 +30,7 @@ import { PageHeader } from '../../pageHeader.js';
 export default function team() {
   let auth = useContext(AuthContext);
 
+  
   let navigate = useNavigate();
   const location = useLocation();
   let params = useParams();
@@ -37,8 +38,12 @@ export default function team() {
   let league = useSelector((state) => {
     return state.leagues.selected;
   });
+  let myLeague = league.createdBy.id == auth.user.id
 
-  console.log('hash', location.hash);
+  // let myLeague = checkMyLeague(auth.user.id, auth.user.myLeagues, league)
+// let admin = league.manager.find((i => i == auth.user.id))
+
+  // console.log('myLeague', myLeague);
   console.log('pathname', location.pathname);
   console.log('search', location.search);
   console.log('[league] league', league);
@@ -46,8 +51,7 @@ export default function team() {
   // console.log('params.teamId', params.teamId);
   // console.log('team.manager', team.manager);
   // console.log('team.manager', team.manager[0] === auth.user.id);
-  // let admin = league.manager.find((i => i == auth.user.id))
-
+  
   const handleEdit = () => {
     console.log(params);
     navigate(`${location.pathname}/edit`, { replace: true, state: league });
@@ -65,8 +69,7 @@ export default function team() {
     <main>
       {/* <Card key={league.id}> */}
       <PageHeader title={league.title} />
-        {/* <Button onClick={handleEdit}> Edit </Button> */}
-
+        {myLeague ? <Button onClick={handleEdit}> Edit </Button> : null}
         <Info league={league} />
 
         <Card>
@@ -247,3 +250,24 @@ function GameSchedule({ league }) {
         </div>
       </div> */
 }
+
+
+// function checkMyLeague(uid, myLeagues, selectedLeague) {
+  
+//   let leagueIds = [];
+//   let status = false; 
+
+//   console.log('[checkMyLeague]', myLeagues)
+//   console.log('selectedLeague', selectedLeague)
+  
+//   myLeagues.map(l => {
+//     console.log(' uid', uid)
+//     console.log(' l.createdBy', l.createdBy)
+//     console.log('uid == l.createdBy', uid == l.createdBy.id)
+//     if (uid == l.createdBy.id) {
+//       leagueIds.push(l.id)
+//     }
+//   })
+//   status = leagueIds.includes(selectedLeague.id);
+//   return status
+// }
