@@ -9,6 +9,7 @@ export function Footer() {
     <View
       backgroundColor={tokens.colors.background.quaternary}
       padding={tokens.space.large}
+      marginTop={tokens.space.large}
     >
       <Text color={tokens.colors.neutral[40]}>Fineplay </Text>
       <Text fontSize="0.8rem" color={tokens.colors.neutral[40]}>

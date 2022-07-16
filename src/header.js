@@ -41,14 +41,14 @@ export function SubHeader({ auth }) {
     >
       {auth.user ? (
         <Link to="/leaguesmine" className="link-local-styles-subheader">
-          My Leagues
+          나의 리그
         </Link>
       ) : null}
       <Link to="/leagues" className="link-local-styles-subheader">
-        Leagues
+        리그
       </Link>
       <Link to="/teams" className="link-local-styles-subheader">
-        Teams
+        팀 
       </Link>
     </nav>
   );

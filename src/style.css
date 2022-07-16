@@ -21,19 +21,19 @@ Link {
 }
 
 .link-local-styles {
-  color: var(--amplify-colors-white);
+  /* color: var(--amplify-colors-white); */
   text-decoration: none;
   font-size: 0.8rem;
 }
 
 .link-local-styles:hover {
   font-weight: var(--amplify-font-weights-bold);
-  color: var(--amplify-colors-yellow-40);
+  /* color: var(--amplify-colors-yellow-40); */
 }
 
 .link-local-styles:active {
   color: var(--amplify-colors-blue-100);
-  background-color: var(--amplify-colors-yellow-10);
+  /* background-color: var(--amplify-colors-yellow-10); */
   font-weight: var(--amplify-font-weights-bold);
 }
 /* tokens.colors.brand.primary[100] */
