@@ -24,7 +24,7 @@ import {
 } from '@aws-amplify/ui-react';
 import logo from './logo.svg';
 
-import { PageHeader } from '../../pageHeader.js';
+import { PageHeader, DescriptionBadge, DescriptionText } from '../../pageHeader.js';
 
 export default function Leagues() {
   const dispatch = useDispatch();
@@ -64,9 +64,9 @@ export default function Leagues() {
             marginTop={tokens.space.small}
             onClick={() => handleClick(l.id)}
           >
-            <Card>
+            <Card variation='elevated'>
               <Flex direction="row" alignItems="flex-start">
-                <Image alt="Road to milford sound" src={logo} width="20%" />
+                <Image alt="Road to milford sound" src={logo} width="10%" height="10%"/>
                 <Flex
                   direction="column"
                   alignItems="flex-start"
@@ -75,31 +75,16 @@ export default function Leagues() {
                 >
                   <Heading level={5}>{l.title}</Heading>
 
-                  <Text as="span">{l.description} </Text>
-
-                  <Text as="span">
-                    기간: {l.leagueToStart} - {l.leagueToEnd}{' '}
-                  </Text>
-                  <Text as="span">
-                    신청: {l.appToStart} - {l.appToEnd}{' '}
-                  </Text>
+                  {/* <Flex>
+                    {descriptionBadge('info', l.description)}
+                    {descriptionBadge('info', '접수중')}
+                  </Flex> */}
+                  <DescriptionText text1={'대회'} text2={l.leagueToStart} text3={l.leagueToEnd} />
+                  <DescriptionText text1={'신청'} text2={l.appToStart} text3={l.appToEnd} />
                 </Flex>
               </Flex>
             </Card>
 
-            {/* <Heading level={5}>{l.title}</Heading>
-            <Text as="p">
-              {l.status} / teams: {l.numOfteamsParticipating}
-            </Text>
-            <Text as="span">game per team : {l.gamePerTeam}</Text>
-
-            <Text as="p">
-              app {l.appToStart}, {l.appToStart}
-            </Text>
-
-            <Text as="p">
-              league {l.dateToStart}, {l.dateToEnd}
-            </Text> */}
           </View>
         </NavLink>
       ))}

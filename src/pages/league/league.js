@@ -2,11 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../authProvider.js';
 import { useSelector } from 'react-redux';
 import { getLeague } from './leagueSlice';
-import {
-  useParams,
-  useNavigate,
-  useLocation,
-} from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 import {
   Collection,
@@ -17,6 +13,7 @@ import {
   Button,
   Grid,
   View,
+  Divider,
   useTheme,
   Table,
   TableCell,
@@ -25,33 +22,36 @@ import {
   TableRow,
 } from '@aws-amplify/ui-react';
 
-import { PageHeader } from '../../pageHeader.js';
+import {
+  PageHeader,
+  DescriptionBadge,
+  DescriptionText,
+} from '../../pageHeader.js';
 
 export default function team() {
   let auth = useContext(AuthContext);
 
-  
   let navigate = useNavigate();
   const location = useLocation();
   let params = useParams();
-  
+
   let league = useSelector((state) => {
     return state.leagues.selected;
   });
-  let myLeague = league.createdBy.id == auth.user.id
+  let myLeague = league && league.createdBy.id == auth.user.id;
 
   // let myLeague = checkMyLeague(auth.user.id, auth.user.myLeagues, league)
-// let admin = league.manager.find((i => i == auth.user.id))
+  // let admin = league.manager.find((i => i == auth.user.id))
 
   // console.log('myLeague', myLeague);
   console.log('pathname', location.pathname);
   console.log('search', location.search);
   console.log('[league] league', league);
-  
+
   // console.log('params.teamId', params.teamId);
   // console.log('team.manager', team.manager);
   // console.log('team.manager', team.manager[0] === auth.user.id);
-  
+
   const handleEdit = () => {
     console.log(params);
     navigate(`${location.pathname}/edit`, { replace: true, state: league });
@@ -62,66 +62,109 @@ export default function team() {
     navigate(`${location.pathname}/app`, { replace: false, state: league });
   };
 
-  
-
   const { tokens } = useTheme();
   return (
-    <main>
+    <View>
       {/* <Card key={league.id}> */}
       <PageHeader title={league.title} />
-        {myLeague ? <Button onClick={handleEdit}> Edit </Button> : null}
-        <Info league={league} />
 
-        <Card>
-          <h4> 참가 신청</h4>
+      <Grid templateColumns="1fr">
+        {/* <View column="1" backgroundColor={tokens.colors.red[10]}>
+          {' '}
+          a{' '}
+        </View>
+        <View column="2" backgroundColor={tokens.colors.blue[10]}>
+          {' '}
+          a{' '}
+        </View> */}
+      {myLeague ? <Button onClick={handleEdit}> Edit 🚀</Button> : null}
+        
+      </Grid>
 
-          <Text> 참가 조건 1 </Text>
-          <Text> 참가 조건 2 </Text>
-          <Text> 참가 조건 3 </Text>
 
-          <br />
-          <Button isFullWidth variation="primary" onClick={handleApp}>
-            {' '}
-            신청{' '}
-          </Button>
+      {/* 
+      this has no margin, 
+      <Heading level={5}> 리그 정보 </Heading> 
+      */}
 
-          {/* <Button isFullWidth onClick={handleEdit}> Edit </Button> */}
-          {/* {league.status &&
+      <h4> 대회 정보 </h4>
+      <Info league={league} />
+
+      <h4> 참가 신청</h4>
+
+      <Card
+        variation="elevated"
+        backgroundColor={tokens.colors.background.secondary}
+      >
+        <DescriptionText text1={'참가 조건 1'} />
+        <DescriptionText text1={'참가 조건 2'} />
+
+        <br />
+        <Button
+          size="small"
+          isFullWidth
+          variation="primary"
+          onClick={handleApp}
+        >
+          {' '}
+          신청{' '}
+        </Button>
+
+        {/* <Button isFullWidth onClick={handleEdit}> Edit </Button> */}
+        {/* {league.status &&
           league.teamsParticipating.map((t) => <span> {t} </span>)} */}
-        </Card>
+      </Card>
 
-        <Card>
-          <h4> 리그 순위</h4>
-          {league.status == 'app' ? (
-            <Text> 리그 시작 전 </Text>
-          ) : (
-            <Standing league={league} />
-          )}
-        </Card>
+      <h4> 리그 순위</h4>
+      <Card
+        variation="elevated"
+        backgroundColor={tokens.colors.background.secondary}
+      >
+        {league.status == 'app' ? (
+          <DescriptionText text1={'리그 시작 전'} />
+        ) : (
+          <Standing league={league} />
+        )}
+      </Card>
 
-        <Card>
-          <h4> 경기 일정 </h4>
-          <GameSchedule league={league} />
-        </Card>
+      <h4> 경기 일정 </h4>
+      <GameSchedule league={league} />
       {/* </Card> */}
-    </main>
+    </View>
   );
 }
 
 function Info({ league }) {
   const { tokens } = useTheme();
   return (
-    <Card>
-      <h4> 리그 정보 </h4>
-      <Text> 참가 팀 {league.numOfteamsParticipating}</Text>
-      <Text> 대회기간 : </Text>
-      <Text> 신청기간 : </Text>
-      <Text> 경기장소 : </Text>
-      <Text>
-        잔여 자리
-        {league.numOfteamsParticipating - league.teamsParticipating.length}{' '}
-      </Text>
-      {/* <Button> Join </Button> */}
+    <Card
+      variation="elevated"
+      backgroundColor={tokens.colors.background.secondary}
+    >
+      <DescriptionText
+        text1={'참가 팀 수'}
+        text2={league.numOfteamsParticipating}
+      />
+
+      <DescriptionText
+        text1={'신청 가능 팀 수'}
+        text2={
+          league.numOfteamsParticipating - league.teamsParticipating.length
+        }
+      />
+
+      <DescriptionText
+        text1={'대회기간'}
+        text2={league.leagueToStart}
+        text3={league.leagueToEnd}
+      />
+      <DescriptionText
+        text1={'신청기간'}
+        text2={league.appToStart}
+        text3={league.appToEnd}
+      />
+      <DescriptionText text1={'장소'} text2={'서울 장충체육관'} />
+      <DescriptionText text1={'주최'} text2={'대한농구협의회'} />
     </Card>
   );
 }
@@ -251,15 +294,14 @@ function GameSchedule({ league }) {
       </div> */
 }
 
-
 // function checkMyLeague(uid, myLeagues, selectedLeague) {
-  
+
 //   let leagueIds = [];
-//   let status = false; 
+//   let status = false;
 
 //   console.log('[checkMyLeague]', myLeagues)
 //   console.log('selectedLeague', selectedLeague)
-  
+
 //   myLeagues.map(l => {
 //     console.log(' uid', uid)
 //     console.log(' l.createdBy', l.createdBy)

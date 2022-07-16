@@ -20,3 +20,20 @@ export function PageHeader({ title }) {
     </View>
   );
 }
+
+export function DescriptionBadge({vari, text1}) {
+  return (
+    <Badge variation={vari} size="small">
+      {' '}
+      {text1}
+    </Badge>
+  );
+}
+
+export function DescriptionText({text1, text2, text3}) {
+  return (
+    <Text as="p" color="gray" lineHeight="rem" fontSize=".8rem">
+      {text1}: {text2} - {text3}
+    </Text>
+  );
+}

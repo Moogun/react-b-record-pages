@@ -83,7 +83,7 @@ export default function LeagueNew() {
   };
 
   return (
-    <div>
+    <View>
       <Heading level={5}> 리그 </Heading>
       <br />
       {/* <nav>
@@ -186,7 +186,7 @@ export default function LeagueNew() {
           </Button>
         </Flex>
       </form>
-    </div>
+    </View>
   );
 }
 

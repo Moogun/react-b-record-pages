@@ -16,7 +16,7 @@ import {
 } from '@aws-amplify/ui-react';
 import logo from './logo.svg';
 
-import { PageHeader } from '../../pageHeader.js';
+import { PageHeader, DescriptionBadge, DescriptionText } from '../../pageHeader.js';
 
 export default function LeaguesMine() {
   const auth = useContext(AuthContext);
@@ -59,21 +59,27 @@ export default function LeaguesMine() {
               paddingTop={tokens.space.medium}
               onClick={() => handleClick(l.id)}
             >
-              <Card borderRadius="6px" variation="elevated">
-                <Flex direction="row" alignItems="center">
-                  <Image alt="Road to milford sound" src={logo} width="20%" />
-                  <Flex
-                    direction="column"
-                    alignItems="flex-start"
-                    // gap={tokens.space.xs}
-                    gap="0rem"
-                  >
-                    <Heading level={5}>{l.title}</Heading>
+            <Card variation='elevated'>
+              <Flex direction="row" alignItems="flex-start">
+                <Image alt="Road to milford sound" src={logo} width="10%" height="10%"/>
+                <Flex
+                  direction="column"
+                  alignItems="flex-start"
+                  // gap={tokens.space.xs}
+                  gap="0.2rem"
+                >
+                  <Heading level={5}>{l.title}</Heading>
 
-                    <Text as="span">{l.description}</Text>
-                  </Flex>
+                  {/* <Flex>
+                    {descriptionBadge('info', l.description)}
+                    {descriptionBadge('info', '접수중')}
+                  </Flex> */}
+                  <DescriptionText text1={'대회'} text2={l.leagueToStart} text3={l.leagueToEnd} />
+                  <DescriptionText text1={'신청'} text2={l.appToStart} text3={l.appToEnd} />
                 </Flex>
-              </Card>
+              </Flex>
+            </Card>
+
             </View>
           </NavLink>
         ))}
