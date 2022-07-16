@@ -9,7 +9,14 @@ import { Header, SubHeader } from './header.js';
 import { Footer } from './footer.js';
 
 import Leagues from './pages/league/leagues.js';
-import { Grid, View, useTheme, Flex, Divider } from '@aws-amplify/ui-react';
+import {
+  Grid,
+  View,
+  useTheme,
+  Flex,
+  Divider,
+  Card,
+} from '@aws-amplify/ui-react';
 
 export default function Layout() {
   const auth = useContext(AuthContext);
@@ -20,7 +27,119 @@ export default function Layout() {
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
 
-      <Grid
+      <Grid templateColumns="repeat(12, 1fr)" gap={tokens.space.small}>
+        <View
+          columnStart="1"
+          columnEnd="-1"
+          backgroundColor={tokens.colors.blue[10]}
+          templateColumns="repeat(12, 1fr)"
+        >
+          <Grid templateColumns="repeat(12, 1fr)">
+            <Card
+              columnStart="2"
+              columnEnd="12"
+              backgroundColor={tokens.colors.red[10]}
+              fontSize="0.8rem"
+              padding={tokens.space.xxs}
+            >
+              Header
+            </Card>
+          </Grid>
+        </View>
+
+        <View
+          columnStart="1"
+          columnEnd="-1"
+          backgroundColor={tokens.colors.blue[10]}
+          templateColumns="repeat(12, 1fr)"
+                        
+        >
+          <Grid templateColumns="repeat(12, 1fr)">
+            <Card
+              columnStart="2"
+              columnEnd="12"
+              backgroundColor={tokens.colors.red[10]}
+              padding={tokens.space.xxs}
+            >
+              SubHeader
+            </Card>
+          </Grid>
+        </View>
+
+        <View
+          columnStart="2"
+          columnEnd="12"
+          style={{ minHeight: '80vh' }}
+          backgroundColor={tokens.colors.blue[40]}
+        >
+          Title
+          <Card
+             backgroundColor={tokens.colors.red[10]}
+            >
+              Body 
+            </Card>
+
+        </View>
+
+        <View
+          columnStart="1"
+          columnEnd="-1"
+          backgroundColor={tokens.colors.blue[60]}
+        >
+          d
+        </View>
+      </Grid>
+
+      {/* <Grid
+        templateColumns="repeat(12, 1fr)"
+        // templateColumns="base: '1fr', large: repeat(12, 1fr)"
+      >
+        <View
+          columnStart="1"
+          columnEnd="13"
+          // rowStart="1" rowEnd="1"
+          padding={tokens.space.xxxs}
+          backgroundColor={tokens.colors.brand.primary[100]}
+          gap={tokens.space.small}
+        >
+          <Header columnStart="1" columnEnd="13" auth={auth} />
+        </View>
+
+        <View
+          columnStart="2"
+          columnEnd="12"
+          paddingLeft={tokens.space.xxxs}
+          paddingTop={tokens.space.small}
+          paddingBottom={tokens.space.small}
+        >
+          <SubHeader auth={auth} />
+        </View>
+
+        <Flex direction="column">
+          <Divider size="small" />
+        </Flex>
+
+        <View
+          columnStart="2"
+          columnEnd="12"
+          // rowStart="3" rowEnd="3"
+          style={{ minHeight: '86vh' }}
+        >
+          {location && location.pathname == '/' ? <Leagues /> : null}
+          <Outlet />
+        </View>
+
+        <View
+          backgroundColor={tokens.colors.background.tertiary}
+          columnStart="1"
+          columnEnd="13"
+          // rowStart="4" rowEnd="-1"
+        >
+          <Footer />
+        </View>
+      </Grid> */}
+
+      {/* <Grid
         templateColumns="repeat(12, 1fr)"
         // templateColumns="base: '1fr', large: repeat(12, 1fr)"
         backgroundColor={tokens.colors.brand.primary[100]}
@@ -36,10 +155,7 @@ export default function Layout() {
         </View>
       </Grid>
 
-      <Grid
-        templateColumns="repeat(12, 1fr)"
-        gap={tokens.space.small}
-      >
+      <Grid templateColumns="repeat(12, 1fr)" gap={tokens.space.small}>
         <View
           columnStart="2"
           columnEnd="12"
@@ -57,7 +173,7 @@ export default function Layout() {
 
       <Grid
         templateColumns="repeat(12, 1fr)"
-        templateRows="90vh 1fr"
+        templateRows="1fr 1fr"
         gap={tokens.space.small}
         backgroundColor={tokens.colors.background.secondary}
       >
@@ -70,10 +186,6 @@ export default function Layout() {
           <Outlet />
         </View>
 
-        {/* <View columnStart="6" columnEnd="8">
-          {auth.user ? <Link to="/league/home/create"> New League</Link> : null}
-        </View> */}
-
         <View
           backgroundColor={tokens.colors.background.tertiary}
           columnStart="1"
@@ -82,7 +194,7 @@ export default function Layout() {
         >
           <Footer />
         </View>
-      </Grid>
+      </Grid> */}
     </div>
   );
 }
