@@ -15,6 +15,8 @@ import {
   useTheme,
   Flex,
   Divider,
+  Heading,
+  Text,
   Card,
 } from '@aws-amplify/ui-react';
 
@@ -52,7 +54,6 @@ export default function Layout() {
           columnEnd="-1"
           backgroundColor={tokens.colors.blue[10]}
           templateColumns="repeat(12, 1fr)"
-                        
         >
           <Grid templateColumns="repeat(12, 1fr)">
             <Card
@@ -72,21 +73,38 @@ export default function Layout() {
           style={{ minHeight: '80vh' }}
           backgroundColor={tokens.colors.blue[40]}
         >
-          Title
-          <Card
-             backgroundColor={tokens.colors.red[10]}
-            >
-              Body 
-            </Card>
+          <Heading level={2} backgroundColor={tokens.colors.green[20]}>
+            Title
+          </Heading>
 
+          <Heading level={5} backgroundColor={tokens.colors.green[40]}>
+            SubTitle
+          </Heading>
+          <Card backgroundColor={tokens.colors.green[60]} variation="outlined">
+            <Text as="p"> Body </Text>
+            <Text as="p"> Body </Text>
+            <Text as="p"> Body </Text>
+            <Text as="p"> Body </Text>
+          </Card>
+
+          <Heading level={5} backgroundColor={tokens.colors.green[40]}>
+            SubTitle
+          </Heading>
+          <Card backgroundColor={tokens.colors.green[60]} variation="outlined">
+            <Text as="p"> Body </Text>
+            <Text as="p"> Body </Text>
+            <Text as="p"> Body </Text>
+            <Text as="p"> Body </Text>
+          </Card>
         </View>
 
         <View
           columnStart="1"
           columnEnd="-1"
           backgroundColor={tokens.colors.blue[60]}
+          style={{minHeight: "100px"}}
         >
-          d
+          footer
         </View>
       </Grid>
 
