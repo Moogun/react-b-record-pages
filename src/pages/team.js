@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTeam } from './teamSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { Button, Card, Text } from '@aws-amplify/ui-react';
+import { Flex, View, Button, Card, Text, useTheme } from '@aws-amplify/ui-react';
 
 import { PageHeader } from '../pageHeader.js';
 
 export default function team() {
   let auth = useContext(AuthContext);
   console.log('[team auth]', auth);
+  const { tokens } = useTheme();
 
   let myTeams = auth.user.myTeams;
 
@@ -30,15 +31,61 @@ export default function team() {
 
   return (
     <main style={{ padding: '1rem 0' }}>
-      <PageHeader title={team && team.name} />
+      <PageHeader 
+      // title={team && team.name} 
+      title="나의 팀"
+      />
 
-      <Card>
-        <h4> 참여중인 리그</h4>
+      <View backgroundColor={tokens.colors.brand.primary[20]}>
 
-        {team ? team.players.map((p) => (
-          <Text key={p.id}> {p.username} </Text>
-        )) : null}
-      </Card>
+      <Flex
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        alignContent="center"
+        wrap="nowrap"
+        gap="0rem"
+      >
+
+        <Card 
+          margin={tokens.space.small}
+        >
+        <img src={} />
+        </Card>
+
+        <View margin={tokens.space.small}>
+          <Text> 팀 이름 </Text>
+
+          <Text style={{ fontSize: '0.8rem', color: 'gray' }}>
+            {' '}
+            Fixed toolbar mode{' '}
+          </Text>
+        </View>
+      </Flex>
+
+
+      <Flex
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        alignContent="center"
+        wrap="nowrap"
+        gap="0rem"
+      >
+
+      <Button > Overview </Button> 
+      <Button > abc </Button> 
+      <Button > abc </Button> 
+
+      </Flex>
+{/*         
+      <Text> 참여중인 리그</Text>
+
+{team ? team.players.map((p) => (
+  <Text key={p.id}> {p.username} </Text>
+)) : null} */}
+
+      </View>
 
       <Card>
         <h4> Games </h4>

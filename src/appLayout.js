@@ -14,7 +14,6 @@ import {
   useTheme,
   Flex,
   Divider,
-  Heading,
   Text,
   Card,
   Icon,
