@@ -72,10 +72,13 @@ export default function team() {
         wrap="nowrap"
         gap="0rem"
       >
+        <View margin={tokens.space.small}>
 
-      <Button > Overview </Button> 
-      <Button > abc </Button> 
-      <Button > abc </Button> 
+        <Button > Overview </Button> 
+        <Button > 경기 현황 </Button> 
+        <Button > 리그  </Button> 
+        <Button > 선수  </Button> 
+      </View>
 
       </Flex>
 {/*         
@@ -87,13 +90,18 @@ export default function team() {
 
       </View>
 
-      <Card>
-        <h4> Games </h4>
-        {team && team.games.map((g) => (
-          <button key={g}> {g} </button>
-        ))}
-      </Card>
+      <View backgroundColor={tokens.colors.brand.primary[20]}>
 
+        <Card>
+          <h4> Games </h4>
+          {team && team.games.map((g) => (
+            <button key={g}> {g} </button>
+          ))}
+        </Card>
+
+      </View>
+
+      <View backgroundColor={tokens.colors.brand.primary[20]}>
       <Card>
         <h4> 선수 명단</h4>
 
@@ -107,6 +115,8 @@ export default function team() {
           Join{' '}
         </Button>
       </Card>
+      
+      </View>
     </main>
   );
 }
