@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import './style.css';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 import { AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';
 
-import { Header, SubHeader } from './header.js';
+// import { Header, SubHeader } from './appHeader.js';
+// import { Main } from './appMain.js';
+import { AiOutlineUser } from 'react-icons/ai';
 import { Footer } from './footer.js';
 
 import Leagues from './pages/league/leagues.js';
@@ -39,35 +41,105 @@ export default function Layout() {
   return (
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
-      <Grid templateColumns="repeat(12, 1fr)">
-        <View
-          columnStart="2"
-          columnEnd="12"
-          padding={tokens.space.xxxs}
-          gap={tokens.space.small}
-        >
-          <Header columnStart="1" columnEnd="13" auth={auth} />
-        </View>
+      {/*
+    
+        <Footer /> */}
 
-        <View
-          columnStart="2"
-          columnEnd="12"
-          paddingLeft={tokens.space.xxxs}
-          paddingTop={tokens.space.small}
-          paddingBottom={tokens.space.small}
-        >
-          <SubHeader auth={auth} />
-        </View>
+      <Base
+        children={<Header auth={auth} />}
+        bgC={tokens.colors.brand.primary[20]}
+      />
+      <Base
+        children={<SubHeader auth={auth} />}
+        bgC={}
+      />
 
-        <View columnStart="2" columnEnd="12" style={{ minHeight: '86vh' }}>
-          {location && location.pathname == '/' ? <Leagues /> : null}
-          <Outlet />
-        </View>
+      {location && location.pathname == '/' 
+        ? <Base children={ <Main />} bgC={} minH={"80vh"}/> 
+        : <Base children={ <Outlet />} bgC={} minH={"80vh"}/> }
 
-        <View columnStart="1" columnEnd="13">
-          <Footer />
-        </View>
-      </Grid>{' '}
+      <Base
+        children={<Footer auth={auth} />}
+        bgC={tokens.colors.background.tertiary}
+      />
+  
     </div>
+  );
+}
+
+function Base({ children, bgC, minH }) {
+  return (
+    <View backgroundColor={bgC}>
+      <Grid templateColumns="1fr 1fr 1fr">
+        <div></div>
+        <div>
+          <View variation="outlined" style={{ minWidth: '600px', minHeight: minH }}>{children}</View>
+        </div>
+        <div></div>
+      </Grid>
+    </View>
+  );
+}
+
+function Header({ auth }) {
+  const { tokens } = useTheme();
+
+  return (
+    <View >
+      <Grid>
+        <Card backgroundColor={tokens.colors.brand.primary[20]} variation="outlined">
+          <Link to="/">Home</Link>
+
+          <Link to="/account">
+            <AiOutlineUser /> {auth.user ? auth.user.username : 'Login'}
+          </Link>
+          <Link to="create/home">리그/팀 만들기</Link>
+        </Card>
+      </Grid>
+    </View>
+  );
+}
+
+function SubHeader({ auth }) {
+  const { tokens } = useTheme();
+  return (
+    <Card>
+      {auth.user ? (
+        <Link to="/leaguesmine" className="link-local-styles-subheader">
+          나의 리그
+        </Link>
+      ) : null}
+      <Link to="/leagues" className="link-local-styles-subheader">
+        리그
+      </Link>
+      <Link to="/teams" className="link-local-styles-subheader">
+        팀
+      </Link>
+    </Card>
+  );
+}
+
+export function Main({ auth}) {
+  const { tokens } = useTheme();
+  return <View style={{minHeight: '80vh', border: "solid .1rem lightGray"}}>
+    
+    main 
+  
+  </View>;
+}
+
+function Footer() {
+  const { tokens } = useTheme();
+  return (
+    <View
+      backgroundColor={tokens.colors.background.quaternary}
+      padding={tokens.space.large}
+      // marginTop={tokens.space.large}
+    >
+      <Text color={tokens.colors.neutral[40]}>Fineplay </Text>
+      <Text fontSize="0.8rem" color={tokens.colors.neutral[40]}>
+        Copyright Fineplay Corp. All rights reserved.{' '}
+      </Text>
+    </View>
   );
 }
