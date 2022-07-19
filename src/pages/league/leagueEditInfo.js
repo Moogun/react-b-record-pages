@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   useParams,
   useNavigate,
@@ -7,7 +7,21 @@ import {
   Link,
   Outlet,
 } from 'react-router-dom';
-import { useTheme, Grid, Card, Button, Text, View } from '@aws-amplify/ui-react';
+import {
+  useTheme,
+  Grid,
+  Card,
+  Button,
+  Text,
+  View,
+  Table,
+  TableCell,
+  TableBody,
+  TableHead,
+  TableRow,
+} from '@aws-amplify/ui-react';
+
+import Calendar from 'react-calendar';
 
 export default function LeagueEditInfo({}) {
   let params = useParams();
@@ -23,7 +37,7 @@ export default function LeagueEditInfo({}) {
       <Grid
         columnGap="0.5rem"
         templateColumns="repeat(8, 1fr)"
-        backgroundColor={tokens.colors.red[10]}
+        // backgroundColor={tokens.colors.red[10]}
       >
         {getCurrentSubMenu(location.pathname, leagueToEdit)}
       </Grid>
@@ -44,11 +58,11 @@ function getCurrentSubMenu(path, leagueToEdit) {
   return <div> ''--</div>;
 }
 
-function Info({column, leagueToEdit }) {
+function Info({ column, leagueToEdit }) {
   return <View column={column}> info </View>;
 }
 
-function Participants({column, leagueToEdit }) {
+function Participants({ column, leagueToEdit }) {
   let parti = leagueToEdit.teamsParticipating;
   return (
     <View column={column}>
@@ -60,22 +74,60 @@ function Participants({column, leagueToEdit }) {
   );
 }
 
-function Schedules({column,  leagueToEdit }) {
+function Schedules({ column, leagueToEdit }) {
+  const [value, onChange] = useState(new Date());
+
   let ga = leagueToEdit.games;
-  console.log('[column]', column)
+
   return (
     <View column={column}>
       <Text> schedules </Text>
-      {ga.map((g) => {
-        return <div>
-           {/* {g.date} - {g.time}  */}
-     
-           </div>;
-      })}
+      
+      <Text> auto generate schedules </Text>
+      <ul>
+        <li># of games </li>
+        <li>대회날짜 </li>
+        <li>하루 경기 수</li>
+        <li>경기 시작시간</li>
+        <li>경기 종료시간</li>
+        <li>경기 소요시간</li>
+        <li>경기 간격</li>
+      </ul>
+
+      <Text> schedules </Text>
+      <Table highlightOnHover={false} size="small" variation="bordered">
+        <TableHead>
+          <TableRow>
+            {/* style={{fontSize: "12px"}} not working */}
+            <TableCell as="th">#</TableCell>
+            <TableCell as="th">Date</TableCell>
+            <TableCell as="th">Time</TableCell>
+            <TableCell as="th">Match</TableCell>
+            <TableCell as="th">장소</TableCell>
+            <TableCell as="th">결과</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {ga.map((g) => {
+            return (
+              <TableRow >
+                <TableCell >#</TableCell>
+                <TableCell>{g.date}</TableCell>
+                <TableCell>{g.time}</TableCell>
+                <TableCell>
+                  {g.teams[0].name} - {g.teams[1].name}{' '}
+                </TableCell>
+                <TableCell>{g.venue}</TableCell>
+                <TableCell>{g.gameStatus}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </View>
   );
 }
 
-function Results({column, leagueToEdit }) {
-  return  <View column={column}> results </View>;
+function Results({ column, leagueToEdit }) {
+  return <View column={column}> results </View>;
 }

@@ -24,7 +24,9 @@ export default function LeagueEdit({}) {
         templateColumns="repeat(8, 1fr)"
         backgroundColor={tokens.colors.red[10]}
       >
-        <Card column="1/3" backgroundColor={tokens.colors.blue[10]}>
+        <Card column="1/3" 
+        // backgroundColor={tokens.colors.blue[10]}
+        >
           <nav>
             <Link to="info" state={leagueToEdit} style={{fontSize: "13px"}}>기본정보</Link>
             <br />
@@ -35,7 +37,9 @@ export default function LeagueEdit({}) {
             <Link to="results" state={leagueToEdit} style={{fontSize: "13px"}}>경기기록</Link>
           </nav>
         </Card>
-        <Card column="3/-1" backgroundColor={tokens.colors.green[10]}>
+        <Card column="3/-1" 
+        // backgroundColor={tokens.colors.green[10]}
+        >
           <Outlet />
         </Card>
       </Grid>
