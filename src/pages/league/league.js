@@ -7,7 +7,6 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import {
   Collection,
   Card,
-  Heading,
   Text,
   Badge,
   Button,

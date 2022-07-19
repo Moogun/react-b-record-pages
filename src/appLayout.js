@@ -5,10 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';
 
-// import { Header, SubHeader } from './appHeader.js';
-// import { Main } from './appMain.js';
 import { AiOutlineUser } from 'react-icons/ai';
-import { Footer } from './footer.js';
 
 import Leagues from './pages/league/leagues.js';
 import {
@@ -41,10 +38,6 @@ export default function Layout() {
   return (
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
-      {/*
-    
-        <Footer /> */}
-
       <Base
         children={<Header auth={auth} />}
         bgC={tokens.colors.brand.primary[20]}
@@ -103,7 +96,7 @@ function Header({ auth }) {
 function SubHeader({ auth }) {
   const { tokens } = useTheme();
   return (
-    <Card>
+    <Card >
       {auth.user ? (
         <Link to="/leaguesmine" className="link-local-styles-subheader">
           나의 리그
