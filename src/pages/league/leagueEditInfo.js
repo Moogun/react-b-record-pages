@@ -10,6 +10,7 @@ import {
 import {
   useTheme,
   Grid,
+  Flex,
   Card,
   Button,
   Text,
@@ -30,8 +31,11 @@ export default function LeagueEditInfo({}) {
   let leagueToEdit = location.state; // return null
   console.log('leagueToEditInfo leagueToEdit', leagueToEdit);
 
-  const { tokens } = useTheme();
+  const handleNewGame = () => {
+    console.log('[lea edit info] - handleNewGame ');
+  };
 
+  const { tokens } = useTheme();
   return (
     <div>
       <Grid
@@ -39,19 +43,25 @@ export default function LeagueEditInfo({}) {
         templateColumns="repeat(8, 1fr)"
         // backgroundColor={tokens.colors.red[10]}
       >
-        {getCurrentSubMenu(location.pathname, leagueToEdit)}
+        {getCurrentSubMenu(location.pathname, leagueToEdit, handleNewGame)}
       </Grid>
     </div>
   );
 }
 
-function getCurrentSubMenu(path, leagueToEdit) {
+function getCurrentSubMenu(path, leagueToEdit, handleNewGame) {
   if (path.includes('info')) {
     return <Info column="1/-1" leagueToEdit={leagueToEdit} />;
   } else if (path.includes('participants')) {
     return <Participants leagueToEdit={leagueToEdit} />;
   } else if (path.includes('schedules')) {
-    return <Schedules column="1/-1" leagueToEdit={leagueToEdit} />;
+    return (
+      <Schedules
+        column="1/-1"
+        leagueToEdit={leagueToEdit}
+        handleNewGame={handleNewGame}
+      />
+    );
   } else if (path.includes('results')) {
     return <Results column="1/-1" leagueToEdit={leagueToEdit} />;
   }
@@ -74,26 +84,13 @@ function Participants({ column, leagueToEdit }) {
   );
 }
 
-function Schedules({ column, leagueToEdit }) {
+function Schedules({ column, leagueToEdit, handleNewGame }) {
   const [value, onChange] = useState(new Date());
 
   let ga = leagueToEdit.games;
 
   return (
     <View column={column}>
-      <Text> schedules </Text>
-      
-      <Text> auto generate schedules </Text>
-      <ul>
-        <li># of games </li>
-        <li>대회날짜 </li>
-        <li>하루 경기 수</li>
-        <li>경기 시작시간</li>
-        <li>경기 종료시간</li>
-        <li>경기 소요시간</li>
-        <li>경기 간격</li>
-      </ul>
-
       <Text> schedules </Text>
       <Table highlightOnHover={false} size="small" variation="bordered">
         <TableHead>
@@ -110,8 +107,8 @@ function Schedules({ column, leagueToEdit }) {
         <TableBody>
           {ga.map((g) => {
             return (
-              <TableRow >
-                <TableCell >#</TableCell>
+              <TableRow>
+                <TableCell>#</TableCell>
                 <TableCell>{g.date}</TableCell>
                 <TableCell>{g.time}</TableCell>
                 <TableCell>
@@ -122,6 +119,15 @@ function Schedules({ column, leagueToEdit }) {
               </TableRow>
             );
           })}
+          <TableRow>
+            {' '}
+            <TableCell colspan="6">
+              <Flex 
+              justifyContent="center"> 
+              <Button onClick={() => handleNewGame()}>new game</Button>{' '}
+              </Flex>
+            </TableCell>{' '}
+          </TableRow>
         </TableBody>
       </Table>
     </View>
@@ -131,3 +137,15 @@ function Schedules({ column, leagueToEdit }) {
 function Results({ column, leagueToEdit }) {
   return <View column={column}> results </View>;
 }
+
+
+{/* <Text> auto generate schedules </Text>
+<ul>
+  <li># of games </li>
+  <li>대회날짜 </li>
+  <li>하루 경기 수</li>
+  <li>경기 시작시간</li>
+  <li>경기 종료시간</li>
+  <li>경기 소요시간</li>
+  <li>경기 간격</li>
+</ul> */}

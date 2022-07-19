@@ -61,6 +61,12 @@ export default function team() {
     navigate(`${location.pathname}/app`, { replace: false, state: league });
   };
 
+  const handleGame = (gid) => {
+    console.log(gid);
+    navigate(`${location.pathname}/game/${gid}`, { replace: false, state: league });
+  };
+
+
   const { tokens } = useTheme();
   return (
     <View>
@@ -76,10 +82,8 @@ export default function team() {
           {' '}
           a{' '}
         </View> */}
-      {myLeague ? <Button onClick={handleEdit}> Edit 🚀</Button> : null}
-        
+        {myLeague ? <Button onClick={handleEdit}> Edit 🚀</Button> : null}
       </Grid>
-
 
       {/* 
       this has no margin, 
@@ -127,7 +131,7 @@ export default function team() {
       </Card>
 
       <h4> 경기 일정 </h4>
-      <GameSchedule league={league} />
+      <GameSchedule league={league} handleGame={handleGame}/>
       {/* </Card> */}
     </View>
   );
@@ -207,17 +211,7 @@ function Standing({ league }) {
   );
 }
 
-function GameSchedule({ league }) {
-  //   {league.status &&
-  //     league.games.map((g) => (
-  //       <tr key={g.id}>
-  //         <td>{g.date} </td>
-  //         <td>{g.time} </td>
-
-  //         <td> null</td>
-  //         <td> {g.venue} </td>
-  //       </tr>
-  //     ))}
+function GameSchedule({ league, handleGame }) {
 
   return (
     <Table highlightOnHover={true} size="small" variation="striped">
@@ -231,67 +225,29 @@ function GameSchedule({ league }) {
         </TableRow>
       </TableHead>
       <TableBody>
-        <TableRow>
-          <TableCell>22년 07월 22일</TableCell>
-          <TableCell>오전 10:00 </TableCell>
-          <TableCell>KT수지 B vs 원주 YKK A</TableCell>
-          <TableCell>00 체육관 A 코트</TableCell>
-          <TableCell>경기 전</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>22년 07월 22일</TableCell>
-          <TableCell>오전 10:00 </TableCell>
-          <TableCell>KT수지 B vs 원주 YKK A</TableCell>
-          <TableCell>00 체육관 A 코트</TableCell>
-          <TableCell>경기 전</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>22년 07월 22일</TableCell>
-          <TableCell>오전 10:00 </TableCell>
-          <TableCell>KT수지 B vs 원주 YKK A</TableCell>
-          <TableCell>00 체육관 A 코트</TableCell>
-          <TableCell>경기 전</TableCell>
-        </TableRow>
+        {league.status &&
+          league.games.map((g) => (
+            <TableRow key={g.id} onClick={() => handleGame(g.id)}>
+              <TableCell>{g.date}</TableCell>
+              <TableCell>{g.time} </TableCell>
+              <TableCell>
+                {' '}
+                {g.teams[0].name} - {g.teams[1].name}
+              </TableCell>
+              <TableCell>{g.venue}</TableCell>
+              <TableCell>{g.status}</TableCell>
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   );
 }
 
-{
-  /* <button onClick={handleNewGame}>new game</button> */
-}
-{
-  /* <div> */
-}
 
 {
   /* {admin ? <button> new league </button> : ""} */
 }
-{
-  /* </div> */
-}
 
-{
-  /* 
-
-      <div style={{ border: 'solid 1px' }}>
-        Players
-        <div>
-          {team.players.map((p) => (
-            <button> {p.name} </button>
-          ))}
-        </div>
-      </div>
-
-      <div style={{ border: 'solid 1px' }}>
-        Games
-        <div>
-          {team.games.map((g) => (
-            <button key={g}> {g} </button>
-          ))}
-        </div>
-      </div> */
-}
 
 // function checkMyLeague(uid, myLeagues, selectedLeague) {
 

@@ -5,7 +5,7 @@ let u = getUsers();
 let teams = [
   {
     id: 't01',
-    name: 'Santa Monica',
+    name: '북산',
     createdBy: u[0],
     managers: [u[0], u[1]],
     players: [u[0], u[1], u[2]],
@@ -14,7 +14,7 @@ let teams = [
   },
   {
     id: 't02',
-    name: 'Stankonia',
+    name: '해남',
     createdBy: u[0],
     managers: [u[3]],
     players: [u[3], u[4], u[5]],
@@ -23,7 +23,7 @@ let teams = [
   },
   {
     id: 't03',
-    name: 'Ocean Avenue',
+    name: '상양',
     createdBy: u[0],
     managers: [u[6]],
     players: [u[6], u[7], u[8]],
@@ -32,7 +32,7 @@ let teams = [
   },
   {
     id: 't04',
-    name: 'Tubthumper',
+    name: '능남',
     createdBy: u[0],
     managers: [u[10]],
     players: [u[9], u[10], u[11]],
@@ -41,7 +41,7 @@ let teams = [
   },
   {
     id: 't05',
-    name: 'Wide Open Spaces',
+    name: '산왕공고',
     createdBy: u[0],
     managers: [u[11]],
     players: [u[9], u[10], u[11]],

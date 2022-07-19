@@ -27,13 +27,12 @@ export function PageHeader({ title }) {
         wrap="nowrap"
         gap="1rem"
       >
-        <View>  <Text> {title} </Text></View>
-        <View backgroundColor={tokens.colors.blue[40]}>
-          test
+        <View>
+          {' '}
+          <Text> {title} </Text>
         </View>
+        <View backgroundColor={tokens.colors.blue[40]}>test</View>
       </Flex>
-
-     
     </View>
   );
 }

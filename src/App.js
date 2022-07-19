@@ -15,6 +15,7 @@ import LeaguesMine from './pages/league/leaguesMine.js';
 import Leagues from './pages/league/leagues.js';
 
 import NewGame from './pages/newGame.js';
+import Game from './pages/game/game.js';
 
 import TeamNew from './pages/teamNew.js';
 import Teams from './pages/teams.js';
@@ -67,6 +68,7 @@ export default function App() {
           <Route path="/leaguesmine" element={<LeaguesMine />} />
           <Route path="/leagues" element={<Leagues />} />
           <Route path="leagues/:leagueId" element={<League />} />
+          <Route path="game/:gid" element={<Game />} />
           <Route path="leagues/:leagueId/edit" element={<LeagueEdit />}> 
             <Route path="info" element={<LeagueEditInfo />} />
             <Route path="participants" element={<LeagueEditInfo />} />

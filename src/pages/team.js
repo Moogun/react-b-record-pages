@@ -33,7 +33,7 @@ export default function team() {
     <main style={{ padding: '1rem 0' }}>
       <PageHeader 
       // title={team && team.name} 
-      title="나의 팀"
+      title="팀"
       />
 
       <View backgroundColor={tokens.colors.brand.primary[20]}>
@@ -92,18 +92,19 @@ export default function team() {
 
       <View backgroundColor={tokens.colors.brand.primary[20]}>
 
-        <Card>
-          <h4> Games </h4>
+        <Card backgroundColor={tokens.colors.brand.primary[80]}>
+          <Text> 경기 </Text>
           {team && team.games.map((g) => (
             <button key={g}> {g} </button>
           ))}
         </Card>
 
       </View>
+      <br />
 
       <View backgroundColor={tokens.colors.brand.primary[20]}>
-      <Card>
-        <h4> 선수 명단</h4>
+      <Card backgroundColor={tokens.colors.brand.secondary[60]}>
+        <Text> 선수 </Text>
 
         {team && team.players.map((p) => (
           <Text key={p.id}> {p.username} </Text>
