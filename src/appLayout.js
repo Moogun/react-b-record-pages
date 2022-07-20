@@ -39,7 +39,7 @@ export default function Layout() {
       {/* <AuthStatus AuthContext={AuthContext} /> */}
       <Base
         children={<Header auth={auth} />}
-        bgC={tokens.colors.brand.primary[100]}
+        // bgC={tokens.colors.brand.primary[100]}
       />
       <Base
         children={<SubHeader auth={auth} />}
@@ -96,14 +96,17 @@ function Header({ auth }) {
  >
 
 <Flex >
-<Button size="small" variation="link" margin={tokens.space.xs}>호리</Button>
+<Button 
+className="navbar-button" size="small" variation="menu" marginTop={tokens.space.xs}
+marginBottom={tokens.space.xs} 
+>호리</Button>
     </Flex>
 
     <Flex  justifyContent="flex-end" gap="0rem">
-    <Button size="small" variation="link" marginLeft={tokens.space.xs}>검색</Button>
+    <Button className="navbar-button" size="small" variation="menu" margin={tokens.space.xs}>검색</Button>
 
-    <Button size="small" variation="link" marginLeft={tokens.space.xs}>내 리그</Button>
-    <Button size="small" variation="link" margin={tokens.space.xs}>계정</Button>
+    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs}>내 리그</Button>
+    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs}>계정</Button>
     </Flex>
     </Flex>
 

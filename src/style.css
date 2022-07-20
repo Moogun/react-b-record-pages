@@ -14,14 +14,13 @@ Link {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto; 
+  grid-template-columns: auto auto;
 
   gap: 50px;
 }
 
-
 .grid-item {
-  background-color:cyan;
+  background-color: cyan;
 }
 
 .link-local-styles {
@@ -56,4 +55,22 @@ Link {
 .link-local-styles-subheader:active {
   color: var(--amplify-colors-blue-100);
   font-weight: var(--amplify-font-weights-bold);
+}
+
+.navbar-button {
+  /* background-color: var(--amplify-colors-red-80); */
+  color: var(--amplify-colors-background-quaternary);
+
+}
+
+.navbar-button:hover {
+  background-color: var(--amplify-colors-background-tertiary);
+  color: var(--amplify-colors-brand-primary-80);
+
+}
+
+.navbar-button:active {
+  background-color: var(--amplify-colors-background-tertiary);
+  color: var(--amplify-colors-brand-primary-80);
+  border: none;
 }
