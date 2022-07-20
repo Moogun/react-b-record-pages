@@ -39,7 +39,7 @@ export default function Layout() {
       {/* <AuthStatus AuthContext={AuthContext} /> */}
       <Base
         children={<Header auth={auth} />}
-        bgC={tokens.colors.brand.primary[20]}
+        bgC={tokens.colors.brand.primary[100]}
       />
       <Base
         children={<SubHeader auth={auth} />}
@@ -78,16 +78,38 @@ function Header({ auth }) {
 
   return (
     <View >
-      <Grid>
-        <Card backgroundColor={tokens.colors.brand.primary[20]} variation="outlined">
-          <Link to="/">Home</Link>
+      {/* <Grid> */}
+        {/* <Card backgroundColor={tokens.colors.brand.primary[20]} variation="outlined"> */}
+          {/* <Link to="/">Home</Link>
 
           <Link to="/account">
             <AiOutlineUser /> {auth.user ? auth.user.username : 'Login'}
           </Link>
-          <Link to="create/home">리그/팀 만들기</Link>
-        </Card>
-      </Grid>
+          <Link to="create/home">리그/팀 만들기</Link> */}
+
+<Flex direction="row"
+  justifyContent="space-between"
+  alignItems="stretch"
+  alignContent="flex-start"
+  wrap="nowrap"
+  gap="0rem"
+ >
+
+<Flex >
+<Button size="small" variation="link" margin={tokens.space.xs}>호리</Button>
+    </Flex>
+
+    <Flex  justifyContent="flex-end" gap="0rem">
+    <Button size="small" variation="link" marginLeft={tokens.space.xs}>검색</Button>
+
+    <Button size="small" variation="link" marginLeft={tokens.space.xs}>내 리그</Button>
+    <Button size="small" variation="link" margin={tokens.space.xs}>계정</Button>
+    </Flex>
+    </Flex>
+
+
+        {/* </Card> */}
+      {/* </Grid> */}
     </View>
   );
 }
