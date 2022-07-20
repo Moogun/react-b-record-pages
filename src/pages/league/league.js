@@ -72,6 +72,10 @@ export default function team() {
   return (
     <View>
       {/* <Card key={league.id}> */}
+      {/* <PageHeader title={league.title} /> */}
+
+      <Card margin={tokens.space.small} >
+      
       <PageHeader title={league.title} />
 
       <Grid templateColumns="1fr">
@@ -134,6 +138,7 @@ export default function team() {
       <h4> 경기 일정 </h4>
       <GameSchedule league={league} handleGame={handleGame}/>
       {/* </Card> */}
+      </Card>
     </View>
   );
 }

@@ -43,7 +43,7 @@ export default function Layout() {
     switch(to) {
       case 'home':
         navigate('/')
-        setMenu(to)
+        setMenu('호리')
         break;
         case 'leaguesmine':
           navigate('/leaguesmine')
@@ -77,7 +77,7 @@ export default function Layout() {
 
       {location && location.pathname == '/' 
         ? <Base children={ <Main />} bgC={tokens.colors.background.tertiary} minH={"80vh"}/> 
-        : <Base children={ <Outlet />} bgC={tokens.colors.brand.primary[100]} minH={"80vh"}/> }
+        : <Base children={ <Outlet />} bgC={tokens.colors.background.tertiary} minH={"80vh"}/> }
 
       <Base
         children={<Footer auth={auth} />}
@@ -126,8 +126,8 @@ function Header({ auth, handleNav }) {
 
 <Flex >
 <Button 
-className="navbar-button" size="small" variation="menu" marginTop={tokens.space.xs}
-marginBottom={tokens.space.xs} 
+className="navbar-button" size="small" variation="menu" 
+margin={tokens.space.xs}
 onClick={() => handleNav('home')}
 >호리</Button>
     </Flex>
@@ -153,8 +153,8 @@ onClick={() => handleNav('home')}
 function SubHeader({ auth, menu }) {
   const { tokens } = useTheme();
   return (
-    <Card padding={tokens.space.xs}>
-      <Heading level={4} > {menu} </Heading>
+    <Card padding={tokens.space.small}>
+      <Heading level={5} > {menu} </Heading>
       {/* {auth.user ? (
         <Link to="/leaguesmine" className="link-local-styles-subheader">
           나의 리그

@@ -46,7 +46,10 @@ export default function LeaguesMine() {
   const { tokens } = useTheme();
   return (
     <div>
-      <PageHeader title={'나의 리그'} />
+      {/* <PageHeader title={'나의 리그'} />*/}
+
+
+      
       {myLeagues &&
         myLeagues.map((l) => (
           <NavLink
