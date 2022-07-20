@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './style.css';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from './authProvider.js';
 import AuthStatus from './authStatus.js';
@@ -10,6 +10,7 @@ import { AiOutlineUser } from 'react-icons/ai';
 import Leagues from './pages/league/leagues.js';
 import {
   Grid,
+  Heading,
   View,
   useTheme,
   Flex,
@@ -34,21 +35,49 @@ export default function Layout() {
   console.log('[app]', auth);
   const { tokens } = useTheme();
 
+  const [menu, setMenu] = useState('home')
+
+  let navigate = useNavigate()
+  const handleNav = (to) => {
+    console.log('to', to)
+    switch(to) {
+      case 'home':
+        navigate('/')
+        setMenu(to)
+        break;
+        case 'leaguesmine':
+          navigate('/leaguesmine')
+          setMenu('내 리그')
+          break;
+
+          case 'teamsmine':
+            navigate('/teams')
+            setMenu('내 팀')
+            break;
+        case 'account':
+        navigate('/account')
+        setMenu('계정')
+        break;
+        default:
+          break;
+    }
+  }
+
   return (
     <div>
       {/* <AuthStatus AuthContext={AuthContext} /> */}
       <Base
-        children={<Header auth={auth} />}
+        children={<Header auth={auth} handleNav={handleNav} />}
         // bgC={tokens.colors.brand.primary[100]}
       />
       <Base
-        children={<SubHeader auth={auth} />}
+        children={<SubHeader auth={auth} menu={menu}/>}
         bgC={}
       />
 
       {location && location.pathname == '/' 
-        ? <Base children={ <Main />} bgC={} minH={"80vh"}/> 
-        : <Base children={ <Outlet />} bgC={} minH={"80vh"}/> }
+        ? <Base children={ <Main />} bgC={tokens.colors.background.tertiary} minH={"80vh"}/> 
+        : <Base children={ <Outlet />} bgC={tokens.colors.brand.primary[100]} minH={"80vh"}/> }
 
       <Base
         children={<Footer auth={auth} />}
@@ -62,7 +91,7 @@ export default function Layout() {
 function Base({ children, bgC, minH }) {
   return (
     <View backgroundColor={bgC}>
-      <Grid templateColumns="1fr 1fr 1fr">
+      <Grid templateColumns="1fr 1fr 1fr" style={{borderBottom: 'solid .1rem lightGray'}}>
         <div></div>
         <div>
           <View variation="outlined" style={{ minWidth: '600px', minHeight: minH }}>{children}</View>
@@ -73,7 +102,7 @@ function Base({ children, bgC, minH }) {
   );
 }
 
-function Header({ auth }) {
+function Header({ auth, handleNav }) {
   const { tokens } = useTheme();
 
   return (
@@ -99,14 +128,18 @@ function Header({ auth }) {
 <Button 
 className="navbar-button" size="small" variation="menu" marginTop={tokens.space.xs}
 marginBottom={tokens.space.xs} 
+onClick={() => handleNav('home')}
 >호리</Button>
     </Flex>
 
     <Flex  justifyContent="flex-end" gap="0rem">
     <Button className="navbar-button" size="small" variation="menu" margin={tokens.space.xs}>검색</Button>
 
-    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs}>내 리그</Button>
-    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs}>계정</Button>
+    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('leaguesmine')}>내 리그</Button>
+
+    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('teamsmine')}>내 팀</Button>
+
+    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('account')}>계정</Button>
     </Flex>
     </Flex>
 
@@ -117,11 +150,12 @@ marginBottom={tokens.space.xs}
   );
 }
 
-function SubHeader({ auth }) {
+function SubHeader({ auth, menu }) {
   const { tokens } = useTheme();
   return (
-    <Card >
-      {auth.user ? (
+    <Card padding={tokens.space.xs}>
+      <Heading level={4} > {menu} </Heading>
+      {/* {auth.user ? (
         <Link to="/leaguesmine" className="link-local-styles-subheader">
           나의 리그
         </Link>
@@ -131,17 +165,47 @@ function SubHeader({ auth }) {
       </Link>
       <Link to="/teams" className="link-local-styles-subheader">
         팀
-      </Link>
+      </Link> */}
     </Card>
   );
 }
 
 export function Main({ auth}) {
   const { tokens } = useTheme();
-  return <View style={{minHeight: '80vh', border: "solid .1rem lightGray"}}>
+  return <View style={{minHeight: '80vh', 
+  // border: "solid .1rem lightGray"
+}}
+  >
     
-    main 
+    <Grid templateColumns="1fr 1fr" templateRows="1fr 1fr 1fr"> 
+    <Card 
+    // variation="elevated"
+    row="1/4"
+     margin={tokens.space.small} 
+     backgroundColor={tokens.colors.background.primary}> 
+     Activities
+890,344 Sales </Card>
+
+<Card 
+    // variation="elevated"
+    row="1/3"
+     margin={tokens.space.small} 
+     backgroundColor={tokens.colors.background.primary}> 
+     Activities
+890,344 Sales </Card>
   
+
+<Card 
+    // variation="elevated"
+     margin={tokens.space.small} 
+     backgroundColor={tokens.colors.background.primary}> 
+     Activities
+890,344 Sales </Card>
+  
+
+  
+    </Grid>
+    
   </View>;
 }
 
