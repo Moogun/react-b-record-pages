@@ -8,7 +8,7 @@ export function PageHeader({ title }) {
     <View
     //  padding={tokens.space.medium}
     // paddingTop={tokens.space.medium}
-    // paddingBottom={tokens.space.medium}
+    paddingBottom={tokens.space.medium}
     // backgroundColor={tokens.colors.blue[20]}
     >
       {/* <Heading
@@ -27,10 +27,35 @@ export function PageHeader({ title }) {
         wrap="nowrap"
         gap="1rem"
       >
-        <View>
+
+<Flex
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        alignContent="space-around"
+        wrap="nowrap"
+        gap="1rem"
+      >
+<img src={} />
+
+<View >
           {' '}
           <Text> {title} </Text>
+          <Text> subtitle </Text>
         </View>
+
+        </Flex>
+
+        <Flex
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        alignContent="space-around"
+        wrap="nowrap"
+        gap="1rem"
+      >
+        </Flex>
+
         <View backgroundColor={tokens.colors.blue[40]}>test</View>
       </Flex>
     </View>

@@ -10,6 +10,7 @@ import {
   Text,
   Badge,
   Button,
+  ButtonGroup,
   Grid,
   View,
   Divider,
@@ -74,22 +75,24 @@ export default function team() {
       {/* <Card key={league.id}> */}
       {/* <PageHeader title={league.title} /> */}
 
+      <Grid> 
+
       <Card margin={tokens.space.small} >
       
       <PageHeader title={league.title} />
+      
+      <ButtonGroup size="small">
+  <Button>현황</Button>
+  <Button>일정</Button>
+  <Button>일반 정보</Button>
+</ButtonGroup>
 
-      <Grid templateColumns="1fr">
-        {/* <View column="1" backgroundColor={tokens.colors.red[10]}>
-          {' '}
-          a{' '}
-        </View>
-        <View column="2" backgroundColor={tokens.colors.blue[10]}>
-          {' '}
-          a{' '}
-        </View> */}
-        {myLeague ? <Button onClick={handleEdit}> Edit 🚀</Button> : null}
-      </Grid>
+<Grid marginTop={tokens.space.small}>
+{myLeague ? <Button onClick={handleEdit}> Edit 🚀</Button> : null}
+        </Grid>
+</Card>
 
+      <Card margin={tokens.space.small} marginTop={tokens.space.xxxs} > 
       {/* 
       this has no margin, 
       <Heading level={5}> 리그 정보 </Heading> 
@@ -138,7 +141,19 @@ export default function team() {
       <h4> 경기 일정 </h4>
       <GameSchedule league={league} handleGame={handleGame}/>
       {/* </Card> */}
+
+
+
+
       </Card>
+      
+
+      </Grid>
+
+      <Card margin={tokens.space.small} >
+
+        asdf
+        </Card>
     </View>
   );
 }
