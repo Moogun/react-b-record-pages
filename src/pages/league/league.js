@@ -65,9 +65,8 @@ export default function team() {
   const handleGame = (gid) => {
     console.log(gid);
     // navigate(`${location.pathname}/game/${gid}`, { replace: false, state: league });
-    navigate(`../game/${gid}`)
+    navigate(`../game/${gid}`);
   };
-
 
   const { tokens } = useTheme();
   return (
@@ -75,85 +74,74 @@ export default function team() {
       {/* <Card key={league.id}> */}
       {/* <PageHeader title={league.title} /> */}
 
-      <Grid> 
+      <Grid>
+        <Card margin={tokens.space.small}>
+          <PageHeader title={league.title} />
 
-      <Card margin={tokens.space.small} >
-      
-      <PageHeader title={league.title} />
-      
-      <ButtonGroup size="small">
-  <Button>현황</Button>
-  <Button>일정</Button>
-  <Button>일반 정보</Button>
-</ButtonGroup>
+          <ButtonGroup size="small">
+            <Button>현황</Button>
+            <Button>일정</Button>
+            <Button>일반 정보</Button>
+          </ButtonGroup>
 
-<Grid marginTop={tokens.space.small}>
-{myLeague ? <Button onClick={handleEdit}> Edit 🚀</Button> : null}
-        </Grid>
-</Card>
+          <Grid marginTop={tokens.space.small}>
+            {myLeague ? <Button onClick={handleEdit}> Edit 🚀</Button> : null}
+          </Grid>
+        </Card>
 
-      <Card margin={tokens.space.small} marginTop={tokens.space.xxxs} > 
-      {/* 
+        <Card margin={tokens.space.small} marginTop={tokens.space.xxxs}>
+          {/* 
       this has no margin, 
       <Heading level={5}> 리그 정보 </Heading> 
       */}
 
-      <h4> 대회 정보 </h4>
-      <Info league={league} />
+          <h4> 대회 정보 </h4>
+          <Info league={league} />
 
-      <h4> 참가 신청</h4>
+          <h4> 참가 신청</h4>
 
-      <Card
-        variation="elevated"
-        backgroundColor={tokens.colors.background.secondary}
-      >
-        <DescriptionText text1={'참가 조건 1'} />
-        <DescriptionText text1={'참가 조건 2'} />
+          <Card
+            variation="elevated"
+            backgroundColor={tokens.colors.background.secondary}
+          >
+            <DescriptionText text1={'참가 조건 1'} />
+            <DescriptionText text1={'참가 조건 2'} />
 
-        <br />
-        <Button
-          size="small"
-          isFullWidth
-          variation="primary"
-          onClick={handleApp}
-        >
-          {' '}
-          신청{' '}
-        </Button>
+            <br />
+            <Button
+              size="small"
+              isFullWidth
+              variation="primary"
+              onClick={handleApp}
+            >
+              {' '}
+              신청{' '}
+            </Button>
 
-        {/* <Button isFullWidth onClick={handleEdit}> Edit </Button> */}
-        {/* {league.status &&
+            {/* <Button isFullWidth onClick={handleEdit}> Edit </Button> */}
+            {/* {league.status &&
           league.teamsParticipating.map((t) => <span> {t} </span>)} */}
-      </Card>
+          </Card>
 
-      <h4> 리그 순위</h4>
-      <Card
-        variation="elevated"
-        backgroundColor={tokens.colors.background.secondary}
-      >
-        {league.status == 'app' ? (
-          <DescriptionText text1={'리그 시작 전'} />
-        ) : (
-          <Standing league={league} />
-        )}
-      </Card>
+          <h4> 리그 순위</h4>
+          <Card
+            variation="elevated"
+            backgroundColor={tokens.colors.background.secondary}
+          >
+            {league.status == 'app' ? (
+              <DescriptionText text1={'리그 시작 전'} />
+            ) : (
+              <Standing league={league} />
+            )}
+          </Card>
 
-      <h4> 경기 일정 </h4>
-      <GameSchedule league={league} handleGame={handleGame}/>
-      {/* </Card> */}
-
-
-
-
-      </Card>
-      
-
+          <h4> 경기 일정 </h4>
+          <GameSchedule league={league} handleGame={handleGame} />
+          {/* </Card> */}
+        </Card>
       </Grid>
 
-      <Card margin={tokens.space.small} >
-
-        asdf
-        </Card>
+      <Card margin={tokens.space.small}>asdf</Card>
     </View>
   );
 }
@@ -233,7 +221,6 @@ function Standing({ league }) {
 }
 
 function GameSchedule({ league, handleGame }) {
-
   return (
     <Table highlightOnHover={true} size="small" variation="striped">
       <TableHead>
@@ -264,11 +251,9 @@ function GameSchedule({ league, handleGame }) {
   );
 }
 
-
 {
   /* {admin ? <button> new league </button> : ""} */
 }
-
 
 // function checkMyLeague(uid, myLeagues, selectedLeague) {
 

@@ -107,14 +107,6 @@ function Header({ auth, handleNav }) {
 
   return (
     <View >
-      {/* <Grid> */}
-        {/* <Card backgroundColor={tokens.colors.brand.primary[20]} variation="outlined"> */}
-          {/* <Link to="/">Home</Link>
-
-          <Link to="/account">
-            <AiOutlineUser /> {auth.user ? auth.user.username : 'Login'}
-          </Link>
-          <Link to="create/home">리그/팀 만들기</Link> */}
 
 <Flex direction="row"
   justifyContent="space-between"
@@ -124,28 +116,25 @@ function Header({ auth, handleNav }) {
   gap="0rem"
  >
 
-<Flex >
-<Button 
-className="navbar-button" size="small" variation="menu" 
-margin={tokens.space.xs}
-onClick={() => handleNav('home')}
->호리</Button>
-    </Flex>
+    <Flex >
+    <Button 
+    className="navbar-button" size="small" variation="menu" 
+    margin={tokens.space.xs}
+    onClick={() => handleNav('home')}
+    >호리</Button>
+        </Flex>
 
-    <Flex  justifyContent="flex-end" gap="0rem">
-    <Button className="navbar-button" size="small" variation="menu" margin={tokens.space.xs}>검색</Button>
+        <Flex  justifyContent="flex-end" gap="0rem">
+        <Button className="navbar-button" size="small" variation="menu" margin={tokens.space.xs}>검색</Button>
 
-    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('leaguesmine')}>내 리그</Button>
+        <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('leaguesmine')}>내 리그</Button>
 
-    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('teamsmine')}>내 팀</Button>
+        <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('teamsmine')}>내 팀</Button>
 
-    <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('account')}>계정</Button>
-    </Flex>
-    </Flex>
+        <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('account')}>계정</Button>
+        </Flex>
+        </Flex>
 
-
-        {/* </Card> */}
-      {/* </Grid> */}
     </View>
   );
 }
