@@ -63,7 +63,8 @@ export default function team() {
 
   const handleGame = (gid) => {
     console.log(gid);
-    navigate(`${location.pathname}/game/${gid}`, { replace: false, state: league });
+    // navigate(`${location.pathname}/game/${gid}`, { replace: false, state: league });
+    navigate(`../game/${gid}`)
   };
 
 
