@@ -72,7 +72,7 @@ export default function App() {
           <Route path="/leaguesmine" element={<LeaguesMine />} />
           <Route path="/leagues" element={<Leagues />} />
           <Route path="leagues/:leagueId" element={<League />} > 
-            <Route index path="standing" element={<LeagueStanding />} />
+            <Route path="standing" element={<LeagueStanding />} />
             <Route path="schedules" element={<LeagueSchedules />} />
             <Route path="info" element={<LeagueInfo />} />
 

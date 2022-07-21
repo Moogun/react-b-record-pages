@@ -88,3 +88,11 @@ Link {
   background-color: var(--amplify-colors-background-tertiary);
   color: var(--amplify-colors-red-60);
 }
+
+.create-league-or-team {
+
+}
+
+.create-league-or-team :hover {
+  cursor: pointer;
+}

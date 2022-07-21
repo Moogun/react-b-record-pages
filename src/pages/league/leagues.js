@@ -38,7 +38,7 @@ export default function Leagues() {
 
   const handleClick = (leagueId) => {
     dispatch(selectLeague(leagueId));
-    navigate('/leagues/' + leagueId);
+    navigate('/leagues/' + leagueId, {state: ''});
   };
 
   const handleSubmit = () => {};

@@ -82,7 +82,9 @@ export default function Layout() {
 
       {location && location.pathname == '/' 
         ? <Base children={ <Main />} bgC={tokens.colors.background.tertiary} minH={"80vh"}/> 
-        : <Base children={ <Outlet />} bgC={tokens.colors.background.tertiary} minH={"80vh"}/> }
+        : <Base children={ <Outlet />} 
+        bgC={tokens.colors.background.tertiary} 
+        minH={"80vh"}/> }
 
       <Base
         children={<Footer auth={auth} />}
