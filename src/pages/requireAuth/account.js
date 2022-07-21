@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../authProvider.js';
 import {
+  useTheme,
   Card,
   View,
   Heading,
@@ -22,9 +23,10 @@ export default function Account() {
   console.log('[Account]', auth);
 
   let navigate = useNavigate();
-
+  const {tokens} = useTheme()
   return (
     <div>
+        <Card margin={tokens.space.small}>
       <PageHeader title={'내 계정'} />
       <Grid
         columnGap="0.5rem"
@@ -43,6 +45,7 @@ export default function Account() {
           <Outlet />
         </Card>
       </Grid>
+      </Card>
       
      
     </div>

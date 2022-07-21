@@ -45,6 +45,11 @@ export default function Layout() {
         navigate('/');
         setMenu('호리');
         break;
+
+      case 'create':
+        navigate('/create/home');
+        setMenu('리그/팀 만들기');
+        break;
       case 'leaguesmine':
         navigate('/leaguesmine');
         setMenu('내 리그');
@@ -134,6 +139,15 @@ function Header({ auth, handleNav }) {
             margin={tokens.space.xs}
           >
             검색
+          </Button>
+          <Button
+            className="navbar-button"
+            size="small"
+            variation="menu"
+            margin={tokens.space.xs}
+            onClick={() => handleNav('create')}
+          >
+            리그/팀 만들기
           </Button>
 
           <Button

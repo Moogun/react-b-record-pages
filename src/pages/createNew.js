@@ -26,8 +26,8 @@ export default function CreateNew() {
 
   const { tokens } = useTheme();
   return (
-    <div>
-      <PageHeader title={'리그/팀 만들기'} />
+    <Card margin={tokens.space.small}>
+      {/* <PageHeader title={'리그/팀 만들기'} /> */}
 
       {/*  handle new is not working, don't know why 
       <Button onClick={() => handleNew('league')}>리그</Button > 
@@ -54,6 +54,6 @@ export default function CreateNew() {
           <Outlet />
         </Card>
       </Grid>
-    </div>
+    </Card>
   );
 }
