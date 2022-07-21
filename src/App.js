@@ -11,6 +11,10 @@ import LeagueEditInfo from './pages/league/leagueEditInfo.js';
 import LeagueApp from './pages/league/leagueApp.js';
 
 import League from './pages/league/league.js';
+import LeagueInfo from './pages/league/leagueInfo.js';
+import LeagueSchedules from './pages/league/leagueSchedules.js';
+import LeagueStanding from './pages/league/leagueStanding.js';
+
 import LeaguesMine from './pages/league/leaguesMine.js';
 import Leagues from './pages/league/leagues.js';
 
@@ -67,7 +71,11 @@ export default function App() {
 
           <Route path="/leaguesmine" element={<LeaguesMine />} />
           <Route path="/leagues" element={<Leagues />} />
-          <Route path="leagues/:leagueId" element={<League />} />
+          <Route path="leagues/:leagueId" element={<League />} > 
+            <Route path="schedules" element={<LeagueSchedules />} />
+            <Route path="info" element={<LeagueInfo />} />
+            <Route path="standing" element={<LeagueStanding />} />
+          </Route>
           <Route path="game/:gid" element={<Game />} />
           <Route path="leagues/:leagueId/edit" element={<LeagueEdit />}> 
             <Route path="info" element={<LeagueEditInfo />} />

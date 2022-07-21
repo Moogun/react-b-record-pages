@@ -26,6 +26,9 @@ let leagues = [
       games[4],
       games[5],      
     ],
+    standing: [
+      1,2,3
+    ],
   },
   {
     id: 'lg_2',
@@ -50,6 +53,9 @@ let leagues = [
       games[10],
       games[11],      
     ],
+    standing: [
+
+    ],
   },
   {
     id: 'lg_3',
@@ -69,6 +75,9 @@ let leagues = [
     games: [
       games[12],      
       games[13],
+    ],
+    standing: [
+
     ],
   },
 ];

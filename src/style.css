@@ -66,11 +66,25 @@ Link {
 .navbar-button:hover {
   background-color: var(--amplify-colors-background-tertiary);
   color: var(--amplify-colors-brand-primary-80);
-
 }
 
 .navbar-button:active {
   background-color: var(--amplify-colors-background-tertiary);
   color: var(--amplify-colors-brand-primary-80);
   border: none;
+}
+
+.league-submenu-button {
+  color: var(--amplify-colors-background-quaternary);
+  border: none;
+}
+
+.league-submenu-button:hover {
+  background-color: var(--amplify-colors-background-tertiary);
+  color: var(--amplify-colors-brand-primary-80);
+}
+
+.league-submenu-button:active {
+  background-color: var(--amplify-colors-background-tertiary);
+  color: var(--amplify-colors-red-60);
 }

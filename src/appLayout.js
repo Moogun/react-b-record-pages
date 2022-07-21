@@ -37,31 +37,31 @@ export default function Layout() {
 
   const [menu, setMenu] = useState('home')
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const handleNav = (to) => {
-    console.log('to', to)
-    switch(to) {
+    console.log('to', to);
+    switch (to) {
       case 'home':
-        navigate('/')
-        setMenu('호리')
+        navigate('/');
+        setMenu('호리');
         break;
-        case 'leaguesmine':
-          navigate('/leaguesmine')
-          setMenu('내 리그')
-          break;
-
-          case 'teamsmine':
-            navigate('/teams')
-            setMenu('내 팀')
-            break;
-        case 'account':
-        navigate('/account')
-        setMenu('계정')
+      case 'leaguesmine':
+        navigate('/leaguesmine');
+        setMenu('내 리그');
         break;
-        default:
-          break;
+  
+      case 'teamsmine':
+        navigate('/teams');
+        setMenu('내 팀');
+        break;
+      case 'account':
+        navigate('/account');
+        setMenu('계정');
+        break;
+      default:
+        break;
     }
-  }
+  };  
 
   return (
     <div>
@@ -101,40 +101,72 @@ function Base({ children, bgC, minH }) {
     </View>
   );
 }
-
 function Header({ auth, handleNav }) {
   const { tokens } = useTheme();
 
   return (
-    <View >
-
-<Flex direction="row"
-  justifyContent="space-between"
-  alignItems="stretch"
-  alignContent="flex-start"
-  wrap="nowrap"
-  gap="0rem"
- >
-
-    <Flex >
-    <Button 
-    className="navbar-button" size="small" variation="menu" 
-    margin={tokens.space.xs}
-    onClick={() => handleNav('home')}
-    >호리</Button>
+    <View>
+      <Flex
+        direction="row"
+        justifyContent="space-between"
+        alignItems="stretch"
+        alignContent="flex-start"
+        wrap="nowrap"
+        gap="0rem"
+      >
+        <Flex>
+          <Button
+            className="navbar-button"
+            size="small"
+            variation="menu"
+            margin={tokens.space.xs}
+            onClick={() => handleNav('home')}
+          >
+            호리
+          </Button>
         </Flex>
 
-        <Flex  justifyContent="flex-end" gap="0rem">
-        <Button className="navbar-button" size="small" variation="menu" margin={tokens.space.xs}>검색</Button>
+        <Flex justifyContent="flex-end" gap="0rem">
+          <Button
+            className="navbar-button"
+            size="small"
+            variation="menu"
+            margin={tokens.space.xs}
+          >
+            검색
+          </Button>
 
-        <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('leaguesmine')}>내 리그</Button>
+          <Button
+            className="navbar-button"
+            size="small"
+            variation="menu"
+            margin={tokens.space.xs}
+            onClick={() => handleNav('leaguesmine')}
+          >
+            내 리그
+          </Button>
 
-        <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('teamsmine')}>내 팀</Button>
+          <Button
+            className="navbar-button"
+            size="small"
+            variation="menu"
+            margin={tokens.space.xs}
+            onClick={() => handleNav('teamsmine')}
+          >
+            내 팀
+          </Button>
 
-        <Button className="navbar-button" size="small" variation="menu"margin={tokens.space.xs} onClick={() => handleNav('account')}>계정</Button>
+          <Button
+            className="navbar-button"
+            size="small"
+            variation="menu"
+            margin={tokens.space.xs}
+            onClick={() => handleNav('account')}
+          >
+            계정
+          </Button>
         </Flex>
-        </Flex>
-
+      </Flex>
     </View>
   );
 }
@@ -143,7 +175,7 @@ function SubHeader({ auth, menu }) {
   const { tokens } = useTheme();
   return (
     <Card padding={tokens.space.small}>
-      <Heading level={5} > {menu} </Heading>
+      <Heading level={5}> {menu} </Heading>
       {/* {auth.user ? (
         <Link to="/leaguesmine" className="link-local-styles-subheader">
           나의 리그
@@ -159,44 +191,46 @@ function SubHeader({ auth, menu }) {
   );
 }
 
-export function Main({ auth}) {
+export function Main({ auth }) {
   const { tokens } = useTheme();
-  return <View style={{minHeight: '80vh', 
-  // border: "solid .1rem lightGray"
-}}
-  >
-    
-    <Grid templateColumns="1fr 1fr" templateRows="1fr 1fr 1fr"> 
-    <Card 
-    // variation="elevated"
-    row="1/4"
-     margin={tokens.space.small} 
-     backgroundColor={tokens.colors.background.primary}> 
-     Activities
-890,344 Sales </Card>
+  return (
+    <View
+      style={{
+        minHeight: '80vh',
+        // border: "solid .1rem lightGray"
+      }}
+    >
+      <Grid templateColumns="1fr 1fr" templateRows="1fr 1fr 1fr">
+        <Card
+          // variation="elevated"
+          row="1/4"
+          margin={tokens.space.small}
+          backgroundColor={tokens.colors.background.primary}
+        >
+          Activities 890,344 Sales{' '}
+        </Card>
 
-<Card 
-    // variation="elevated"
-    row="1/3"
-     margin={tokens.space.small} 
-     backgroundColor={tokens.colors.background.primary}> 
-     Activities
-890,344 Sales </Card>
-  
+        <Card
+          // variation="elevated"
+          row="1/3"
+          margin={tokens.space.small}
+          backgroundColor={tokens.colors.background.primary}
+        >
+          Activities 890,344 Sales{' '}
+        </Card>
 
-<Card 
-    // variation="elevated"
-     margin={tokens.space.small} 
-     backgroundColor={tokens.colors.background.primary}> 
-     Activities
-890,344 Sales </Card>
-  
-
-  
-    </Grid>
-    
-  </View>;
+        <Card
+          // variation="elevated"
+          margin={tokens.space.small}
+          backgroundColor={tokens.colors.background.primary}
+        >
+          Activities 890,344 Sales{' '}
+        </Card>
+      </Grid>
+    </View>
+  );
 }
+
 
 function Footer() {
   const { tokens } = useTheme();
