@@ -1,22 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, } from 'react-router-dom';
 import {
-  Collection,
-  Card,
-  Text,
-  Badge,
-  Button,
-  ButtonGroup,
-  Grid,
-  Flex,
-  View,
-  Divider,
   useTheme,
-  Table,
-  TableCell,
-  TableBody,
-  TableHead,
-  TableRow,
+  Card, 
+
 } from '@aws-amplify/ui-react';
 
 
@@ -34,7 +21,6 @@ export default function LeagueInfo({  }) {
 
   return (
     <Card
-      // variation="elevated"
       margin={tokens.space.small}
     >
       <DescriptionText

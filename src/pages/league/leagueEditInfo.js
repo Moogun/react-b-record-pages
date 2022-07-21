@@ -122,9 +122,8 @@ function Schedules({ column, leagueToEdit, handleNewGame }) {
           <TableRow>
             {' '}
             <TableCell colspan="6">
-              <Flex 
-              justifyContent="center"> 
-              <Button onClick={() => handleNewGame()}>new game</Button>{' '}
+              <Flex justifyContent="center">
+                <Button onClick={() => handleNewGame()}>new game</Button>{' '}
               </Flex>
             </TableCell>{' '}
           </TableRow>
@@ -138,8 +137,8 @@ function Results({ column, leagueToEdit }) {
   return <View column={column}> results </View>;
 }
 
-
-{/* <Text> auto generate schedules </Text>
+{
+  /* <Text> auto generate schedules </Text>
 <ul>
   <li># of games </li>
   <li>대회날짜 </li>
@@ -148,4 +147,5 @@ function Results({ column, leagueToEdit }) {
   <li>경기 종료시간</li>
   <li>경기 소요시간</li>
   <li>경기 간격</li>
-</ul> */}
+</ul> */
+}

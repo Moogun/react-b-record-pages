@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
   useTheme,
+  View,
   Grid,
   Flex,
   Card,
@@ -33,32 +34,32 @@ export default function CreateNew() {
 
   const { tokens } = useTheme();
   return (
-    <Card
-      margin={tokens.space.small}
-      padding={tokens.space.zero}
-      // style={{border: 'solid 1px green'}}
-    >
+    <View>
       <Grid>
-        <Card margin={tokens.space.small}>
-          <PageHeader title="리그 / 팀 만들기" />
+       
+        <Card margin={tokens.space.small} padding={tokens.space.zero}>
+          <Grid>
+            <Card margin={tokens.space.small}>
+              <PageHeader title="리그 / 팀 만들기" />
 
-          <Flex
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="stretch"
-            alignContent="flex-start"
-            wrap="nowrap"
-            gap="0rem"
-          >
-            <nav>
-              <Link to="league" >리그</Link> {' '}
-              <Link to="team">팀</Link>
-            </nav>
-          </Flex>
+              <Flex
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="stretch"
+                alignContent="flex-start"
+                wrap="nowrap"
+                gap="0rem"
+              >
+                <nav>
+                  <Link to="league">리그</Link> <Link to="team">팀</Link>
+                </nav>
+              </Flex>
+            </Card>
+          </Grid>
         </Card>
-
+        
+        <Outlet />
       </Grid>
-      <Outlet />
-    </Card>
+    </View>
   );
 }

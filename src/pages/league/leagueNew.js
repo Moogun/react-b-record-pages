@@ -83,115 +83,113 @@ export default function LeagueNew() {
     // this works for now
     navigate('/', { replace: true });
   };
-  const {tokens} = useTheme()
+  const { tokens } = useTheme();
   return (
     <View>
-      <Card
-    // variation="elevated"
-    margin={tokens.space.small}
-  >
-      <Heading level={5}> 리그 </Heading>
-      <br />
-      {/* <nav>
-        {' '}
-        <Link to="l_info1">정보</Link> {'|'}
-        <Link to="l_info2"> 정보 2</Link> {'|'}
-      </nav> */}
+      <Card margin={tokens.space.small}>
+        <Heading level={5}> 리그 </Heading>
+        <br />
 
-      {/* <Button onClick={handleDismiss}>dismiss </Button> */}
-      <form onSubmit={handleSubmit}>
-        <Flex direction="column">
-          <TextField
-            size="small"
-            label="리그 명"
-            placeholder="000_league"
-            name="title"
-            onChange={handleInputChange}
-            value={league.title}
-          />
-          <TextField
-            size="small"
-            label="시작일"
-            placeholder="July 1 2022"
-            name="leagueToStart"
-            onChange={handleInputChange}
-            value={league.dateToStart}
-          />
-          <TextField
-            size="small"
-            label="종료일"
-            placeholder="July 1 2022"
-            name="leagueToEnd"
-            onChange={handleInputChange}
-            value={league.dateToEnd}
-          />
-          <TextField
-            size="small"
-            label="신청시작일"
-            placeholder="July 1 2022"
-            name="appToStart"
-            onChange={handleInputChange}
-            value={league.dateToStart}
-          />
-          <TextField
-            size="small"
-            label="신청종료일"
-            placeholder="July 1 2022"
-            name="appToEnd"
-            onChange={handleInputChange}
-            value={league.dateToEnd}
-          />
-          <SelectField
-            size="small"
-            label="참여팀 수"
-            options={['2', '3', '4', '5', '6', '7', '8', '9', '10']}
-            name="numOfteamsParticipating"
-            onChange={handleInputChange}
-            value={league.numOfteamsParticipating}
-          />
-          <SelectField
-            size="small"
-            label="팀당 리그 경기수"
-            options={['1', '2', '3', '4']}
-            name="gamePerTeam"
-            onChange={handleInputChange}
-            value={league.gamePerTeam}
-          />
-          <SelectField
-            size="small"
-            label="우승 결정 방식"
-            options={['리그 후 토너먼트 결승', '리그 최다 승']}
-            name="tournament"
-            onChange={handleInputChange}
-            value={league.gamePerTeam}
-          />
-          The Num of Games: {combinations(league.numOfteamsParticipating, 2)}
-          <TextAreaField
-            size="small"
-            label="etc"
-            name="etc"
-            onChange={handleInputChange}
-            value={league.etc}
-          />
-          <Divider orientation="horizontal" />
-          {league.games && league.games.length > 0
-            ? league.games.map((g) => {
-                return <li> {g} </li>;
-              })
-            : null}
-          <Grid templateColumns="1fr 1fr">
-            <Button size="small" name="newSchedule" onClick={handleAddGame}>
-              {' '}
-              + Add New Shcedule{' '}
-            </Button>
-          </Grid>
-          <Divider orientation="horizontal" />
-          <Button size="small" type="submit" value="Submit">
-            {' '}
-            Save{' '}
-          </Button>
-        </Flex>
-      </form>
+        {/* <Button onClick={handleDismiss}>dismiss </Button> */}
+
+        {/* <Grid>
+          <form onSubmit={handleSubmit}>
+            <Flex direction="column">
+              <TextField
+                size="small"
+                label="리그 명"
+                placeholder="000_league"
+                name="title"
+                onChange={handleInputChange}
+                value={league.title}
+              />
+              <TextField
+                size="small"
+                label="시작일"
+                placeholder="July 1 2022"
+                name="leagueToStart"
+                onChange={handleInputChange}
+                value={league.dateToStart}
+              />
+              <TextField
+                size="small"
+                label="종료일"
+                placeholder="July 1 2022"
+                name="leagueToEnd"
+                onChange={handleInputChange}
+                value={league.dateToEnd}
+              />
+              <TextField
+                size="small"
+                label="신청시작일"
+                placeholder="July 1 2022"
+                name="appToStart"
+                onChange={handleInputChange}
+                value={league.dateToStart}
+              />
+              <TextField
+                size="small"
+                label="신청종료일"
+                placeholder="July 1 2022"
+                name="appToEnd"
+                onChange={handleInputChange}
+                value={league.dateToEnd}
+              />
+              <SelectField
+                size="small"
+                label="참여팀 수"
+                options={['2', '3', '4', '5', '6', '7', '8', '9', '10']}
+                name="numOfteamsParticipating"
+                onChange={handleInputChange}
+                value={league.numOfteamsParticipating}
+              />
+              <SelectField
+                size="small"
+                label="팀당 리그 경기수"
+                options={['1', '2', '3', '4']}
+                name="gamePerTeam"
+                onChange={handleInputChange}
+                value={league.gamePerTeam}
+              />
+              <SelectField
+                size="small"
+                label="우승 결정 방식"
+                options={['리그 후 토너먼트 결승', '리그 최다 승']}
+                name="tournament"
+                onChange={handleInputChange}
+                value={league.gamePerTeam}
+              />
+              The Num of Games:{' '}
+              {combinations(league.numOfteamsParticipating, 2)}
+              <TextAreaField
+                size="small"
+                label="etc"
+                name="etc"
+                onChange={handleInputChange}
+                value={league.etc}
+              />
+              <Divider orientation="horizontal" />
+              {league.games && league.games.length > 0
+                ? league.games.map((g) => {
+                    return <li> {g} </li>;
+                  })
+                : null}
+              <Grid templateColumns="1fr 1fr">
+                <Button size="small" name="newSchedule" onClick={handleAddGame}>
+                  {' '}
+                  + Add New Shcedule{' '}
+                </Button>
+              </Grid>
+              <Divider orientation="horizontal" />
+              <Button size="small" type="submit" value="Submit">
+                {' '}
+                Save{' '}
+              </Button>
+            </Flex>
+          </form>
+        </Grid> */}
+
+      
       </Card>
     </View>
   );

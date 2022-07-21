@@ -78,12 +78,12 @@ export default function team() {
   // console.log('team.manager', team.manager[0] === auth.user.id);
 
   const handleEdit = () => {
-    console.log(params);
+    console.log(param);
     navigate(`${location.pathname}/edit`, { replace: true, state: league });
   };
 
   const handleApp = () => {
-    console.log(params);
+    console.log(param);
     navigate(`${location.pathname}/app`, { replace: false, state: league });
   };
 
