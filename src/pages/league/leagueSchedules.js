@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, } from 'react-router-dom';
 import {
   Collection,
   Card,
@@ -25,11 +25,17 @@ import {
   DescriptionText,
 } from '../../pageHeader.js';
 
-export default function LeagueSchedule({ handleGame }) {
+export default function LeagueSchedule({ }) {
   const { tokens } = useTheme();
   let location = useLocation();
   console.log('[league info location', location);
   let league = location.state;
+
+  let navigate = useNavigate()
+  const handleGame = (gid) => {
+    console.log(gid);
+    navigate(`../game/${gid}`);
+  };
 
   return (
     <Card margin={tokens.space.small}>

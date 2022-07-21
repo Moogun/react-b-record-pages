@@ -64,9 +64,6 @@ export default function team() {
     }
   };  
 
-
-
-
   let myLeague = league && league.createdBy.id == auth.user.id;
 
   // let myLeague = checkMyLeague(auth.user.id, auth.user.myLeagues, league)

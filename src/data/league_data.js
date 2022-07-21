@@ -27,7 +27,10 @@ let leagues = [
       games[5],      
     ],
     standing: [
-      1,2,3
+      {team: 'team1', games: 11, won: '7', lost: '2', },
+      {team: 'team2', games: 5, won: '3', lost: '2', },
+      {team: 'team3', games: 5, won: '1', lost: '4', },
+      {team: 'team4', games: 5, won: '0', lost: '5', },
     ],
   },
   {
@@ -54,7 +57,10 @@ let leagues = [
       games[11],      
     ],
     standing: [
-
+      {team: 'team1', games: 5, won: '3', lost: '2', },
+      {team: 'team2', games: 5, won: '3', lost: '2', },
+      {team: 'team3', games: 5, won: '1', lost: '4', },
+      {team: 'team4', games: 5, won: '0', lost: '5', },
     ],
   },
   {
@@ -77,7 +83,10 @@ let leagues = [
       games[13],
     ],
     standing: [
-
+      {team: 'team1', games: 5, won: '3', lost: '2', },
+      {team: 'team2', games: 5, won: '3', lost: '2', },
+      {team: 'team3', games: 5, won: '1', lost: '4', },
+      {team: 'team4', games: 5, won: '0', lost: '5', },
     ],
   },
 ];

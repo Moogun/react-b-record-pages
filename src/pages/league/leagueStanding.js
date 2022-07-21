@@ -55,17 +55,16 @@ export default function LeagueStanding({}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {league.status &&
-            league.games.map((g) => (
-              <TableRow key={g.id} onClick={() => handleGame(g.id)}>
-                <TableCell>{g.date}</TableCell>
-                <TableCell>{g.time} </TableCell>
+          {league.standing &&
+            league.standing.map((s) => (
+              <TableRow>
+                <TableCell>{s.team}</TableCell>
+                <TableCell>{s.games} </TableCell>
                 <TableCell>
-                  {' '}
-                  {g.teams[0].name} - {g.teams[1].name}
+                {Math.round(s.won / s.games *100) }%
                 </TableCell>
-                <TableCell>{g.venue}</TableCell>
-                <TableCell>{g.status}</TableCell>
+                <TableCell>{s.won}</TableCell>
+                <TableCell>{s.lost}</TableCell>
               </TableRow>
             ))}
         </TableBody>
