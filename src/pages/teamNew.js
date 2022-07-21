@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { newTeam } from './teamSlice';
 import {
+  useTheme,
   TextField,
   SelectField,
   TextAreaField,
@@ -13,6 +14,7 @@ import {
   Flex,
   View,
   Grid,
+  Card,
   Divider,
   Heading,
   Text,
@@ -64,8 +66,12 @@ export default function NewTeam() {
     navigate('/', { replace: true });
   };
 
+  const {tokens} = useTheme()
   return (
-    <div>
+    <Card
+    // variation="elevated"
+    margin={tokens.space.small}
+  >
       <Heading level={5}> 팀 만들기 </Heading>
       {/* <Text as="P"> username : {auth.user.username} </Text> */}
 
@@ -119,6 +125,6 @@ export default function NewTeam() {
           </Button>
         </Flex>
       </form>
-    </div>
+    </Card>
   );
 }

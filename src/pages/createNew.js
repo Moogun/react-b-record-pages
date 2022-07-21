@@ -2,7 +2,14 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../authProvider.js';
 import { useDispatch } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import { useTheme, Grid, Card, Text, Button } from '@aws-amplify/ui-react';
+import {
+  useTheme,
+  Grid,
+  Flex,
+  Card,
+  Text,
+  Button,
+} from '@aws-amplify/ui-react';
 
 // import { newTeam } from './teamSlice';
 import { PageHeader } from '../pageHeader.js';
@@ -31,10 +38,9 @@ export default function CreateNew() {
       padding={tokens.space.zero}
       // style={{border: 'solid 1px green'}}
     >
-     <Grid>
-     
+      <Grid>
         <Card margin={tokens.space.small}>
-          <PageHeader title={league.title} />
+          <PageHeader title="리그 / 팀 만들기" />
 
           <Flex
             direction="row"
@@ -44,12 +50,15 @@ export default function CreateNew() {
             wrap="nowrap"
             gap="0rem"
           >
-            
+            <nav>
+              <Link to="league" >리그</Link> {' '}
+              <Link to="team">팀</Link>
+            </nav>
           </Flex>
         </Card>
 
-        <Outlet />
       </Grid>
+      <Outlet />
     </Card>
   );
 }

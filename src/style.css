@@ -90,9 +90,15 @@ Link {
 }
 
 .create-league-or-team {
+  text-decoration: none;
+}
 
+.create-league-or-team :active {
+  background-color: aqua;
+  border: solid 1px red;
 }
 
 .create-league-or-team :hover {
-  cursor: pointer;
+  background-color: aqua;
+  border: solid 1px red;
 }

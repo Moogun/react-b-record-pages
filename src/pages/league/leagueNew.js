@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import {
+  useTheme,
   TextField,
   SelectField,
   TextAreaField,
@@ -13,6 +14,7 @@ import {
   ButtonGroup,
   Flex,
   View,
+  Card,
   Grid,
   Divider,
   Heading,
@@ -81,9 +83,13 @@ export default function LeagueNew() {
     // this works for now
     navigate('/', { replace: true });
   };
-
+  const {tokens} = useTheme()
   return (
     <View>
+      <Card
+    // variation="elevated"
+    margin={tokens.space.small}
+  >
       <Heading level={5}> 리그 </Heading>
       <br />
       {/* <nav>
@@ -186,6 +192,7 @@ export default function LeagueNew() {
           </Button>
         </Flex>
       </form>
+      </Card>
     </View>
   );
 }
