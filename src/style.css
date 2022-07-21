@@ -102,3 +102,7 @@ Link {
   background-color: aqua;
   border: solid 1px red;
 }
+
+.amplify-input {
+  border: dotted ;
+}

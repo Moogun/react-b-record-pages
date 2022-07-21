@@ -12,6 +12,7 @@ import {
   Grid,
   Flex,
   Card,
+  TextField,
   Button,
   Text,
   View,
@@ -21,6 +22,8 @@ import {
   TableHead,
   TableRow,
 } from '@aws-amplify/ui-react';
+
+import { FormLeagueInfo } from '../../forms/formLeagueInfo.js';
 
 import Calendar from 'react-calendar';
 
@@ -69,17 +72,45 @@ function getCurrentSubMenu(path, leagueToEdit, handleNewGame) {
 }
 
 function Info({ column, leagueToEdit }) {
-  return <View column={column}> info </View>;
+  return (
+    <View column={column}>
+      <FormLeagueInfo />
+    </View>
+  );
 }
 
 function Participants({ column, leagueToEdit }) {
   let parti = leagueToEdit.teamsParticipating;
   return (
     <View column={column}>
-      <Text> participants </Text>
-      {parti.map((p) => {
-        return <div> {p} </div>;
-      })}
+      <Text as="span"> 참가팀 </Text>
+
+      <Table highlightOnHover={false} size="small" variation="bordered">
+        <TableHead>
+          <TableRow>
+            {/* style={{fontSize: "12px"}} not working */}
+            <TableCell as="th">#</TableCell>
+            <TableCell as="th">팀</TableCell>
+            <TableCell as="th">신청일</TableCell>
+            <TableCell as="th">조건충족</TableCell>
+            <TableCell as="th">참가확정</TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {parti.map((p) => {
+            return (
+              <TableRow>
+                <TableCell> {p} </TableCell>
+                <TableCell> {p} </TableCell>
+                <TableCell> {p} </TableCell>
+                <TableCell> {p} </TableCell>
+                <TableCell> {p} </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </View>
   );
 }
@@ -101,7 +132,10 @@ function Schedules({ column, leagueToEdit, handleNewGame }) {
             <TableCell as="th">Time</TableCell>
             <TableCell as="th">Match</TableCell>
             <TableCell as="th">장소</TableCell>
-            <TableCell as="th">결과</TableCell>
+            <TableCell as="th">경기 상태</TableCell>
+            <TableCell as="th">승/패</TableCell>
+            <TableCell as="th">점수</TableCell>
+            <TableCell as="th">영상</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -116,6 +150,9 @@ function Schedules({ column, leagueToEdit, handleNewGame }) {
                 </TableCell>
                 <TableCell>{g.venue}</TableCell>
                 <TableCell>{g.gameStatus}</TableCell>
+                <TableCell>{g.gameStatus}</TableCell>
+                <TableCell>{g.gameStatus}</TableCell>
+                
               </TableRow>
             );
           })}
@@ -134,7 +171,8 @@ function Schedules({ column, leagueToEdit, handleNewGame }) {
 }
 
 function Results({ column, leagueToEdit }) {
-  return <View column={column}> results </View>;
+  return;
+  <View column={column}></View>;
 }
 
 {
